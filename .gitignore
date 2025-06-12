@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Exp_Tracker_App/obj
+/Exp_Tracker_App/.vs/Exp_Tracker_App/v17/.suo
+/Exp_Tracker_App/.vs/Exp_Tracker_App
+/Exp_Tracker_App/Exp_Tracker_App.vbproj.user

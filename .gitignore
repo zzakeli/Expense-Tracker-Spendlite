@@ -4,5 +4,8 @@
 
 /Exp_Tracker_App/obj
 /Exp_Tracker_App/.vs/Exp_Tracker_App/v17/.suo
-/Exp_Tracker_App/.vs/Exp_Tracker_App
+/Exp_Tracker_App/.vs
 /Exp_Tracker_App/Exp_Tracker_App.vbproj.user
+/Exp_Tracker_App/bin
+/Exp_Tracker_App/bin/Debug/net8.0-windows/Exp_Tracker_App.exe
+/Exp_Tracker_App/bin/Debug/net8.0-windows/Exp_Tracker_App.pdb

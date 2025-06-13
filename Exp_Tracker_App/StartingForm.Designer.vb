@@ -29,7 +29,6 @@ Partial Class StartingForm
         switchLabel = New Label()
         switchToLoginButton = New Button()
         passwordSignUpBox = New MaskedTextBox()
-        usernameSignUpBox = New TextBox()
         emailSignUpBox = New TextBox()
         confirmPasswordSignUpBox = New MaskedTextBox()
         signUpButton = New Button()
@@ -42,19 +41,21 @@ Partial Class StartingForm
         emailTextNotifier = New Label()
         passwordTextNotifier = New Label()
         confirmPasswordTextNotifier = New Label()
+        Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(components)
+        usernameSignUpBox = New TextBox()
         slideContainer.SuspendLayout()
         SuspendLayout()
         ' 
         ' slideContainer
         ' 
-        slideContainer.BackColor = SystemColors.AppWorkspace
+        slideContainer.BackColor = Color.FromArgb(CByte(54), CByte(116), CByte(181))
         slideContainer.Controls.Add(terminateButton)
         slideContainer.Controls.Add(switchToSignUpButton)
         slideContainer.Controls.Add(switchLabel)
         slideContainer.Controls.Add(switchToLoginButton)
         slideContainer.Location = New Point(433, -32)
         slideContainer.Name = "slideContainer"
-        slideContainer.Size = New Size(449, 695)
+        slideContainer.Size = New Size(454, 695)
         slideContainer.TabIndex = 0
         ' 
         ' terminateButton
@@ -72,7 +73,7 @@ Partial Class StartingForm
         switchToSignUpButton.Name = "switchToSignUpButton"
         switchToSignUpButton.Size = New Size(124, 39)
         switchToSignUpButton.TabIndex = 8
-        switchToSignUpButton.Text = "SIGN UP"
+        switchToSignUpButton.Text = "Sign up"
         switchToSignUpButton.UseVisualStyleBackColor = True
         switchToSignUpButton.Visible = False
         ' 
@@ -103,14 +104,6 @@ Partial Class StartingForm
         passwordSignUpBox.TabIndex = 1
         passwordSignUpBox.Tag = ""
         passwordSignUpBox.UseSystemPasswordChar = True
-        ' 
-        ' usernameSignUpBox
-        ' 
-        usernameSignUpBox.Location = New Point(99, 188)
-        usernameSignUpBox.Name = "usernameSignUpBox"
-        usernameSignUpBox.PlaceholderText = "Username"
-        usernameSignUpBox.Size = New Size(223, 27)
-        usernameSignUpBox.TabIndex = 2
         ' 
         ' emailSignUpBox
         ' 
@@ -145,6 +138,7 @@ Partial Class StartingForm
         usernameLoginBox.PlaceholderText = "Username"
         usernameLoginBox.Size = New Size(223, 27)
         usernameLoginBox.TabIndex = 6
+        usernameLoginBox.Text = "Jestaly14"
         ' 
         ' passwordLoginBox
         ' 
@@ -153,6 +147,7 @@ Partial Class StartingForm
         passwordLoginBox.Size = New Size(223, 27)
         passwordLoginBox.TabIndex = 7
         passwordLoginBox.Tag = ""
+        passwordLoginBox.Text = "Wanbilyon3Dimension"
         passwordLoginBox.UseSystemPasswordChar = True
         ' 
         ' loginButton
@@ -211,11 +206,28 @@ Partial Class StartingForm
         confirmPasswordTextNotifier.Size = New Size(0, 20)
         confirmPasswordTextNotifier.TabIndex = 13
         ' 
+        ' Guna2BorderlessForm1
+        ' 
+        Guna2BorderlessForm1.BorderRadius = 30
+        Guna2BorderlessForm1.ContainerControl = Me
+        Guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6R
+        Guna2BorderlessForm1.TransparentWhileDrag = True
+        ' 
+        ' usernameSignUpBox
+        ' 
+        usernameSignUpBox.Location = New Point(99, 189)
+        usernameSignUpBox.Name = "usernameSignUpBox"
+        usernameSignUpBox.PlaceholderText = "Username"
+        usernameSignUpBox.Size = New Size(223, 27)
+        usernameSignUpBox.TabIndex = 14
+        ' 
         ' StartingForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(255), CByte(253), CByte(246))
         ClientSize = New Size(882, 653)
+        Controls.Add(usernameSignUpBox)
         Controls.Add(confirmPasswordTextNotifier)
         Controls.Add(passwordTextNotifier)
         Controls.Add(emailTextNotifier)
@@ -228,7 +240,6 @@ Partial Class StartingForm
         Controls.Add(signUpButton)
         Controls.Add(confirmPasswordSignUpBox)
         Controls.Add(emailSignUpBox)
-        Controls.Add(usernameSignUpBox)
         Controls.Add(passwordSignUpBox)
         FormBorderStyle = FormBorderStyle.None
         Name = "StartingForm"
@@ -242,7 +253,7 @@ Partial Class StartingForm
 
     Friend WithEvents slideContainer As Panel
     Friend WithEvents passwordSignUpBox As MaskedTextBox
-    Friend WithEvents usernameSignUpBox As TextBox
+    Friend WithEvents Guna2TextBox1 As TextBox
     Friend WithEvents emailSignUpBox As TextBox
     Friend WithEvents confirmPasswordSignUpBox As MaskedTextBox
     Friend WithEvents signUpButton As Button
@@ -259,5 +270,7 @@ Partial Class StartingForm
     Friend WithEvents emailTextNotifier As Label
     Friend WithEvents passwordTextNotifier As Label
     Friend WithEvents confirmPasswordTextNotifier As Label
+    Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
+    Friend WithEvents usernameSignUpBox As TextBox
 
 End Class

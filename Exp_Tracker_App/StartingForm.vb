@@ -540,8 +540,8 @@ Public Class StartingForm
 
 
 
-    Private Sub usernameSignUpBox_TextChanged(sender As Object, e As EventArgs) Handles usernameSignUpBox.TextChanged
-        validateUsername()
+    Private Sub usernameSignUpBox_TextChanged(sender As Object, e As EventArgs)
+        validateUsername
     End Sub
 
     Private Sub emailSignUpBox_TextChanged(sender As Object, e As EventArgs) Handles emailSignUpBox.TextChanged

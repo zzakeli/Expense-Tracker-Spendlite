@@ -862,7 +862,7 @@ Public Class Dashboard
                 savingsListForm.savingsDataView.Columns.Add(deleteButton)
             End If
             For i As Integer = 1 To 4
-                savingsListForm.savingsDataView.Columns(i).Width = 146.7
+                savingsListForm.savingsDataView.Columns(i).Width = 148
             Next
             savingsListForm.savingsDataView.RowTemplate.Height = 50
 
@@ -954,7 +954,7 @@ Public Class Dashboard
                 expenseListForm.expenseDataView.Columns.Add(deleteButton)
             End If
             For i As Integer = 1 To 4
-                expenseListForm.expenseDataView.Columns(i).Width = 146.7
+                expenseListForm.expenseDataView.Columns(i).Width = 148
             Next
             expenseListForm.expenseDataView.RowTemplate.Height = 50
 
@@ -1046,7 +1046,7 @@ Public Class Dashboard
                 incomeListForm.incomeDataView.Columns.Add(deleteButton)
             End If
             For i As Integer = 1 To 4
-                incomeListForm.incomeDataView.Columns(i).Width = 146.7
+                incomeListForm.incomeDataView.Columns(i).Width = 148
             Next
             incomeListForm.incomeDataView.RowTemplate.Height = 50
 

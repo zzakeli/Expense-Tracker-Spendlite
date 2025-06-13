@@ -119,7 +119,22 @@ Public Class ExpenseListForm
     Private Sub ExpenseListForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         curveCorners()
 
+        RoundPanelCorners(expenseDataViewPanel, 25)
+
         makeETFChild()
+    End Sub
+
+    Private Sub RoundPanelCorners(p As Panel, radius As Integer)
+        Dim path As New GraphicsPath()
+        Dim rect As Rectangle = p.ClientRectangle
+
+        path.AddArc(rect.X, rect.Y, radius, radius, 180, 90)
+        path.AddArc(rect.Right - radius, rect.Y, radius, radius, 270, 90)
+        path.AddArc(rect.Right - radius, rect.Bottom - radius, radius, radius, 0, 90)
+        path.AddArc(rect.X, rect.Bottom - radius, radius, radius, 90, 90)
+        path.CloseAllFigures()
+
+        p.Region = New Region(path)
     End Sub
 
     Private Sub curveCorners()
@@ -273,7 +288,7 @@ Public Class ExpenseListForm
                 expenseDataView.Columns.Add(deleteButton)
             End If
             For i As Integer = 1 To 4
-                expenseDataView.Columns(i).Width = 146.7
+                expenseDataView.Columns(i).Width = 148
             Next
             expenseDataView.RowTemplate.Height = 50
         Catch ex As MySqlException

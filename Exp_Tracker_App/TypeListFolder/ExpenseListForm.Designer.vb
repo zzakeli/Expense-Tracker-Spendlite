@@ -22,11 +22,17 @@ Partial Class ExpenseListForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         closeButton = New Button()
         expenseDataView = New DataGridView()
         expenseListLabel = New Label()
         searchBox = New TextBox()
+        expenseDataViewPanel = New Panel()
         CType(expenseDataView, ComponentModel.ISupportInitialize).BeginInit()
+        expenseDataViewPanel.SuspendLayout()
         SuspendLayout()
         ' 
         ' closeButton
@@ -45,15 +51,45 @@ Partial Class ExpenseListForm
         expenseDataView.AllowUserToResizeColumns = False
         expenseDataView.AllowUserToResizeRows = False
         expenseDataView.BackgroundColor = Color.FromArgb(CByte(255), CByte(192), CByte(192))
-        expenseDataView.ColumnHeadersHeight = 29
-        expenseDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        expenseDataView.BorderStyle = BorderStyle.None
+        expenseDataView.CellBorderStyle = DataGridViewCellBorderStyle.None
+        expenseDataView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(255), CByte(128), CByte(128))
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.Padding = New Padding(10)
+        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        expenseDataView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        expenseDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = SystemColors.Window
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        expenseDataView.DefaultCellStyle = DataGridViewCellStyle2
         expenseDataView.EditMode = DataGridViewEditMode.EditProgrammatically
-        expenseDataView.Location = New Point(42, 92)
+        expenseDataView.EnableHeadersVisualStyles = False
+        expenseDataView.Location = New Point(0, 0)
         expenseDataView.MultiSelect = False
         expenseDataView.Name = "expenseDataView"
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = SystemColors.Control
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        expenseDataView.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         expenseDataView.RowHeadersVisible = False
         expenseDataView.RowHeadersWidth = 51
         expenseDataView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter
+        expenseDataView.RowsDefaultCellStyle = DataGridViewCellStyle4
         expenseDataView.ScrollBars = ScrollBars.None
         expenseDataView.Size = New Size(717, 260)
         expenseDataView.TabIndex = 6
@@ -75,19 +111,28 @@ Partial Class ExpenseListForm
         searchBox.Size = New Size(295, 27)
         searchBox.TabIndex = 4
         ' 
+        ' expenseDataViewPanel
+        ' 
+        expenseDataViewPanel.Controls.Add(expenseDataView)
+        expenseDataViewPanel.Location = New Point(42, 92)
+        expenseDataViewPanel.Name = "expenseDataViewPanel"
+        expenseDataViewPanel.Size = New Size(717, 260)
+        expenseDataViewPanel.TabIndex = 8
+        ' 
         ' ExpenseListForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(closeButton)
-        Controls.Add(expenseDataView)
         Controls.Add(expenseListLabel)
         Controls.Add(searchBox)
+        Controls.Add(expenseDataViewPanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "ExpenseListForm"
         Text = "ExpenseListForm"
         CType(expenseDataView, ComponentModel.ISupportInitialize).EndInit()
+        expenseDataViewPanel.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -96,4 +141,5 @@ Partial Class ExpenseListForm
     Friend WithEvents expenseDataView As DataGridView
     Friend WithEvents expenseListLabel As Label
     Friend WithEvents searchBox As TextBox
+    Friend WithEvents expenseDataViewPanel As Panel
 End Class

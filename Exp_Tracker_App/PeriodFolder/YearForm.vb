@@ -1,4 +1,6 @@
-﻿Public Class YearForm
+﻿Imports System.Drawing.Drawing2D
+
+Public Class YearForm
     Private dashboard As Dashboard
 
     Public Sub New(dashboard As Dashboard)
@@ -17,5 +19,35 @@
     Private Sub okayButton_Click(sender As Object, e As EventArgs) Handles okayButton.Click
         dashboard.prepareQueryThenRefresh()
         Me.Visible = False
+    End Sub
+
+    Private Sub YearForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        curveCorners()
+    End Sub
+
+    Private Sub curveCorners()
+        Dim radius As Integer = 50 ' change this value to increase/decrease the curve
+        Dim bounds As New Rectangle(0, 0, Me.Width, Me.Height)
+        Dim path As New GraphicsPath()
+
+        ' Top-left curve
+        path.AddArc(bounds.X, bounds.Y, radius, radius, 180, 90)
+        ' Top edge
+        path.AddLine(bounds.X + radius, bounds.Y, bounds.Right - radius, bounds.Y)
+        ' Top-right curve
+        path.AddArc(bounds.Right - radius, bounds.Y, radius, radius, 270, 90)
+        ' Right edge
+        path.AddLine(bounds.Right, bounds.Y + radius, bounds.Right, bounds.Bottom - radius)
+        ' Bottom-right curve
+        path.AddArc(bounds.Right - radius, bounds.Bottom - radius, radius, radius, 0, 90)
+        ' Bottom edge
+        path.AddLine(bounds.Right - radius, bounds.Bottom, bounds.X + radius, bounds.Bottom)
+        ' Bottom-left curve
+        path.AddArc(bounds.X, bounds.Bottom - radius, radius, radius, 90, 90)
+        ' Left edge
+        path.AddLine(bounds.X, bounds.Bottom - radius, bounds.X, bounds.Y + radius)
+
+        path.CloseFigure()
+        Me.Region = New Region(path)
     End Sub
 End Class

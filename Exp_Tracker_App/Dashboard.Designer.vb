@@ -22,15 +22,15 @@ Partial Class Dashboard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
         mainPanel = New Panel()
         expenseListContainer = New Panel()
         expenseListData = New DataGridView()
@@ -42,18 +42,18 @@ Partial Class Dashboard
         incomeListLabel = New Label()
         incomeListData = New DataGridView()
         typeContainer = New Panel()
+        savingsContainer = New Panel()
         savingsValueContainer = New Panel()
         savingsValue = New Label()
-        expenseValueContainer = New Panel()
-        expenseValue = New Label()
-        savingsContainer = New Panel()
         savingsLabel = New Label()
-        incomeValueContainer = New Panel()
-        incomeValue = New Label()
         expenseContainer = New Panel()
         expenseLabel = New Label()
+        expenseValueContainer = New Panel()
+        expenseValue = New Label()
         incomeContainer = New Panel()
         incomeLabel = New Label()
+        incomeValueContainer = New Panel()
+        incomeValue = New Label()
         netBalanceContainer = New Panel()
         netBalanceLabel = New Label()
         netBalanceValueContainer = New Panel()
@@ -73,12 +73,12 @@ Partial Class Dashboard
         incomeListContainer.SuspendLayout()
         CType(incomeListData, ComponentModel.ISupportInitialize).BeginInit()
         typeContainer.SuspendLayout()
-        savingsValueContainer.SuspendLayout()
-        expenseValueContainer.SuspendLayout()
         savingsContainer.SuspendLayout()
-        incomeValueContainer.SuspendLayout()
+        savingsValueContainer.SuspendLayout()
         expenseContainer.SuspendLayout()
+        expenseValueContainer.SuspendLayout()
         incomeContainer.SuspendLayout()
+        incomeValueContainer.SuspendLayout()
         netBalanceContainer.SuspendLayout()
         netBalanceValueContainer.SuspendLayout()
         CType(profile, ComponentModel.ISupportInitialize).BeginInit()
@@ -95,7 +95,7 @@ Partial Class Dashboard
         mainPanel.Controls.Add(chartContainer)
         mainPanel.Controls.Add(periodMenu)
         mainPanel.Controls.Add(transactionButton)
-        mainPanel.Font = New Font("Segoe UI", 22.0F)
+        mainPanel.Font = New Font("Segoe UI", 22F)
         mainPanel.Location = New Point(52, 40)
         mainPanel.Name = "mainPanel"
         mainPanel.Size = New Size(1159, 672)
@@ -118,14 +118,16 @@ Partial Class Dashboard
         expenseListData.AllowUserToResizeColumns = False
         expenseListData.AllowUserToResizeRows = False
         expenseListData.BackgroundColor = Color.Red
-        DataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = Color.Red
-        DataGridViewCellStyle10.Font = New Font("Segoe UI", 10.0F)
-        DataGridViewCellStyle10.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(CByte(255), CByte(192), CByte(192))
-        DataGridViewCellStyle10.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle10.WrapMode = DataGridViewTriState.True
-        expenseListData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        expenseListData.BorderStyle = BorderStyle.None
+        expenseListData.CellBorderStyle = DataGridViewCellBorderStyle.None
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = Color.Red
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 10F)
+        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(255), CByte(192), CByte(192))
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        expenseListData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         expenseListData.ColumnHeadersHeight = 29
         expenseListData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         expenseListData.ColumnHeadersVisible = False
@@ -134,24 +136,24 @@ Partial Class Dashboard
         expenseListData.MultiSelect = False
         expenseListData.Name = "expenseListData"
         expenseListData.ReadOnly = True
-        DataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle11.BackColor = Color.Lime
-        DataGridViewCellStyle11.Font = New Font("Segoe UI", 22.0F)
-        DataGridViewCellStyle11.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
-        DataGridViewCellStyle11.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle11.WrapMode = DataGridViewTriState.True
-        expenseListData.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = Color.Lime
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 22F)
+        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        expenseListData.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         expenseListData.RowHeadersVisible = False
         expenseListData.RowHeadersWidth = 164
         expenseListData.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = Color.Red
-        DataGridViewCellStyle12.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle12.ForeColor = Color.Black
-        DataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(CByte(255), CByte(192), CByte(192))
-        DataGridViewCellStyle12.SelectionForeColor = Color.Black
-        expenseListData.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = Color.Red
+        DataGridViewCellStyle3.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle3.ForeColor = Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(255), CByte(192), CByte(192))
+        DataGridViewCellStyle3.SelectionForeColor = Color.Black
+        expenseListData.RowsDefaultCellStyle = DataGridViewCellStyle3
         expenseListData.ScrollBars = ScrollBars.None
         expenseListData.SelectionMode = DataGridViewSelectionMode.CellSelect
         expenseListData.Size = New Size(182, 164)
@@ -160,7 +162,7 @@ Partial Class Dashboard
         ' expenseListLabel
         ' 
         expenseListLabel.AutoSize = True
-        expenseListLabel.Font = New Font("Segoe UI", 15.0F)
+        expenseListLabel.Font = New Font("Segoe UI", 15F)
         expenseListLabel.Location = New Point(16, 6)
         expenseListLabel.Name = "expenseListLabel"
         expenseListLabel.Size = New Size(149, 35)
@@ -184,14 +186,16 @@ Partial Class Dashboard
         savingsListData.AllowUserToResizeColumns = False
         savingsListData.AllowUserToResizeRows = False
         savingsListData.BackgroundColor = Color.Yellow
-        DataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle13.BackColor = Color.Yellow
-        DataGridViewCellStyle13.Font = New Font("Segoe UI", 10.0F)
-        DataGridViewCellStyle13.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
-        DataGridViewCellStyle13.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle13.WrapMode = DataGridViewTriState.True
-        savingsListData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        savingsListData.BorderStyle = BorderStyle.None
+        savingsListData.CellBorderStyle = DataGridViewCellBorderStyle.None
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = Color.Yellow
+        DataGridViewCellStyle4.Font = New Font("Segoe UI", 10F)
+        DataGridViewCellStyle4.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        DataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+        savingsListData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         savingsListData.ColumnHeadersHeight = 29
         savingsListData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         savingsListData.ColumnHeadersVisible = False
@@ -200,24 +204,24 @@ Partial Class Dashboard
         savingsListData.MultiSelect = False
         savingsListData.Name = "savingsListData"
         savingsListData.ReadOnly = True
-        DataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle14.BackColor = Color.Lime
-        DataGridViewCellStyle14.Font = New Font("Segoe UI", 22.0F)
-        DataGridViewCellStyle14.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
-        DataGridViewCellStyle14.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle14.WrapMode = DataGridViewTriState.True
-        savingsListData.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = Color.Lime
+        DataGridViewCellStyle5.Font = New Font("Segoe UI", 22F)
+        DataGridViewCellStyle5.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
+        DataGridViewCellStyle5.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        savingsListData.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         savingsListData.RowHeadersVisible = False
         savingsListData.RowHeadersWidth = 164
         savingsListData.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle15.BackColor = Color.Yellow
-        DataGridViewCellStyle15.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle15.ForeColor = Color.Black
-        DataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
-        DataGridViewCellStyle15.SelectionForeColor = Color.Black
-        savingsListData.RowsDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = Color.Yellow
+        DataGridViewCellStyle6.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle6.ForeColor = Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
+        DataGridViewCellStyle6.SelectionForeColor = Color.Black
+        savingsListData.RowsDefaultCellStyle = DataGridViewCellStyle6
         savingsListData.ScrollBars = ScrollBars.None
         savingsListData.SelectionMode = DataGridViewSelectionMode.CellSelect
         savingsListData.Size = New Size(182, 164)
@@ -226,7 +230,7 @@ Partial Class Dashboard
         ' savingsListLabel
         ' 
         savingsListLabel.AutoSize = True
-        savingsListLabel.Font = New Font("Segoe UI", 15.0F)
+        savingsListLabel.Font = New Font("Segoe UI", 15F)
         savingsListLabel.Location = New Point(19, 6)
         savingsListLabel.Name = "savingsListLabel"
         savingsListLabel.Size = New Size(143, 35)
@@ -246,7 +250,7 @@ Partial Class Dashboard
         ' incomeListLabel
         ' 
         incomeListLabel.AutoSize = True
-        incomeListLabel.Font = New Font("Segoe UI", 15.0F)
+        incomeListLabel.Font = New Font("Segoe UI", 15F)
         incomeListLabel.Location = New Point(19, 6)
         incomeListLabel.Name = "incomeListLabel"
         incomeListLabel.Size = New Size(142, 35)
@@ -261,14 +265,16 @@ Partial Class Dashboard
         incomeListData.AllowUserToResizeColumns = False
         incomeListData.AllowUserToResizeRows = False
         incomeListData.BackgroundColor = Color.Lime
-        DataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle16.BackColor = Color.Lime
-        DataGridViewCellStyle16.Font = New Font("Segoe UI", 10.0F)
-        DataGridViewCellStyle16.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle16.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
-        DataGridViewCellStyle16.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle16.WrapMode = DataGridViewTriState.True
-        incomeListData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
+        incomeListData.BorderStyle = BorderStyle.None
+        incomeListData.CellBorderStyle = DataGridViewCellBorderStyle.None
+        DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = Color.Lime
+        DataGridViewCellStyle7.Font = New Font("Segoe UI", 10F)
+        DataGridViewCellStyle7.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
+        DataGridViewCellStyle7.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle7.WrapMode = DataGridViewTriState.True
+        incomeListData.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         incomeListData.ColumnHeadersHeight = 29
         incomeListData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         incomeListData.ColumnHeadersVisible = False
@@ -277,24 +283,24 @@ Partial Class Dashboard
         incomeListData.MultiSelect = False
         incomeListData.Name = "incomeListData"
         incomeListData.ReadOnly = True
-        DataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle17.BackColor = Color.Lime
-        DataGridViewCellStyle17.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle17.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle17.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
-        DataGridViewCellStyle17.SelectionForeColor = SystemColors.ControlText
-        DataGridViewCellStyle17.WrapMode = DataGridViewTriState.True
-        incomeListData.RowHeadersDefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = Color.Lime
+        DataGridViewCellStyle8.Font = New Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle8.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
+        DataGridViewCellStyle8.SelectionForeColor = SystemColors.ControlText
+        DataGridViewCellStyle8.WrapMode = DataGridViewTriState.True
+        incomeListData.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         incomeListData.RowHeadersVisible = False
         incomeListData.RowHeadersWidth = 164
         incomeListData.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle18.BackColor = Color.Lime
-        DataGridViewCellStyle18.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle18.ForeColor = Color.Black
-        DataGridViewCellStyle18.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
-        DataGridViewCellStyle18.SelectionForeColor = Color.Black
-        incomeListData.RowsDefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = Color.Lime
+        DataGridViewCellStyle9.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle9.ForeColor = Color.Black
+        DataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
+        DataGridViewCellStyle9.SelectionForeColor = Color.Black
+        incomeListData.RowsDefaultCellStyle = DataGridViewCellStyle9
         incomeListData.ScrollBars = ScrollBars.None
         incomeListData.SelectionMode = DataGridViewSelectionMode.CellSelect
         incomeListData.Size = New Size(182, 164)
@@ -303,10 +309,7 @@ Partial Class Dashboard
         ' typeContainer
         ' 
         typeContainer.BackColor = SystemColors.ControlDarkDark
-        typeContainer.Controls.Add(savingsValueContainer)
-        typeContainer.Controls.Add(expenseValueContainer)
         typeContainer.Controls.Add(savingsContainer)
-        typeContainer.Controls.Add(incomeValueContainer)
         typeContainer.Controls.Add(expenseContainer)
         typeContainer.Controls.Add(incomeContainer)
         typeContainer.Location = New Point(3, 144)
@@ -314,11 +317,21 @@ Partial Class Dashboard
         typeContainer.Size = New Size(574, 300)
         typeContainer.TabIndex = 4
         ' 
+        ' savingsContainer
+        ' 
+        savingsContainer.BackColor = SystemColors.AppWorkspace
+        savingsContainer.Controls.Add(savingsValueContainer)
+        savingsContainer.Controls.Add(savingsLabel)
+        savingsContainer.Location = New Point(37, 202)
+        savingsContainer.Name = "savingsContainer"
+        savingsContainer.Size = New Size(495, 68)
+        savingsContainer.TabIndex = 8
+        ' 
         ' savingsValueContainer
         ' 
         savingsValueContainer.BackColor = Color.Yellow
         savingsValueContainer.Controls.Add(savingsValue)
-        savingsValueContainer.Location = New Point(280, 202)
+        savingsValueContainer.Location = New Point(243, 0)
         savingsValueContainer.Name = "savingsValueContainer"
         savingsValueContainer.Size = New Size(252, 68)
         savingsValueContainer.TabIndex = 9
@@ -326,74 +339,28 @@ Partial Class Dashboard
         ' savingsValue
         ' 
         savingsValue.AutoSize = True
-        savingsValue.Font = New Font("Segoe UI", 20.0F)
+        savingsValue.Font = New Font("Segoe UI", 20F)
         savingsValue.Location = New Point(44, 11)
         savingsValue.Name = "savingsValue"
         savingsValue.Size = New Size(163, 46)
         savingsValue.TabIndex = 3
         savingsValue.Text = "P 2000.00"
         ' 
-        ' expenseValueContainer
-        ' 
-        expenseValueContainer.BackColor = Color.Red
-        expenseValueContainer.Controls.Add(expenseValue)
-        expenseValueContainer.Location = New Point(280, 114)
-        expenseValueContainer.Name = "expenseValueContainer"
-        expenseValueContainer.Size = New Size(252, 68)
-        expenseValueContainer.TabIndex = 7
-        ' 
-        ' expenseValue
-        ' 
-        expenseValue.AutoSize = True
-        expenseValue.Font = New Font("Segoe UI", 20.0F)
-        expenseValue.Location = New Point(44, 11)
-        expenseValue.Name = "expenseValue"
-        expenseValue.Size = New Size(163, 46)
-        expenseValue.TabIndex = 3
-        expenseValue.Text = "P 3000.00"
-        ' 
-        ' savingsContainer
-        ' 
-        savingsContainer.BackColor = SystemColors.AppWorkspace
-        savingsContainer.Controls.Add(savingsLabel)
-        savingsContainer.Location = New Point(37, 202)
-        savingsContainer.Name = "savingsContainer"
-        savingsContainer.Size = New Size(495, 68)
-        savingsContainer.TabIndex = 8
-        ' 
         ' savingsLabel
         ' 
         savingsLabel.AutoSize = True
-        savingsLabel.Font = New Font("Segoe UI", 18.0F)
+        savingsLabel.Font = New Font("Segoe UI", 18F)
         savingsLabel.Location = New Point(55, 13)
         savingsLabel.Name = "savingsLabel"
         savingsLabel.Size = New Size(137, 41)
         savingsLabel.TabIndex = 2
         savingsLabel.Text = "SAVINGS"
         ' 
-        ' incomeValueContainer
-        ' 
-        incomeValueContainer.BackColor = Color.Lime
-        incomeValueContainer.Controls.Add(incomeValue)
-        incomeValueContainer.Location = New Point(280, 27)
-        incomeValueContainer.Name = "incomeValueContainer"
-        incomeValueContainer.Size = New Size(252, 68)
-        incomeValueContainer.TabIndex = 5
-        ' 
-        ' incomeValue
-        ' 
-        incomeValue.AutoSize = True
-        incomeValue.Font = New Font("Segoe UI", 20.0F)
-        incomeValue.Location = New Point(44, 11)
-        incomeValue.Name = "incomeValue"
-        incomeValue.Size = New Size(163, 46)
-        incomeValue.TabIndex = 3
-        incomeValue.Text = "P 7000.00"
-        ' 
         ' expenseContainer
         ' 
         expenseContainer.BackColor = SystemColors.AppWorkspace
         expenseContainer.Controls.Add(expenseLabel)
+        expenseContainer.Controls.Add(expenseValueContainer)
         expenseContainer.Location = New Point(37, 114)
         expenseContainer.Name = "expenseContainer"
         expenseContainer.Size = New Size(495, 68)
@@ -402,17 +369,37 @@ Partial Class Dashboard
         ' expenseLabel
         ' 
         expenseLabel.AutoSize = True
-        expenseLabel.Font = New Font("Segoe UI", 18.0F)
+        expenseLabel.Font = New Font("Segoe UI", 18F)
         expenseLabel.Location = New Point(55, 13)
         expenseLabel.Name = "expenseLabel"
         expenseLabel.Size = New Size(136, 41)
         expenseLabel.TabIndex = 2
         expenseLabel.Text = "EXPENSE"
         ' 
+        ' expenseValueContainer
+        ' 
+        expenseValueContainer.BackColor = Color.Red
+        expenseValueContainer.Controls.Add(expenseValue)
+        expenseValueContainer.Location = New Point(243, 0)
+        expenseValueContainer.Name = "expenseValueContainer"
+        expenseValueContainer.Size = New Size(252, 68)
+        expenseValueContainer.TabIndex = 7
+        ' 
+        ' expenseValue
+        ' 
+        expenseValue.AutoSize = True
+        expenseValue.Font = New Font("Segoe UI", 20F)
+        expenseValue.Location = New Point(44, 11)
+        expenseValue.Name = "expenseValue"
+        expenseValue.Size = New Size(163, 46)
+        expenseValue.TabIndex = 3
+        expenseValue.Text = "P 3000.00"
+        ' 
         ' incomeContainer
         ' 
         incomeContainer.BackColor = SystemColors.AppWorkspace
         incomeContainer.Controls.Add(incomeLabel)
+        incomeContainer.Controls.Add(incomeValueContainer)
         incomeContainer.Location = New Point(37, 27)
         incomeContainer.Name = "incomeContainer"
         incomeContainer.Size = New Size(495, 68)
@@ -421,12 +408,31 @@ Partial Class Dashboard
         ' incomeLabel
         ' 
         incomeLabel.AutoSize = True
-        incomeLabel.Font = New Font("Segoe UI", 18.0F)
+        incomeLabel.Font = New Font("Segoe UI", 18F)
         incomeLabel.Location = New Point(55, 13)
         incomeLabel.Name = "incomeLabel"
         incomeLabel.Size = New Size(131, 41)
         incomeLabel.TabIndex = 2
         incomeLabel.Text = "INCOME"
+        ' 
+        ' incomeValueContainer
+        ' 
+        incomeValueContainer.BackColor = Color.Lime
+        incomeValueContainer.Controls.Add(incomeValue)
+        incomeValueContainer.Location = New Point(243, 0)
+        incomeValueContainer.Name = "incomeValueContainer"
+        incomeValueContainer.Size = New Size(252, 68)
+        incomeValueContainer.TabIndex = 5
+        ' 
+        ' incomeValue
+        ' 
+        incomeValue.AutoSize = True
+        incomeValue.Font = New Font("Segoe UI", 20F)
+        incomeValue.Location = New Point(44, 11)
+        incomeValue.Name = "incomeValue"
+        incomeValue.Size = New Size(163, 46)
+        incomeValue.TabIndex = 3
+        incomeValue.Text = "P 7000.00"
         ' 
         ' netBalanceContainer
         ' 
@@ -441,7 +447,7 @@ Partial Class Dashboard
         ' netBalanceLabel
         ' 
         netBalanceLabel.AutoSize = True
-        netBalanceLabel.Font = New Font("Segoe UI", 22.0F)
+        netBalanceLabel.Font = New Font("Segoe UI", 22F)
         netBalanceLabel.Location = New Point(13, 12)
         netBalanceLabel.Name = "netBalanceLabel"
         netBalanceLabel.Size = New Size(255, 50)
@@ -460,7 +466,7 @@ Partial Class Dashboard
         ' netBalanceValue
         ' 
         netBalanceValue.AutoSize = True
-        netBalanceValue.Font = New Font("Segoe UI", 24.0F)
+        netBalanceValue.Font = New Font("Segoe UI", 24F)
         netBalanceValue.Location = New Point(48, 12)
         netBalanceValue.Name = "netBalanceValue"
         netBalanceValue.Size = New Size(197, 54)
@@ -479,7 +485,7 @@ Partial Class Dashboard
         ' 
         periodMenu.AllowDrop = True
         periodMenu.DropDownStyle = ComboBoxStyle.DropDownList
-        periodMenu.Font = New Font("Segoe UI", 10.0F)
+        periodMenu.Font = New Font("Segoe UI", 10F)
         periodMenu.FormattingEnabled = True
         periodMenu.Items.AddRange(New Object() {"Day", "Week", "Month", "Year"})
         periodMenu.Location = New Point(611, 19)
@@ -489,7 +495,7 @@ Partial Class Dashboard
         ' 
         ' transactionButton
         ' 
-        transactionButton.Font = New Font("Segoe UI", 10.0F)
+        transactionButton.Font = New Font("Segoe UI", 10F)
         transactionButton.Location = New Point(2, 2)
         transactionButton.Name = "transactionButton"
         transactionButton.Size = New Size(160, 45)
@@ -558,18 +564,18 @@ Partial Class Dashboard
         incomeListContainer.PerformLayout()
         CType(incomeListData, ComponentModel.ISupportInitialize).EndInit()
         typeContainer.ResumeLayout(False)
-        savingsValueContainer.ResumeLayout(False)
-        savingsValueContainer.PerformLayout()
-        expenseValueContainer.ResumeLayout(False)
-        expenseValueContainer.PerformLayout()
         savingsContainer.ResumeLayout(False)
         savingsContainer.PerformLayout()
-        incomeValueContainer.ResumeLayout(False)
-        incomeValueContainer.PerformLayout()
+        savingsValueContainer.ResumeLayout(False)
+        savingsValueContainer.PerformLayout()
         expenseContainer.ResumeLayout(False)
         expenseContainer.PerformLayout()
+        expenseValueContainer.ResumeLayout(False)
+        expenseValueContainer.PerformLayout()
         incomeContainer.ResumeLayout(False)
         incomeContainer.PerformLayout()
+        incomeValueContainer.ResumeLayout(False)
+        incomeValueContainer.PerformLayout()
         netBalanceContainer.ResumeLayout(False)
         netBalanceContainer.PerformLayout()
         netBalanceValueContainer.ResumeLayout(False)

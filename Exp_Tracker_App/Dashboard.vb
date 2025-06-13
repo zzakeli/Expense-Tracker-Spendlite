@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Drawing.Drawing2D
+Imports MySql.Data.MySqlClient
 Imports OxyPlot
 Imports OxyPlot.Series
 Imports OxyPlot.WindowsForms
@@ -45,6 +46,15 @@ Public Class Dashboard
 
 
     Private Sub Dashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        curveCorners()
+        RoundPanelCorners(typeContainer, 40)
+        RoundPanelCorners(netBalanceContainer, 30)
+        RoundPanelCorners(incomeContainer, 25)
+        RoundPanelCorners(expenseContainer, 25)
+        RoundPanelCorners(savingsContainer, 25)
+        RoundPanelCorners(incomeListContainer, 20)
+        RoundPanelCorners(expenseListContainer, 20)
+        RoundPanelCorners(savingsListContainer, 20)
         makeATChild()
         makeDFChild()
         makeWFChild()
@@ -53,6 +63,32 @@ Public Class Dashboard
         makeELFChild()
         makeILFChild()
         makeSLFChild()
+    End Sub
+
+    Private Sub curveCorners()
+        Dim radius As Integer = 50 ' change this value to increase/decrease the curve
+        Dim bounds As New Rectangle(0, 0, Me.Width, Me.Height)
+        Dim path As New GraphicsPath()
+
+        ' Top-left curve
+        path.AddArc(bounds.X, bounds.Y, radius, radius, 180, 90)
+        ' Top edge
+        path.AddLine(bounds.X + radius, bounds.Y, bounds.Right - radius, bounds.Y)
+        ' Top-right curve
+        path.AddArc(bounds.Right - radius, bounds.Y, radius, radius, 270, 90)
+        ' Right edge
+        path.AddLine(bounds.Right, bounds.Y + radius, bounds.Right, bounds.Bottom - radius)
+        ' Bottom-right curve
+        path.AddArc(bounds.Right - radius, bounds.Bottom - radius, radius, radius, 0, 90)
+        ' Bottom edge
+        path.AddLine(bounds.Right - radius, bounds.Bottom, bounds.X + radius, bounds.Bottom)
+        ' Bottom-left curve
+        path.AddArc(bounds.X, bounds.Bottom - radius, radius, radius, 90, 90)
+        ' Left edge
+        path.AddLine(bounds.X, bounds.Bottom - radius, bounds.X, bounds.Y + radius)
+
+        path.CloseFigure()
+        Me.Region = New Region(path)
     End Sub
 
     Public Sub prepareQueryThenRefresh()
@@ -1118,5 +1154,18 @@ Public Class Dashboard
 
     Private Sub mainPanel_Paint(sender As Object, e As PaintEventArgs) Handles mainPanel.Paint
 
+    End Sub
+
+    Private Sub RoundPanelCorners(p As Panel, radius As Integer)
+        Dim path As New GraphicsPath()
+        Dim rect As Rectangle = p.ClientRectangle
+
+        path.AddArc(rect.X, rect.Y, radius, radius, 180, 90)
+        path.AddArc(rect.Right - radius, rect.Y, radius, radius, 270, 90)
+        path.AddArc(rect.Right - radius, rect.Bottom - radius, radius, radius, 0, 90)
+        path.AddArc(rect.X, rect.Bottom - radius, radius, radius, 90, 90)
+        path.CloseAllFigures()
+
+        p.Region = New Region(path)
     End Sub
 End Class

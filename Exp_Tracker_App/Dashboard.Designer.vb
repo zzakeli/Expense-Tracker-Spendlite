@@ -103,7 +103,7 @@ Partial Class Dashboard
         ' 
         ' expenseListContainer
         ' 
-        expenseListContainer.BackColor = SystemColors.AppWorkspace
+        expenseListContainer.BackColor = SystemColors.Control
         expenseListContainer.Controls.Add(expenseListData)
         expenseListContainer.Controls.Add(expenseListLabel)
         expenseListContainer.Location = New Point(199, 458)
@@ -117,7 +117,7 @@ Partial Class Dashboard
         expenseListData.AllowUserToDeleteRows = False
         expenseListData.AllowUserToResizeColumns = False
         expenseListData.AllowUserToResizeRows = False
-        expenseListData.BackgroundColor = Color.Red
+        expenseListData.BackgroundColor = Color.LightCoral
         expenseListData.BorderStyle = BorderStyle.None
         expenseListData.CellBorderStyle = DataGridViewCellBorderStyle.None
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -148,8 +148,8 @@ Partial Class Dashboard
         expenseListData.RowHeadersWidth = 164
         expenseListData.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = Color.Red
-        DataGridViewCellStyle3.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle3.BackColor = Color.LightCoral
+        DataGridViewCellStyle3.Font = New Font("Roboto Condensed", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle3.ForeColor = Color.Black
         DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(255), CByte(192), CByte(192))
         DataGridViewCellStyle3.SelectionForeColor = Color.Black
@@ -162,16 +162,16 @@ Partial Class Dashboard
         ' expenseListLabel
         ' 
         expenseListLabel.AutoSize = True
-        expenseListLabel.Font = New Font("Segoe UI", 15F)
-        expenseListLabel.Location = New Point(16, 6)
+        expenseListLabel.Font = New Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        expenseListLabel.Location = New Point(22, 9)
         expenseListLabel.Name = "expenseListLabel"
-        expenseListLabel.Size = New Size(149, 35)
+        expenseListLabel.Size = New Size(137, 30)
         expenseListLabel.TabIndex = 2
         expenseListLabel.Text = "Expense List"
         ' 
         ' savingsListContainer
         ' 
-        savingsListContainer.BackColor = SystemColors.AppWorkspace
+        savingsListContainer.BackColor = SystemColors.Control
         savingsListContainer.Controls.Add(savingsListData)
         savingsListContainer.Controls.Add(savingsListLabel)
         savingsListContainer.Location = New Point(395, 458)
@@ -185,7 +185,7 @@ Partial Class Dashboard
         savingsListData.AllowUserToDeleteRows = False
         savingsListData.AllowUserToResizeColumns = False
         savingsListData.AllowUserToResizeRows = False
-        savingsListData.BackgroundColor = Color.Yellow
+        savingsListData.BackgroundColor = Color.Khaki
         savingsListData.BorderStyle = BorderStyle.None
         savingsListData.CellBorderStyle = DataGridViewCellBorderStyle.None
         DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -216,8 +216,8 @@ Partial Class Dashboard
         savingsListData.RowHeadersWidth = 164
         savingsListData.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = Color.Yellow
-        DataGridViewCellStyle6.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle6.BackColor = Color.Khaki
+        DataGridViewCellStyle6.Font = New Font("Roboto Condensed", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle6.ForeColor = Color.Black
         DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         DataGridViewCellStyle6.SelectionForeColor = Color.Black
@@ -230,16 +230,16 @@ Partial Class Dashboard
         ' savingsListLabel
         ' 
         savingsListLabel.AutoSize = True
-        savingsListLabel.Font = New Font("Segoe UI", 15F)
-        savingsListLabel.Location = New Point(19, 6)
+        savingsListLabel.Font = New Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        savingsListLabel.Location = New Point(25, 9)
         savingsListLabel.Name = "savingsListLabel"
-        savingsListLabel.Size = New Size(143, 35)
+        savingsListLabel.Size = New Size(132, 30)
         savingsListLabel.TabIndex = 3
         savingsListLabel.Text = "Savings List"
         ' 
         ' incomeListContainer
         ' 
-        incomeListContainer.BackColor = SystemColors.AppWorkspace
+        incomeListContainer.BackColor = SystemColors.Control
         incomeListContainer.Controls.Add(incomeListLabel)
         incomeListContainer.Controls.Add(incomeListData)
         incomeListContainer.Location = New Point(3, 458)
@@ -250,10 +250,10 @@ Partial Class Dashboard
         ' incomeListLabel
         ' 
         incomeListLabel.AutoSize = True
-        incomeListLabel.Font = New Font("Segoe UI", 15F)
-        incomeListLabel.Location = New Point(19, 6)
+        incomeListLabel.Font = New Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        incomeListLabel.Location = New Point(26, 9)
         incomeListLabel.Name = "incomeListLabel"
-        incomeListLabel.Size = New Size(142, 35)
+        incomeListLabel.Size = New Size(129, 30)
         incomeListLabel.TabIndex = 1
         incomeListLabel.Text = "Income List"
         incomeListLabel.TextAlign = ContentAlignment.MiddleCenter
@@ -264,7 +264,7 @@ Partial Class Dashboard
         incomeListData.AllowUserToDeleteRows = False
         incomeListData.AllowUserToResizeColumns = False
         incomeListData.AllowUserToResizeRows = False
-        incomeListData.BackgroundColor = Color.Lime
+        incomeListData.BackgroundColor = Color.PaleGreen
         incomeListData.BorderStyle = BorderStyle.None
         incomeListData.CellBorderStyle = DataGridViewCellBorderStyle.None
         DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -295,8 +295,8 @@ Partial Class Dashboard
         incomeListData.RowHeadersWidth = 164
         incomeListData.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
         DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = Color.Lime
-        DataGridViewCellStyle9.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle9.BackColor = Color.PaleGreen
+        DataGridViewCellStyle9.Font = New Font("Roboto Condensed", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle9.ForeColor = Color.Black
         DataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
         DataGridViewCellStyle9.SelectionForeColor = Color.Black
@@ -308,7 +308,7 @@ Partial Class Dashboard
         ' 
         ' typeContainer
         ' 
-        typeContainer.BackColor = SystemColors.ControlDarkDark
+        typeContainer.BackColor = SystemColors.Control
         typeContainer.Controls.Add(savingsContainer)
         typeContainer.Controls.Add(expenseContainer)
         typeContainer.Controls.Add(incomeContainer)
@@ -319,7 +319,7 @@ Partial Class Dashboard
         ' 
         ' savingsContainer
         ' 
-        savingsContainer.BackColor = SystemColors.AppWorkspace
+        savingsContainer.BackColor = SystemColors.ButtonHighlight
         savingsContainer.Controls.Add(savingsValueContainer)
         savingsContainer.Controls.Add(savingsLabel)
         savingsContainer.Location = New Point(37, 202)
@@ -329,7 +329,7 @@ Partial Class Dashboard
         ' 
         ' savingsValueContainer
         ' 
-        savingsValueContainer.BackColor = Color.Yellow
+        savingsValueContainer.BackColor = Color.Khaki
         savingsValueContainer.Controls.Add(savingsValue)
         savingsValueContainer.Location = New Point(243, 0)
         savingsValueContainer.Name = "savingsValueContainer"
@@ -339,26 +339,26 @@ Partial Class Dashboard
         ' savingsValue
         ' 
         savingsValue.AutoSize = True
-        savingsValue.Font = New Font("Segoe UI", 20F)
-        savingsValue.Location = New Point(44, 11)
+        savingsValue.Font = New Font("Roboto Condensed", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        savingsValue.Location = New Point(46, 14)
         savingsValue.Name = "savingsValue"
-        savingsValue.Size = New Size(163, 46)
+        savingsValue.Size = New Size(156, 41)
         savingsValue.TabIndex = 3
         savingsValue.Text = "P 2000.00"
         ' 
         ' savingsLabel
         ' 
         savingsLabel.AutoSize = True
-        savingsLabel.Font = New Font("Segoe UI", 18F)
-        savingsLabel.Location = New Point(55, 13)
+        savingsLabel.Font = New Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        savingsLabel.Location = New Point(60, 16)
         savingsLabel.Name = "savingsLabel"
-        savingsLabel.Size = New Size(137, 41)
+        savingsLabel.Size = New Size(127, 37)
         savingsLabel.TabIndex = 2
         savingsLabel.Text = "SAVINGS"
         ' 
         ' expenseContainer
         ' 
-        expenseContainer.BackColor = SystemColors.AppWorkspace
+        expenseContainer.BackColor = SystemColors.ButtonHighlight
         expenseContainer.Controls.Add(expenseLabel)
         expenseContainer.Controls.Add(expenseValueContainer)
         expenseContainer.Location = New Point(37, 114)
@@ -369,16 +369,16 @@ Partial Class Dashboard
         ' expenseLabel
         ' 
         expenseLabel.AutoSize = True
-        expenseLabel.Font = New Font("Segoe UI", 18F)
-        expenseLabel.Location = New Point(55, 13)
+        expenseLabel.Font = New Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        expenseLabel.Location = New Point(60, 16)
         expenseLabel.Name = "expenseLabel"
-        expenseLabel.Size = New Size(136, 41)
+        expenseLabel.Size = New Size(131, 37)
         expenseLabel.TabIndex = 2
         expenseLabel.Text = "EXPENSE"
         ' 
         ' expenseValueContainer
         ' 
-        expenseValueContainer.BackColor = Color.Red
+        expenseValueContainer.BackColor = Color.LightCoral
         expenseValueContainer.Controls.Add(expenseValue)
         expenseValueContainer.Location = New Point(243, 0)
         expenseValueContainer.Name = "expenseValueContainer"
@@ -388,16 +388,16 @@ Partial Class Dashboard
         ' expenseValue
         ' 
         expenseValue.AutoSize = True
-        expenseValue.Font = New Font("Segoe UI", 20F)
-        expenseValue.Location = New Point(44, 11)
+        expenseValue.Font = New Font("Roboto Condensed", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        expenseValue.Location = New Point(46, 14)
         expenseValue.Name = "expenseValue"
-        expenseValue.Size = New Size(163, 46)
+        expenseValue.Size = New Size(156, 41)
         expenseValue.TabIndex = 3
         expenseValue.Text = "P 3000.00"
         ' 
         ' incomeContainer
         ' 
-        incomeContainer.BackColor = SystemColors.AppWorkspace
+        incomeContainer.BackColor = SystemColors.ButtonHighlight
         incomeContainer.Controls.Add(incomeLabel)
         incomeContainer.Controls.Add(incomeValueContainer)
         incomeContainer.Location = New Point(37, 27)
@@ -408,16 +408,16 @@ Partial Class Dashboard
         ' incomeLabel
         ' 
         incomeLabel.AutoSize = True
-        incomeLabel.Font = New Font("Segoe UI", 18F)
-        incomeLabel.Location = New Point(55, 13)
+        incomeLabel.Font = New Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        incomeLabel.Location = New Point(60, 16)
         incomeLabel.Name = "incomeLabel"
-        incomeLabel.Size = New Size(131, 41)
+        incomeLabel.Size = New Size(117, 37)
         incomeLabel.TabIndex = 2
         incomeLabel.Text = "INCOME"
         ' 
         ' incomeValueContainer
         ' 
-        incomeValueContainer.BackColor = Color.Lime
+        incomeValueContainer.BackColor = Color.PaleGreen
         incomeValueContainer.Controls.Add(incomeValue)
         incomeValueContainer.Location = New Point(243, 0)
         incomeValueContainer.Name = "incomeValueContainer"
@@ -427,16 +427,16 @@ Partial Class Dashboard
         ' incomeValue
         ' 
         incomeValue.AutoSize = True
-        incomeValue.Font = New Font("Segoe UI", 20F)
-        incomeValue.Location = New Point(44, 11)
+        incomeValue.Font = New Font("Roboto Condensed", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        incomeValue.Location = New Point(46, 14)
         incomeValue.Name = "incomeValue"
-        incomeValue.Size = New Size(163, 46)
+        incomeValue.Size = New Size(156, 41)
         incomeValue.TabIndex = 3
         incomeValue.Text = "P 7000.00"
         ' 
         ' netBalanceContainer
         ' 
-        netBalanceContainer.BackColor = SystemColors.AppWorkspace
+        netBalanceContainer.BackColor = SystemColors.ButtonHighlight
         netBalanceContainer.Controls.Add(netBalanceLabel)
         netBalanceContainer.Controls.Add(netBalanceValueContainer)
         netBalanceContainer.Location = New Point(3, 53)
@@ -447,16 +447,16 @@ Partial Class Dashboard
         ' netBalanceLabel
         ' 
         netBalanceLabel.AutoSize = True
-        netBalanceLabel.Font = New Font("Segoe UI", 22F)
-        netBalanceLabel.Location = New Point(13, 12)
+        netBalanceLabel.Font = New Font("Roboto Condensed", 22.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        netBalanceLabel.Location = New Point(25, 16)
         netBalanceLabel.Name = "netBalanceLabel"
-        netBalanceLabel.Size = New Size(255, 50)
+        netBalanceLabel.Size = New Size(228, 44)
         netBalanceLabel.TabIndex = 1
         netBalanceLabel.Text = "NET BALANCE"
         ' 
         ' netBalanceValueContainer
         ' 
-        netBalanceValueContainer.BackColor = SystemColors.ActiveCaption
+        netBalanceValueContainer.BackColor = Color.LightBlue
         netBalanceValueContainer.Controls.Add(netBalanceValue)
         netBalanceValueContainer.Location = New Point(280, 0)
         netBalanceValueContainer.Name = "netBalanceValueContainer"
@@ -466,16 +466,16 @@ Partial Class Dashboard
         ' netBalanceValue
         ' 
         netBalanceValue.AutoSize = True
-        netBalanceValue.Font = New Font("Segoe UI", 24F)
-        netBalanceValue.Location = New Point(48, 12)
+        netBalanceValue.Font = New Font("Roboto Condensed", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        netBalanceValue.Location = New Point(48, 14)
         netBalanceValue.Name = "netBalanceValue"
-        netBalanceValue.Size = New Size(197, 54)
+        netBalanceValue.Size = New Size(182, 48)
         netBalanceValue.TabIndex = 2
         netBalanceValue.Text = "P 2000.00"
         ' 
         ' chartContainer
         ' 
-        chartContainer.BackColor = Color.Transparent
+        chartContainer.BackColor = SystemColors.Control
         chartContainer.Location = New Point(611, 53)
         chartContainer.Name = "chartContainer"
         chartContainer.Size = New Size(545, 616)
@@ -485,17 +485,17 @@ Partial Class Dashboard
         ' 
         periodMenu.AllowDrop = True
         periodMenu.DropDownStyle = ComboBoxStyle.DropDownList
-        periodMenu.Font = New Font("Segoe UI", 10F)
+        periodMenu.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         periodMenu.FormattingEnabled = True
         periodMenu.Items.AddRange(New Object() {"Day", "Week", "Month", "Year"})
-        periodMenu.Location = New Point(611, 19)
+        periodMenu.Location = New Point(611, 11)
         periodMenu.Name = "periodMenu"
-        periodMenu.Size = New Size(151, 31)
+        periodMenu.Size = New Size(151, 36)
         periodMenu.TabIndex = 1
         ' 
         ' transactionButton
         ' 
-        transactionButton.Font = New Font("Segoe UI", 10F)
+        transactionButton.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         transactionButton.Location = New Point(2, 2)
         transactionButton.Name = "transactionButton"
         transactionButton.Size = New Size(160, 45)
@@ -505,8 +505,8 @@ Partial Class Dashboard
         ' 
         ' profile
         ' 
-        profile.Image = My.Resources.Resources.profile
-        profile.Location = New Point(1151, 12)
+        profile.Image = My.Resources.Resources.admin_profile
+        profile.Location = New Point(1177, 17)
         profile.Name = "profile"
         profile.Size = New Size(60, 60)
         profile.SizeMode = PictureBoxSizeMode.StretchImage
@@ -515,9 +515,10 @@ Partial Class Dashboard
         ' 
         ' profileTab
         ' 
+        profileTab.BackColor = Color.WhiteSmoke
         profileTab.Controls.Add(logoutButton)
         profileTab.Controls.Add(exportButton)
-        profileTab.Location = New Point(1043, 49)
+        profileTab.Location = New Point(1064, 46)
         profileTab.Name = "profileTab"
         profileTab.Size = New Size(143, 81)
         profileTab.TabIndex = 2
@@ -525,6 +526,7 @@ Partial Class Dashboard
         ' 
         ' logoutButton
         ' 
+        logoutButton.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         logoutButton.Location = New Point(7, 41)
         logoutButton.Name = "logoutButton"
         logoutButton.Size = New Size(128, 35)
@@ -534,6 +536,7 @@ Partial Class Dashboard
         ' 
         ' exportButton
         ' 
+        exportButton.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         exportButton.Location = New Point(7, 5)
         exportButton.Name = "exportButton"
         exportButton.Size = New Size(128, 35)
@@ -545,6 +548,7 @@ Partial Class Dashboard
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(107), CByte(163), CByte(202))
         ClientSize = New Size(1262, 753)
         Controls.Add(profileTab)
         Controls.Add(profile)

@@ -35,78 +35,86 @@ Partial Class VerifyOTPForm
         ' 
         ' digitBox1
         ' 
-        digitBox1.Font = New Font("Segoe UI", 12F)
+        digitBox1.BorderStyle = BorderStyle.None
+        digitBox1.Font = New Font("Roboto Condensed", 16.2F)
         digitBox1.Location = New Point(36, 121)
         digitBox1.MaxLength = 1
         digitBox1.Name = "digitBox1"
-        digitBox1.Size = New Size(34, 34)
+        digitBox1.Size = New Size(34, 33)
         digitBox1.TabIndex = 0
         digitBox1.TextAlign = HorizontalAlignment.Center
         ' 
         ' digitBox2
         ' 
-        digitBox2.Font = New Font("Segoe UI", 12F)
+        digitBox2.BorderStyle = BorderStyle.None
+        digitBox2.Font = New Font("Roboto Condensed", 16.2F)
         digitBox2.Location = New Point(76, 121)
         digitBox2.MaxLength = 1
         digitBox2.Name = "digitBox2"
-        digitBox2.Size = New Size(34, 34)
+        digitBox2.Size = New Size(34, 33)
         digitBox2.TabIndex = 1
         digitBox2.TextAlign = HorizontalAlignment.Center
         ' 
         ' digitBox3
         ' 
-        digitBox3.Font = New Font("Segoe UI", 12F)
+        digitBox3.BorderStyle = BorderStyle.None
+        digitBox3.Font = New Font("Roboto Condensed", 16.2F)
         digitBox3.Location = New Point(116, 121)
         digitBox3.MaxLength = 1
         digitBox3.Name = "digitBox3"
-        digitBox3.Size = New Size(34, 34)
+        digitBox3.Size = New Size(34, 33)
         digitBox3.TabIndex = 2
         digitBox3.TextAlign = HorizontalAlignment.Center
         ' 
         ' digitBox6
         ' 
-        digitBox6.Font = New Font("Segoe UI", 12F)
+        digitBox6.BorderStyle = BorderStyle.None
+        digitBox6.Font = New Font("Roboto Condensed", 16.2F)
         digitBox6.Location = New Point(236, 121)
         digitBox6.MaxLength = 1
         digitBox6.Name = "digitBox6"
-        digitBox6.Size = New Size(34, 34)
+        digitBox6.Size = New Size(34, 33)
         digitBox6.TabIndex = 5
         digitBox6.TextAlign = HorizontalAlignment.Center
         ' 
         ' digitBox5
         ' 
-        digitBox5.Font = New Font("Segoe UI", 12F)
+        digitBox5.BorderStyle = BorderStyle.None
+        digitBox5.Font = New Font("Roboto Condensed", 16.2F)
         digitBox5.Location = New Point(196, 121)
         digitBox5.MaxLength = 1
         digitBox5.Name = "digitBox5"
-        digitBox5.Size = New Size(34, 34)
+        digitBox5.Size = New Size(34, 33)
         digitBox5.TabIndex = 4
         digitBox5.TextAlign = HorizontalAlignment.Center
         ' 
         ' digitBox4
         ' 
-        digitBox4.Font = New Font("Segoe UI", 12F)
+        digitBox4.BorderStyle = BorderStyle.None
+        digitBox4.Font = New Font("Roboto Condensed", 16.2F)
         digitBox4.Location = New Point(156, 121)
         digitBox4.MaxLength = 1
         digitBox4.Name = "digitBox4"
-        digitBox4.Size = New Size(34, 34)
+        digitBox4.Size = New Size(34, 33)
         digitBox4.TabIndex = 3
         digitBox4.TextAlign = HorizontalAlignment.Center
         ' 
         ' verifyButton
         ' 
-        verifyButton.Location = New Point(56, 190)
+        verifyButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        verifyButton.Location = New Point(41, 185)
         verifyButton.Name = "verifyButton"
-        verifyButton.Size = New Size(94, 29)
+        verifyButton.Size = New Size(108, 36)
         verifyButton.TabIndex = 6
         verifyButton.Text = "Verify"
         verifyButton.UseVisualStyleBackColor = True
         ' 
         ' cancelButton
         ' 
-        cancelButton.Location = New Point(156, 190)
+        cancelButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cancelButton.Location = New Point(155, 185)
         cancelButton.Name = "cancelButton"
-        cancelButton.Size = New Size(94, 29)
+        cancelButton.Size = New Size(108, 36)
         cancelButton.TabIndex = 7
         cancelButton.Text = "Cancel"
         cancelButton.UseVisualStyleBackColor = True
@@ -114,10 +122,10 @@ Partial Class VerifyOTPForm
         ' verifyOTPLabel
         ' 
         verifyOTPLabel.AutoSize = True
-        verifyOTPLabel.Font = New Font("Segoe UI", 15F)
+        verifyOTPLabel.Font = New Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         verifyOTPLabel.Location = New Point(92, 51)
         verifyOTPLabel.Name = "verifyOTPLabel"
-        verifyOTPLabel.Size = New Size(129, 35)
+        verifyOTPLabel.Size = New Size(118, 30)
         verifyOTPLabel.TabIndex = 8
         verifyOTPLabel.Text = "Verify OTP"
         ' 
@@ -125,6 +133,7 @@ Partial Class VerifyOTPForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(107), CByte(163), CByte(202))
         ClientSize = New Size(306, 308)
         Controls.Add(verifyOTPLabel)
         Controls.Add(cancelButton)

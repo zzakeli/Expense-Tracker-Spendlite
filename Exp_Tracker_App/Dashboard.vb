@@ -47,6 +47,7 @@ Public Class Dashboard
 
     Private Sub Dashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         curveCorners()
+        RoundPanelCorners(chartContainer, 40)
         RoundPanelCorners(typeContainer, 40)
         RoundPanelCorners(netBalanceContainer, 30)
         RoundPanelCorners(incomeContainer, 25)
@@ -55,6 +56,8 @@ Public Class Dashboard
         RoundPanelCorners(incomeListContainer, 20)
         RoundPanelCorners(expenseListContainer, 20)
         RoundPanelCorners(savingsListContainer, 20)
+        RoundPanelCorners(profileTab, 10)
+        roundControlCorners(periodMenu, 12)
         makeATChild()
         makeDFChild()
         makeWFChild()
@@ -63,6 +66,16 @@ Public Class Dashboard
         makeELFChild()
         makeILFChild()
         makeSLFChild()
+    End Sub
+
+    Private Sub roundControlCorners(ctrl As Control, radius As Integer)
+        Dim path As New GraphicsPath()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(ctrl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(ctrl.Width - radius, ctrl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, ctrl.Height - radius, radius, radius, 90, 90)
+        path.CloseAllFigures()
+        ctrl.Region = New Region(path)
     End Sub
 
     Private Sub curveCorners()
@@ -1120,6 +1133,11 @@ Public Class Dashboard
 
         startingForm.usernameLoginBox.BackColor = Color.White
         startingForm.passwordLoginBox.BackColor = Color.White
+
+        startingForm.usernameLogInBoxPanel.BackColor = Color.White
+        startingForm.passwordLogInBoxPanel.BackColor = Color.White
+
+        startingForm.disappearingPassLogInLabel.Visible = True
 
         'Reset the period menu to default selection
         periodMenu.Text = "Month"

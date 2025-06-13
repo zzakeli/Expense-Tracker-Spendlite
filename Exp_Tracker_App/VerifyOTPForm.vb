@@ -8,6 +8,11 @@ Public Class VerifyOTPForm
     Private passwordSignUpBox As MaskedTextBox
     Private confirmPasswordSignUpBox As MaskedTextBox
 
+    Private usernameSignUpBoxPanel As Panel
+    Private emailSignUpBoxPanel As Panel
+    Private passwordSignUpBoxPanel As Panel
+    Private confirmPasswordSignUpBoxPanel As Panel
+
     Private usernameTextNotifier As Label
     Private emailTextNotifier As Label
     Private passwordTextNotifier As Label
@@ -15,12 +20,15 @@ Public Class VerifyOTPForm
 
     Private signUpButton As Button
 
+    Private switchToLoginButton As Button
+
     Private mailer As Mail
 
     Public Sub New(usernameSignUpBox As TextBox, emailSignUpBox As TextBox,
                    passwordSignUpBox As MaskedTextBox, confirmPasswordSignUpBox As MaskedTextBox,
                    usernameTextNotifier As Label, emailTextNotifier As Label, passwordTextNotifier As Label,
-                   confirmPasswordTextNotifier As Label, signUpButton As Button, mailer As Mail)
+                   confirmPasswordTextNotifier As Label, signUpButton As Button, mailer As Mail, usernameSignUpBoxPanel As Panel,
+                   emailSignUpBoxPanel As Panel, passwordSignUpBoxPanel As Panel, confirmPasswordSignUpBoxPanel As Panel, switchToLoginButton As Button)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -31,12 +39,19 @@ Public Class VerifyOTPForm
         Me.passwordSignUpBox = passwordSignUpBox
         Me.confirmPasswordSignUpBox = confirmPasswordSignUpBox
 
+        Me.usernameSignUpBoxPanel = usernameSignUpBoxPanel
+        Me.emailSignUpBoxPanel = emailSignUpBoxPanel
+        Me.passwordSignUpBoxPanel = passwordSignUpBoxPanel
+        Me.confirmPasswordSignUpBoxPanel = confirmPasswordSignUpBoxPanel
+
         Me.usernameTextNotifier = usernameTextNotifier
         Me.emailTextNotifier = emailTextNotifier
         Me.passwordTextNotifier = passwordTextNotifier
         Me.confirmPasswordTextNotifier = confirmPasswordTextNotifier
 
         Me.signUpButton = signUpButton
+
+        Me.switchToLoginButton = switchToLoginButton
 
         Me.mailer = mailer
     End Sub
@@ -61,6 +76,11 @@ Public Class VerifyOTPForm
         emailSignUpBox.Visible = True
         passwordSignUpBox.Visible = True
         confirmPasswordSignUpBox.Visible = True
+
+        usernameSignUpBoxPanel.Visible = True
+        emailSignUpBoxPanel.Visible = True
+        passwordSignUpBoxPanel.Visible = True
+        confirmPasswordSignUpBoxPanel.Visible = True
 
         usernameTextNotifier.Visible = True
         emailTextNotifier.Visible = True
@@ -140,6 +160,11 @@ Public Class VerifyOTPForm
         passwordSignUpBox.BackColor = Color.White
         confirmPasswordSignUpBox.BackColor = Color.White
 
+        usernameSignUpBoxPanel.BackColor = Color.White
+        emailSignUpBoxPanel.BackColor = Color.White
+        passwordSignUpBoxPanel.BackColor = Color.White
+        confirmPasswordSignUpBoxPanel.BackColor = Color.White
+
         usernameTextNotifier.Text = ""
         emailTextNotifier.Text = ""
         passwordTextNotifier.Text = ""
@@ -156,6 +181,8 @@ Public Class VerifyOTPForm
             showSignUpComponents()
 
             signUpUser()
+
+            switchToLoginButton.Enabled = True
 
             resetSignUpFields()
         Else

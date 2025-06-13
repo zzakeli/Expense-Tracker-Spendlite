@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing.Drawing2D
 Imports MySql.Data.MySqlClient
 Imports OxyPlot
+Imports OxyPlot.Legends
 Imports OxyPlot.Series
 Imports OxyPlot.WindowsForms
 
@@ -35,13 +36,52 @@ Public Class StartingForm
         switchLabel.Text = "Don't have an account yet?"
 
         usernameSignUpBox.Visible = False
+        usernameSignUpBoxPanel.Visible = False
+
         emailSignUpBox.Visible = False
+        emailSignUpBoxPanel.Visible = False
+
         passwordSignUpBox.Visible = False
+        passwordSignUpBoxPanel.Visible = False
+
         confirmPasswordSignUpBox.Visible = False
+        confirmPasswordSignUpBoxPanel.Visible = False
         signUpButton.Visible = False
+
+        usernameTextNotifier.Visible = False
+        emailTextNotifier.Visible = False
+        passwordTextNotifier.Visible = False
+        confirmPasswordTextNotifier.Visible = False
+
+        usernameTextNotifier.Text = ""
+        emailTextNotifier.Text = ""
+        passwordTextNotifier.Text = ""
+        confirmPasswordTextNotifier.Text = ""
+
+        usernameSignUpBox.Text = ""
+        emailSignUpBox.Text = ""
+        passwordSignUpBox.Text = ""
+        confirmPasswordSignUpBox.Text = ""
+
+        disappearingPassSignUpLabel.Visible = True
+        disappearingConfirmPassSignUpLabel.Visible = True
+
+        usernameSignUpBox.BackColor = Color.White
+        emailSignUpBox.BackColor = Color.White
+        passwordSignUpBox.BackColor = Color.White
+        confirmPasswordSignUpBox.BackColor = Color.White
+
+        usernameSignUpBoxPanel.BackColor = Color.White
+        emailSignUpBoxPanel.BackColor = Color.White
+        passwordSignUpBoxPanel.BackColor = Color.White
+        confirmPasswordSignUpBoxPanel.BackColor = Color.White
 
         usernameLoginBox.Visible = True
         passwordLoginBox.Visible = True
+
+        usernameLogInBoxPanel.Visible = True
+        passwordLogInBoxPanel.Visible = True
+
         forgotPassword.Visible = True
         loginButton.Visible = True
     End Sub
@@ -53,13 +93,44 @@ Public Class StartingForm
         switchLabel.Text = "Already have an account?"
 
         usernameSignUpBox.Visible = True
+        usernameSignUpBoxPanel.Visible = True
+
         emailSignUpBox.Visible = True
+        emailSignUpBoxPanel.Visible = True
+
         passwordSignUpBox.Visible = True
+        passwordSignUpBoxPanel.Visible = True
+
         confirmPasswordSignUpBox.Visible = True
+        confirmPasswordSignUpBoxPanel.Visible = True
+
         signUpButton.Visible = True
+
+        usernameTextNotifier.Visible = True
+        emailTextNotifier.Visible = True
+        passwordTextNotifier.Visible = True
+        confirmPasswordTextNotifier.Visible = True
+
+        usernameTextNotifier.Text = ""
+        emailTextNotifier.Text = ""
+        passwordTextNotifier.Text = ""
+        confirmPasswordTextNotifier.Text = ""
 
         usernameLoginBox.Visible = False
         passwordLoginBox.Visible = False
+
+        usernameLoginBox.Text = ""
+        passwordLoginBox.Text = ""
+
+        usernameLoginBox.BackColor = Color.White
+        passwordLoginBox.BackColor = Color.White
+
+        usernameLogInBoxPanel.BackColor = Color.White
+        passwordLogInBoxPanel.BackColor = Color.White
+
+        usernameLogInBoxPanel.Visible = False
+        passwordLogInBoxPanel.Visible = False
+
         forgotPassword.Visible = False
         loginButton.Visible = False
     End Sub
@@ -88,11 +159,13 @@ Public Class StartingForm
         If (username = "" Or password = "") Then
             If (username = "") Then
                 usernameLoginBox.BackColor = Color.LightPink
+                usernameLogInBoxPanel.BackColor = Color.LightPink
                 MessageBox.Show("Please fill out the username field.")
                 Exit Sub
             End If
             If (password = "") Then
                 passwordLoginBox.BackColor = Color.LightPink
+                passwordLogInBoxPanel.BackColor = Color.LightPink
                 MessageBox.Show("Please fill out the password field.")
                 Exit Sub
             End If
@@ -179,7 +252,25 @@ Public Class StartingForm
         ' Create a PlotModel
         Dim plotModel As New PlotModel With {.Title = "Finance Pie Chart"}
 
-        ' Create PieSeries and add slices
+        'Dim legend As New Legend() With {
+        '    .LegendPosition = LegendPosition.RightTop,
+        '    .LegendOrientation = LegendOrientation.Vertical,
+        '    .LegendBorderThickness = 0,
+        '    .FontSize = 12
+        '}
+
+        'plotModel.Legends.Add(legend)
+
+        'Dim pieSeries As New PieSeries() With {
+        '    .Diameter = 0.6,
+        '    .StrokeThickness = 1.0,
+        '    .InsideLabelFormat = Nothing,
+        '    .OutsideLabelFormat = Nothing,
+        '    .LegendFormat = "{1}" ' This tells OxyPlot to use the slice label in the legend
+        '}
+
+
+        'Create PieSeries and add slices
         Dim pieSeries As New PieSeries() With {
             .StrokeThickness = 2.0,
             .InsideLabelPosition = 0.8,
@@ -222,11 +313,11 @@ Public Class StartingForm
                 'Dim categoryDate As DateTime = DateTime.Parse(connector.reader("category_date").ToString())
 
                 If (incomeCategory.Contains(category)) Then
-                    pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.LimeGreen})
+                    pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.LightGreen})
                 ElseIf (expenseCategory.Contains(category)) Then
                     pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.Pink})
                 ElseIf (savingsCategory.Contains(category)) Then
-                    pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.Yellow})
+                    pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.LightYellow})
                 End If
             End While
 
@@ -448,11 +539,29 @@ Public Class StartingForm
 
     Private Sub StartingForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         curveCorners()
+        roundControlCorners(usernameSignUpBoxPanel, 12)
+        roundControlCorners(emailSignUpBoxPanel, 12)
+        roundControlCorners(passwordSignUpBoxPanel, 12)
+        roundControlCorners(confirmPasswordSignUpBoxPanel, 12)
+        roundControlCorners(usernameLogInBoxPanel, 12)
+        roundControlCorners(passwordLogInBoxPanel, 12)
         verifyOTPForm = New VerifyOTPForm(usernameSignUpBox, emailSignUpBox, passwordSignUpBox,
                                                confirmPasswordSignUpBox, usernameTextNotifier,
                                                emailTextNotifier, passwordTextNotifier,
-                                               confirmPasswordTextNotifier, signUpButton, mailer)
+                                               confirmPasswordTextNotifier, signUpButton, mailer,
+                                               usernameSignUpBoxPanel, emailSignUpBoxPanel,
+                                               passwordSignUpBoxPanel, confirmPasswordSignUpBoxPanel, switchToLoginButton)
         makeVOTPFChild()
+    End Sub
+
+    Private Sub roundControlCorners(ctrl As Control, radius As Integer)
+        Dim path As New GraphicsPath()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(ctrl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(ctrl.Width - radius, ctrl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, ctrl.Height - radius, radius, radius, 90, 90)
+        path.CloseAllFigures()
+        ctrl.Region = New Region(path)
     End Sub
 
     Private Sub curveCorners()
@@ -512,6 +621,8 @@ Public Class StartingForm
 
             mailer.mailMe(emailSignUpBox.Text.Trim())
 
+            switchToLoginButton.Enabled = False
+
             verifyOTP()
         Else
             MessageBox.Show("Please correct the highlighted fields before signing up.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -526,9 +637,16 @@ Public Class StartingForm
 
     Private Sub hideSignUpFieldsAndNotifiersAndButton()
         usernameSignUpBox.Visible = False
+        usernameSignUpBoxPanel.Visible = False
+
         emailSignUpBox.Visible = False
+        emailSignUpBoxPanel.Visible = False
+
         passwordSignUpBox.Visible = False
+        passwordSignUpBoxPanel.Visible = False
+
         confirmPasswordSignUpBox.Visible = False
+        confirmPasswordSignUpBoxPanel.Visible = False
 
         usernameTextNotifier.Visible = False
         emailTextNotifier.Visible = False
@@ -540,8 +658,8 @@ Public Class StartingForm
 
 
 
-    Private Sub usernameSignUpBox_TextChanged(sender As Object, e As EventArgs)
-        validateUsername
+    Private Sub usernameSignUpBox_TextChanged(sender As Object, e As EventArgs) Handles usernameSignUpBox.TextChanged
+        validateUsername()
     End Sub
 
     Private Sub emailSignUpBox_TextChanged(sender As Object, e As EventArgs) Handles emailSignUpBox.TextChanged
@@ -560,7 +678,7 @@ Public Class StartingForm
         Dim username As String = usernameSignUpBox.Text.Trim()
 
         If String.IsNullOrEmpty(username) Then
-            showValidationError("Username cannot be empty.", usernameSignUpBox, usernameTextNotifier)
+            showValidationError("Username cannot be empty.", usernameSignUpBox, usernameTextNotifier, usernameSignUpBoxPanel)
             Exit Sub
         End If
 
@@ -568,17 +686,17 @@ Public Class StartingForm
             usernameSignUpBox.Text = System.Text.RegularExpressions.Regex.Replace(username, "[^a-zA-Z0-9]", "")
             usernameSignUpBox.SelectionStart = usernameSignUpBox.Text.Length
             usernameSignUpBox.SelectionLength = 0
-            showValidationError("Username must only contain letters and numbers.", usernameSignUpBox, usernameTextNotifier)
+            showValidationError("Username must only contain letters and numbers.", usernameSignUpBox, usernameTextNotifier, usernameSignUpBoxPanel)
             Exit Sub
         End If
 
         If Not (System.Text.RegularExpressions.Regex.IsMatch(username, "[a-zA-Z]") AndAlso System.Text.RegularExpressions.Regex.IsMatch(username, "[0-9]")) Then
-            showValidationError("Username must include both letters and numbers.", usernameSignUpBox, usernameTextNotifier)
+            showValidationError("Username must include both letters and numbers.", usernameSignUpBox, usernameTextNotifier, usernameSignUpBoxPanel)
             Exit Sub
         End If
 
         If username.Length < 6 Then
-            showValidationError("Username must be at least 6 characters long.", usernameSignUpBox, usernameTextNotifier)
+            showValidationError("Username must be at least 6 characters long.", usernameSignUpBox, usernameTextNotifier, usernameSignUpBoxPanel)
             Exit Sub
         End If
 
@@ -601,7 +719,7 @@ Public Class StartingForm
             End While
 
             If (userCount > 0) Then
-                showValidationError("Username already exists.", usernameSignUpBox, usernameTextNotifier)
+                showValidationError("Username already exists.", usernameSignUpBox, usernameTextNotifier, usernameSignUpBoxPanel)
                 connector.connect.Close()
                 Exit Sub
             End If
@@ -612,19 +730,19 @@ Public Class StartingForm
             MessageBox.Show("Error in database from username.")
         End Try
 
-        showValidationSuccess(usernameSignUpBox, usernameTextNotifier)
+        showValidationSuccess(usernameSignUpBox, usernameTextNotifier, usernameSignUpBoxPanel)
     End Sub
 
     Private Sub validateEmail()
         Dim email As String = emailSignUpBox.Text.Trim()
 
         If String.IsNullOrEmpty(email) Then
-            showValidationError("Email cannot be empty.", emailSignUpBox, emailTextNotifier)
+            showValidationError("Email cannot be empty.", emailSignUpBox, emailTextNotifier, emailSignUpBoxPanel)
             Exit Sub
         End If
 
         If Not System.Text.RegularExpressions.Regex.IsMatch(email, "^[^@\s]+@[^@\s]+\.[^@\s]+$") Then
-            showValidationError("Invalid email format.", emailSignUpBox, emailTextNotifier)
+            showValidationError("Invalid email format.", emailSignUpBox, emailTextNotifier, emailSignUpBoxPanel)
             Exit Sub
         End If
 
@@ -641,7 +759,7 @@ Public Class StartingForm
             End While
 
             If (emailCount > 0) Then
-                showValidationError("Email is already taken.", emailSignUpBox, emailTextNotifier)
+                showValidationError("Email is already taken.", emailSignUpBox, emailTextNotifier, emailSignUpBoxPanel)
                 connector.connect.Close()
                 Exit Sub
             End If
@@ -652,84 +770,141 @@ Public Class StartingForm
             MessageBox.Show("Error in database from email.")
         End Try
 
-        showValidationSuccess(emailSignUpBox, emailTextNotifier)
+        showValidationSuccess(emailSignUpBox, emailTextNotifier, emailSignUpBoxPanel)
     End Sub
 
     Private Sub validatePassword()
         Dim password As String = passwordSignUpBox.Text.Trim()
 
         If String.IsNullOrEmpty(password) Then
-            showValidationError("Password cannot be empty.", passwordSignUpBox, passwordTextNotifier)
+            showValidationError("Password cannot be empty.", passwordSignUpBox, passwordTextNotifier, passwordSignUpBoxPanel)
             Exit Sub
         End If
 
         If password.Length < 8 Then
-            showValidationError("Password must be at least 8 characters long.", passwordSignUpBox, passwordTextNotifier)
+            showValidationError("Password must be at least 8 characters long.", passwordSignUpBox, passwordTextNotifier, passwordSignUpBoxPanel)
             Exit Sub
         End If
 
         If Not System.Text.RegularExpressions.Regex.IsMatch(password, "[a-z]") OrElse Not System.Text.RegularExpressions.Regex.IsMatch(password, "[A-Z]") OrElse Not System.Text.RegularExpressions.Regex.IsMatch(password, "[0-9]") Then
-            showValidationError("Password must include at least one lowercase letter, one uppercase letter, and one number.", passwordSignUpBox, passwordTextNotifier)
+            showValidationError("Include 1 lowercase, uppercase letter, and 1 number.", passwordSignUpBox, passwordTextNotifier, passwordSignUpBoxPanel)
             Exit Sub
         End If
 
-        showValidationSuccess(passwordSignUpBox, passwordTextNotifier)
+        showValidationSuccess(passwordSignUpBox, passwordTextNotifier, passwordSignUpBoxPanel)
     End Sub
 
     Private Sub validateConfirmPassword()
         Dim confirmPassword = confirmPasswordSignUpBox.Text.Trim()
 
         If String.IsNullOrEmpty(confirmPassword) Then
-            showValidationError("Password cannot be empty.", confirmPasswordSignUpBox, confirmPasswordTextNotifier)
+            showValidationError("Password cannot be empty.", confirmPasswordSignUpBox, confirmPasswordTextNotifier, confirmPasswordSignUpBoxPanel)
             Exit Sub
         End If
 
         If (Not passwordSignUpBox.Text = confirmPasswordSignUpBox.Text) Then
-            showValidationError("Password does not match.", confirmPasswordSignUpBox, confirmPasswordTextNotifier)
+            showValidationError("Password does not match.", confirmPasswordSignUpBox, confirmPasswordTextNotifier, confirmPasswordSignUpBoxPanel)
             Exit Sub
         End If
 
-        showValidationSuccess(confirmPasswordSignUpBox, confirmPasswordTextNotifier)
+        showValidationSuccess(confirmPasswordSignUpBox, confirmPasswordTextNotifier, confirmPasswordSignUpBoxPanel)
     End Sub
 
     'reusing this methods
-    Private Sub showValidationError(message As String, textBox As TextBox, notifier As Label)
+    Private Sub showValidationError(message As String, textBox As TextBox, notifier As Label, panel As Panel)
         notifier.Text = message
         notifier.ForeColor = Color.Red
         textBox.BackColor = Color.LightPink
+        panel.BackColor = Color.LightPink
     End Sub
 
-    Private Sub showValidationSuccess(textBox As TextBox, notifier As Label)
+    Private Sub showValidationSuccess(textBox As TextBox, notifier As Label, panel As Panel)
         notifier.Text = ""
         textBox.BackColor = Color.LightGreen
+        panel.BackColor = Color.LightGreen
     End Sub
 
     'reusing this methods 
     'different params
-    Private Sub showValidationError(message As String, textBox As MaskedTextBox, notifier As Label)
+    Private Sub showValidationError(message As String, textBox As MaskedTextBox, notifier As Label, panel As Panel)
         notifier.Text = message
         notifier.ForeColor = Color.Red
         textBox.BackColor = Color.LightPink
+        panel.BackColor = Color.LightPink
     End Sub
 
-    Private Sub showValidationSuccess(textBox As MaskedTextBox, notifier As Label)
+    Private Sub showValidationSuccess(textBox As MaskedTextBox, notifier As Label, panel As Panel)
         notifier.Text = ""
         textBox.BackColor = Color.LightGreen
+        panel.BackColor = Color.LightGreen
     End Sub
 
     Private Sub usernameLoginBox_TextChanged(sender As Object, e As EventArgs) Handles usernameLoginBox.TextChanged
-        If (usernameLoginBox.Text = "") Then
+        If usernameLoginBox.Text = "" Then
             usernameLoginBox.BackColor = Color.LightPink
+            usernameLogInBoxPanel.BackColor = Color.LightPink
         Else
             usernameLoginBox.BackColor = Color.White
+            usernameLogInBoxPanel.BackColor = Color.White
         End If
     End Sub
 
     Private Sub passwordLoginBox_TextChanged(sender As Object, e As EventArgs) Handles passwordLoginBox.TextChanged
         If (passwordLoginBox.Text = "") Then
             passwordLoginBox.BackColor = Color.LightPink
+            passwordLogInBoxPanel.BackColor = Color.LightPink
         Else
             passwordLoginBox.BackColor = Color.White
+            passwordLogInBoxPanel.BackColor = Color.White
         End If
+    End Sub
+
+    Private Sub disappearingPassSignUpLabel_Click(sender As Object, e As EventArgs) Handles disappearingPassSignUpLabel.Click
+        disappearingPassSignUpLabel.Visible = False
+        passwordSignUpBox.Focus()
+    End Sub
+
+    Private Sub passwordSignUpBox_Enter(sender As Object, e As EventArgs) Handles passwordSignUpBox.Enter
+        disappearingPassSignUpLabel.Visible = False
+    End Sub
+
+    Private Sub passwordSignUpBox_Leave(sender As Object, e As EventArgs) Handles passwordSignUpBox.Leave
+        If String.IsNullOrWhiteSpace(passwordSignUpBox.Text) Then
+            disappearingPassSignUpLabel.Visible = True
+        End If
+    End Sub
+
+    Private Sub disappearingConfirmPassLabel_Click(sender As Object, e As EventArgs) Handles disappearingConfirmPassSignUpLabel.Click
+        disappearingConfirmPassSignUpLabel.Visible = False
+        confirmPasswordSignUpBox.Focus()
+    End Sub
+
+    Private Sub confirmPasswordSignUpBox_Enter(sender As Object, e As EventArgs) Handles confirmPasswordSignUpBox.Enter
+        disappearingConfirmPassSignUpLabel.Visible = False
+    End Sub
+
+    Private Sub confirmPasswordSignUpBox_Leave(sender As Object, e As EventArgs) Handles confirmPasswordSignUpBox.Leave
+        If String.IsNullOrWhiteSpace(confirmPasswordSignUpBox.Text) Then
+            disappearingConfirmPassSignUpLabel.Visible = True
+        End If
+    End Sub
+
+    Private Sub disappearingPassLogInLabel_Click(sender As Object, e As EventArgs) Handles disappearingPassLogInLabel.Click
+        disappearingPassLogInLabel.Visible = False
+        passwordLoginBox.Focus()
+    End Sub
+
+    Private Sub passwordLoginBox_Enter(sender As Object, e As EventArgs) Handles passwordLoginBox.Enter
+        disappearingPassLogInLabel.Visible = False
+    End Sub
+
+    Private Sub passwordLoginBox_Leave(sender As Object, e As EventArgs) Handles passwordLoginBox.Leave
+        If String.IsNullOrWhiteSpace(passwordLoginBox.Text) Then
+            disappearingPassLogInLabel.Visible = True
+        End If
+    End Sub
+
+    Private Sub forgotPassword_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
+
     End Sub
 End Class

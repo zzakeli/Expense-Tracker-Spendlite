@@ -250,7 +250,12 @@ Public Class StartingForm
         dashboard.chartContainer.Controls.Add(plotView)
 
         ' Create a PlotModel
-        Dim plotModel As New PlotModel With {.Title = "Finance Pie Chart"}
+        Dim plotModel As New PlotModel With {
+            .Title = "Financial Breakdown",
+            .TitleFont = "Roboto Condensed",
+            .TitleFontSize = 26,
+            .TitleColor = OxyColors.SteelBlue,
+        }
 
         'Dim legend As New Legend() With {
         '    .LegendPosition = LegendPosition.RightTop,
@@ -272,19 +277,23 @@ Public Class StartingForm
 
         'Create PieSeries and add slices
         Dim pieSeries As New PieSeries() With {
-            .StrokeThickness = 2.0,
+            .Diameter = 0.88,
+            .StrokeThickness = 2.5,
+            .Stroke = OxyColors.White,
             .InsideLabelPosition = 0.8,
             .AngleSpan = 360,
             .StartAngle = 0,
             .OutsideLabelFormat = Nothing,
-            .InsideLabelFormat = "{1}\n{2:0.#}%".Replace("\n", Environment.NewLine)
+            .InsideLabelFormat = "{1}\n{2:0.#}%".Replace("\n", Environment.NewLine),
+            .FontSize = 10,
+            .Font = "Roboto Condensed"
         }
 
         Try
             Dim monthNow As String = Date.Now.Month.ToString()
             Dim yearNow As String = Date.Now.Year.ToString()
             connector.connect.Open()
-            connector.query = "SELECT category.category_name, 
+            connector.query = "SELECT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name, 
                                 SUM(net_balance.amount) AS total_amount, 
                                 MAX(net_balance.category_date) AS latest_date 
                                 FROM category 
@@ -304,9 +313,9 @@ Public Class StartingForm
             connector.command.CommandText = connector.query
             connector.reader = connector.command.ExecuteReader
 
-            Dim incomeCategory() = {"salary", "allowance", "business income", "investment income", "other income"}
-            Dim expenseCategory() = {"rent", "utilities", "groceries", "transportation", "education", "health", "dining out", "pet", "shopping"}
-            Dim savingsCategory() = {"emergency fund", "retirement savings", "travel savings", "education savings", "other savings"}
+            Dim incomeCategory() = {"Salary", "Allowance", "Business income", "Investment income", "Other income"}
+            Dim expenseCategory() = {"Rent", "Utilities", "Groceries", "Transportation", "Education", "Health", "Dining out", "Pet", "Shopping"}
+            Dim savingsCategory() = {"Emergency fund", "Retirement savings", "Travel savings", "Education savings", "Other savings"}
             While connector.reader.Read
                 Dim category As String = connector.reader("category_name").ToString()
                 Dim amount As Double = Double.Parse(connector.reader("total_amount").ToString())
@@ -340,7 +349,7 @@ Public Class StartingForm
             Dim yearNow As String = Date.Now.Year.ToString()
             Dim dataTable As New DataTable
             connector.connect.Open()
-            connector.query = "SELECT DISTINCT category.category_name FROM category 
+            connector.query = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN income ON category.category_id = income.category_id 
                                 WHERE user_id = " & userID & " AND 
                                 MONTH(income.category_date) = " & monthNow & " AND 
@@ -369,7 +378,7 @@ Public Class StartingForm
             Dim yearNow As String = Date.Now.Year.ToString()
             Dim dataTable As New DataTable
             connector.connect.Open()
-            connector.query = "SELECT DISTINCT category.category_name FROM category 
+            connector.query = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN expense ON category.category_id = expense.category_id 
                                 WHERE user_id = " & userID & " AND 
                                 MONTH(expense.category_date) = " & monthNow & " AND 
@@ -398,7 +407,7 @@ Public Class StartingForm
             Dim yearNow As String = Date.Now.Year.ToString()
             Dim dataTable As New DataTable
             connector.connect.Open()
-            connector.query = "SELECT DISTINCT category.category_name FROM category 
+            connector.query = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN savings ON category.category_id = savings.category_id 
                                 WHERE user_id = " & userID & " AND 
                                 MONTH(savings.category_date) = " & monthNow & " AND 
@@ -545,6 +554,10 @@ Public Class StartingForm
         roundControlCorners(confirmPasswordSignUpBoxPanel, 12)
         roundControlCorners(usernameLogInBoxPanel, 12)
         roundControlCorners(passwordLogInBoxPanel, 12)
+        roundControlCorners(signUpButton, 40)
+        roundControlCorners(loginButton, 40)
+        roundControlCorners(switchToSignUpButton, 40)
+        roundControlCorners(switchToLoginButton, 40)
         verifyOTPForm = New VerifyOTPForm(usernameSignUpBox, emailSignUpBox, passwordSignUpBox,
                                                confirmPasswordSignUpBox, usernameTextNotifier,
                                                emailTextNotifier, passwordTextNotifier,
@@ -565,7 +578,7 @@ Public Class StartingForm
     End Sub
 
     Private Sub curveCorners()
-        Dim radius As Integer = 50 ' change this value to increase/decrease the curve
+        Dim radius As Integer = 50
         Dim bounds As New Rectangle(0, 0, Me.Width, Me.Height)
         Dim path As New GraphicsPath()
 

@@ -83,13 +83,18 @@ Partial Class StartingForm
         ' 
         ' switchToSignUpButton
         ' 
+        switchToSignUpButton.BackColor = Color.FromArgb(CByte(107), CByte(163), CByte(202))
+        switchToSignUpButton.FlatAppearance.BorderColor = Color.FromArgb(CByte(107), CByte(163), CByte(202))
+        switchToSignUpButton.FlatAppearance.BorderSize = 0
+        switchToSignUpButton.FlatStyle = FlatStyle.Flat
         switchToSignUpButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        switchToSignUpButton.ForeColor = SystemColors.InfoText
         switchToSignUpButton.Location = New Point(155, 334)
         switchToSignUpButton.Name = "switchToSignUpButton"
         switchToSignUpButton.Size = New Size(137, 39)
         switchToSignUpButton.TabIndex = 8
         switchToSignUpButton.Text = "SIGN UP"
-        switchToSignUpButton.UseVisualStyleBackColor = True
+        switchToSignUpButton.UseVisualStyleBackColor = False
         switchToSignUpButton.Visible = False
         ' 
         ' switchLabel
@@ -105,13 +110,17 @@ Partial Class StartingForm
         ' 
         ' switchToLoginButton
         ' 
+        switchToLoginButton.BackColor = Color.FromArgb(CByte(107), CByte(163), CByte(202))
+        switchToLoginButton.FlatAppearance.BorderColor = Color.FromArgb(CByte(107), CByte(163), CByte(202))
+        switchToLoginButton.FlatAppearance.BorderSize = 0
+        switchToLoginButton.FlatStyle = FlatStyle.Flat
         switchToLoginButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         switchToLoginButton.Location = New Point(155, 334)
         switchToLoginButton.Name = "switchToLoginButton"
         switchToLoginButton.Size = New Size(137, 39)
         switchToLoginButton.TabIndex = 6
         switchToLoginButton.Text = "LOGIN"
-        switchToLoginButton.UseVisualStyleBackColor = True
+        switchToLoginButton.UseVisualStyleBackColor = False
         ' 
         ' passwordSignUpBox
         ' 
@@ -147,13 +156,18 @@ Partial Class StartingForm
         ' 
         ' signUpButton
         ' 
+        signUpButton.BackColor = Color.FromArgb(CByte(54), CByte(116), CByte(181))
+        signUpButton.FlatAppearance.BorderColor = Color.FromArgb(CByte(54), CByte(116), CByte(181))
+        signUpButton.FlatAppearance.BorderSize = 0
+        signUpButton.FlatStyle = FlatStyle.Flat
         signUpButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        signUpButton.ForeColor = Color.White
         signUpButton.Location = New Point(141, 445)
         signUpButton.Name = "signUpButton"
         signUpButton.Size = New Size(137, 43)
         signUpButton.TabIndex = 5
         signUpButton.Text = "Sign up"
-        signUpButton.UseVisualStyleBackColor = True
+        signUpButton.UseVisualStyleBackColor = False
         ' 
         ' usernameLoginBox
         ' 
@@ -179,13 +193,18 @@ Partial Class StartingForm
         ' 
         ' loginButton
         ' 
+        loginButton.BackColor = Color.FromArgb(CByte(54), CByte(116), CByte(181))
+        loginButton.FlatAppearance.BorderColor = Color.FromArgb(CByte(54), CByte(116), CByte(181))
+        loginButton.FlatAppearance.BorderSize = 0
+        loginButton.FlatStyle = FlatStyle.Flat
         loginButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        loginButton.ForeColor = Color.White
         loginButton.Location = New Point(605, 375)
         loginButton.Name = "loginButton"
         loginButton.Size = New Size(124, 39)
         loginButton.TabIndex = 8
         loginButton.Text = "Login"
-        loginButton.UseVisualStyleBackColor = True
+        loginButton.UseVisualStyleBackColor = False
         loginButton.Visible = False
         ' 
         ' forgotPassword

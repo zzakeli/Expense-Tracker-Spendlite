@@ -28,6 +28,7 @@ Public Class ExpenseListForm
     End Sub
 
     Private Sub closeButton_Click(sender As Object, e As EventArgs) Handles closeButton.Click
+        searchBox.Text = ""
         Me.Visible = False
     End Sub
 
@@ -120,8 +121,32 @@ Public Class ExpenseListForm
         curveCorners()
 
         RoundPanelCorners(expenseDataViewPanel, 25)
-
+        RoundPanelCorners(searchBoxPanel, 10)
+        RoundPanelCorners(expenseListLabelPanel, 20)
+        RoundButton(closeButton, 40)
         makeETFChild()
+    End Sub
+
+    Private Sub RoundButton(btn As Button, radius As Integer)
+        Dim path As New GraphicsPath()
+        path.StartFigure()
+        path.AddArc(New Rectangle(0, 0, radius, radius), 180, 90)
+        path.AddArc(New Rectangle(btn.Width - radius, 0, radius, radius), 270, 90)
+        path.AddArc(New Rectangle(btn.Width - radius, btn.Height - radius, radius, radius), 0, 90)
+        path.AddArc(New Rectangle(0, btn.Height - radius, radius, radius), 90, 90)
+        path.CloseFigure()
+
+        btn.Region = New Region(path)
+    End Sub
+
+    Private Sub roundControlCorners(ctrl As Control, radius As Integer)
+        Dim path As New GraphicsPath()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(ctrl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(ctrl.Width - radius, ctrl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, ctrl.Height - radius, radius, radius, 90, 90)
+        path.CloseAllFigures()
+        ctrl.Region = New Region(path)
     End Sub
 
     Private Sub RoundPanelCorners(p As Panel, radius As Integer)
@@ -138,7 +163,7 @@ Public Class ExpenseListForm
     End Sub
 
     Private Sub curveCorners()
-        Dim radius As Integer = 50
+        Dim radius As Integer = 30
         Dim bounds As New Rectangle(0, 0, Me.Width, Me.Height)
         Dim path As New GraphicsPath()
 

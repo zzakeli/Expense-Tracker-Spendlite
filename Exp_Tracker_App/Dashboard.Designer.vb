@@ -475,7 +475,7 @@ Partial Class Dashboard
         ' 
         ' chartContainer
         ' 
-        chartContainer.BackColor = SystemColors.Control
+        chartContainer.BackColor = Color.White
         chartContainer.Location = New Point(611, 53)
         chartContainer.Name = "chartContainer"
         chartContainer.Size = New Size(545, 616)
@@ -485,6 +485,7 @@ Partial Class Dashboard
         ' 
         periodMenu.AllowDrop = True
         periodMenu.DropDownStyle = ComboBoxStyle.DropDownList
+        periodMenu.FlatStyle = FlatStyle.Flat
         periodMenu.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         periodMenu.FormattingEnabled = True
         periodMenu.Items.AddRange(New Object() {"Day", "Week", "Month", "Year"})
@@ -495,13 +496,17 @@ Partial Class Dashboard
         ' 
         ' transactionButton
         ' 
+        transactionButton.BackColor = SystemColors.Window
+        transactionButton.FlatAppearance.BorderColor = SystemColors.Window
+        transactionButton.FlatAppearance.BorderSize = 0
+        transactionButton.FlatStyle = FlatStyle.Flat
         transactionButton.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         transactionButton.Location = New Point(2, 2)
         transactionButton.Name = "transactionButton"
         transactionButton.Size = New Size(160, 45)
         transactionButton.TabIndex = 0
         transactionButton.Text = "Transactions"
-        transactionButton.UseVisualStyleBackColor = True
+        transactionButton.UseVisualStyleBackColor = False
         ' 
         ' profile
         ' 
@@ -515,7 +520,7 @@ Partial Class Dashboard
         ' 
         ' profileTab
         ' 
-        profileTab.BackColor = Color.WhiteSmoke
+        profileTab.BackColor = SystemColors.Window
         profileTab.Controls.Add(logoutButton)
         profileTab.Controls.Add(exportButton)
         profileTab.Location = New Point(1064, 46)
@@ -526,23 +531,31 @@ Partial Class Dashboard
         ' 
         ' logoutButton
         ' 
+        logoutButton.BackColor = SystemColors.Window
+        logoutButton.FlatAppearance.BorderColor = SystemColors.Window
+        logoutButton.FlatAppearance.BorderSize = 0
+        logoutButton.FlatStyle = FlatStyle.Flat
         logoutButton.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         logoutButton.Location = New Point(7, 41)
         logoutButton.Name = "logoutButton"
         logoutButton.Size = New Size(128, 35)
         logoutButton.TabIndex = 1
         logoutButton.Text = "Logout"
-        logoutButton.UseVisualStyleBackColor = True
+        logoutButton.UseVisualStyleBackColor = False
         ' 
         ' exportButton
         ' 
+        exportButton.BackColor = SystemColors.Window
+        exportButton.FlatAppearance.BorderColor = SystemColors.Window
+        exportButton.FlatAppearance.BorderSize = 0
+        exportButton.FlatStyle = FlatStyle.Flat
         exportButton.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         exportButton.Location = New Point(7, 5)
         exportButton.Name = "exportButton"
         exportButton.Size = New Size(128, 35)
         exportButton.TabIndex = 0
         exportButton.Text = "Export"
-        exportButton.UseVisualStyleBackColor = True
+        exportButton.UseVisualStyleBackColor = False
         ' 
         ' Dashboard
         ' 

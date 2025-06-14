@@ -30,18 +30,27 @@ Partial Class SavingsListForm
         savingsListLabel = New Label()
         searchBox = New TextBox()
         savingsDataViewPanel = New Panel()
+        searchBoxPanel = New Panel()
+        savingsListLabelPanel = New Panel()
         CType(savingsDataView, ComponentModel.ISupportInitialize).BeginInit()
         savingsDataViewPanel.SuspendLayout()
+        searchBoxPanel.SuspendLayout()
+        savingsListLabelPanel.SuspendLayout()
         SuspendLayout()
         ' 
         ' closeButton
         ' 
-        closeButton.Location = New Point(646, 379)
+        closeButton.BackColor = SystemColors.Window
+        closeButton.FlatAppearance.BorderColor = SystemColors.Window
+        closeButton.FlatAppearance.BorderSize = 0
+        closeButton.FlatStyle = FlatStyle.Flat
+        closeButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        closeButton.Location = New Point(612, 372)
         closeButton.Name = "closeButton"
-        closeButton.Size = New Size(113, 37)
+        closeButton.Size = New Size(144, 44)
         closeButton.TabIndex = 7
         closeButton.Text = "Close"
-        closeButton.UseVisualStyleBackColor = True
+        closeButton.UseVisualStyleBackColor = False
         ' 
         ' savingsDataView
         ' 
@@ -55,7 +64,7 @@ Partial Class SavingsListForm
         savingsDataView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle1.Padding = New Padding(10)
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
@@ -65,7 +74,7 @@ Partial Class SavingsListForm
         savingsDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
@@ -95,44 +104,69 @@ Partial Class SavingsListForm
         ' savingsListLabel
         ' 
         savingsListLabel.AutoSize = True
-        savingsListLabel.Location = New Point(663, 37)
+        savingsListLabel.Font = New Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        savingsListLabel.Location = New Point(21, 10)
         savingsListLabel.Name = "savingsListLabel"
-        savingsListLabel.Size = New Size(99, 20)
+        savingsListLabel.Size = New Size(188, 37)
         savingsListLabel.TabIndex = 5
         savingsListLabel.Text = "SAVINGS LIST"
         ' 
         ' searchBox
         ' 
-        searchBox.Location = New Point(42, 34)
+        searchBox.BorderStyle = BorderStyle.None
+        searchBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        searchBox.Location = New Point(16, 10)
         searchBox.Name = "searchBox"
-        searchBox.PlaceholderText = "Search"
-        searchBox.Size = New Size(295, 27)
+        searchBox.PlaceholderText = "Search category"
+        searchBox.Size = New Size(282, 25)
         searchBox.TabIndex = 4
         ' 
         ' savingsDataViewPanel
         ' 
         savingsDataViewPanel.Controls.Add(savingsDataView)
-        savingsDataViewPanel.Location = New Point(42, 92)
+        savingsDataViewPanel.Location = New Point(39, 105)
         savingsDataViewPanel.Name = "savingsDataViewPanel"
         savingsDataViewPanel.Size = New Size(717, 260)
         savingsDataViewPanel.TabIndex = 8
+        ' 
+        ' searchBoxPanel
+        ' 
+        searchBoxPanel.BackColor = SystemColors.Window
+        searchBoxPanel.Controls.Add(searchBox)
+        searchBoxPanel.Location = New Point(39, 47)
+        searchBoxPanel.Name = "searchBoxPanel"
+        searchBoxPanel.Size = New Size(317, 45)
+        searchBoxPanel.TabIndex = 9
+        ' 
+        ' savingsListLabelPanel
+        ' 
+        savingsListLabelPanel.BackColor = SystemColors.Window
+        savingsListLabelPanel.Controls.Add(savingsListLabel)
+        savingsListLabelPanel.Location = New Point(523, 39)
+        savingsListLabelPanel.Name = "savingsListLabelPanel"
+        savingsListLabelPanel.Size = New Size(233, 57)
+        savingsListLabelPanel.TabIndex = 10
         ' 
         ' SavingsListForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(141), CByte(188), CByte(199))
         ClientSize = New Size(800, 450)
+        Controls.Add(savingsListLabelPanel)
+        Controls.Add(searchBoxPanel)
         Controls.Add(closeButton)
-        Controls.Add(savingsListLabel)
-        Controls.Add(searchBox)
         Controls.Add(savingsDataViewPanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "SavingsListForm"
         Text = "SavingsListForm"
         CType(savingsDataView, ComponentModel.ISupportInitialize).EndInit()
         savingsDataViewPanel.ResumeLayout(False)
+        searchBoxPanel.ResumeLayout(False)
+        searchBoxPanel.PerformLayout()
+        savingsListLabelPanel.ResumeLayout(False)
+        savingsListLabelPanel.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents closeButton As Button
@@ -140,4 +174,6 @@ Partial Class SavingsListForm
     Friend WithEvents savingsListLabel As Label
     Friend WithEvents searchBox As TextBox
     Friend WithEvents savingsDataViewPanel As Panel
+    Friend WithEvents searchBoxPanel As Panel
+    Friend WithEvents savingsListLabelPanel As Panel
 End Class

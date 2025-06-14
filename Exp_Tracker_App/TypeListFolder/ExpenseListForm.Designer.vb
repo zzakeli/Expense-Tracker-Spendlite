@@ -31,18 +31,27 @@ Partial Class ExpenseListForm
         expenseListLabel = New Label()
         searchBox = New TextBox()
         expenseDataViewPanel = New Panel()
+        searchBoxPanel = New Panel()
+        expenseListLabelPanel = New Panel()
         CType(expenseDataView, ComponentModel.ISupportInitialize).BeginInit()
         expenseDataViewPanel.SuspendLayout()
+        searchBoxPanel.SuspendLayout()
+        expenseListLabelPanel.SuspendLayout()
         SuspendLayout()
         ' 
         ' closeButton
         ' 
-        closeButton.Location = New Point(646, 379)
+        closeButton.BackColor = SystemColors.Control
+        closeButton.FlatAppearance.BorderColor = SystemColors.Window
+        closeButton.FlatAppearance.BorderSize = 0
+        closeButton.FlatStyle = FlatStyle.Flat
+        closeButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        closeButton.Location = New Point(612, 372)
         closeButton.Name = "closeButton"
-        closeButton.Size = New Size(113, 37)
+        closeButton.Size = New Size(144, 44)
         closeButton.TabIndex = 7
         closeButton.Text = "Close"
-        closeButton.UseVisualStyleBackColor = True
+        closeButton.UseVisualStyleBackColor = False
         ' 
         ' expenseDataView
         ' 
@@ -56,7 +65,7 @@ Partial Class ExpenseListForm
         expenseDataView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(255), CByte(128), CByte(128))
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle1.Padding = New Padding(10)
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
@@ -66,7 +75,7 @@ Partial Class ExpenseListForm
         expenseDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
@@ -97,44 +106,69 @@ Partial Class ExpenseListForm
         ' expenseListLabel
         ' 
         expenseListLabel.AutoSize = True
-        expenseListLabel.Location = New Point(663, 37)
+        expenseListLabel.Font = New Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        expenseListLabel.Location = New Point(20, 10)
         expenseListLabel.Name = "expenseListLabel"
-        expenseListLabel.Size = New Size(100, 20)
+        expenseListLabel.Size = New Size(192, 37)
         expenseListLabel.TabIndex = 5
         expenseListLabel.Text = "EXPENSE LIST"
         ' 
         ' searchBox
         ' 
-        searchBox.Location = New Point(42, 34)
+        searchBox.BorderStyle = BorderStyle.None
+        searchBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        searchBox.Location = New Point(12, 10)
         searchBox.Name = "searchBox"
         searchBox.PlaceholderText = "Search category"
-        searchBox.Size = New Size(295, 27)
+        searchBox.Size = New Size(295, 25)
         searchBox.TabIndex = 4
         ' 
         ' expenseDataViewPanel
         ' 
         expenseDataViewPanel.Controls.Add(expenseDataView)
-        expenseDataViewPanel.Location = New Point(42, 92)
+        expenseDataViewPanel.Location = New Point(39, 105)
         expenseDataViewPanel.Name = "expenseDataViewPanel"
         expenseDataViewPanel.Size = New Size(717, 260)
         expenseDataViewPanel.TabIndex = 8
+        ' 
+        ' searchBoxPanel
+        ' 
+        searchBoxPanel.BackColor = SystemColors.Window
+        searchBoxPanel.Controls.Add(searchBox)
+        searchBoxPanel.Location = New Point(42, 48)
+        searchBoxPanel.Name = "searchBoxPanel"
+        searchBoxPanel.Size = New Size(317, 45)
+        searchBoxPanel.TabIndex = 9
+        ' 
+        ' expenseListLabelPanel
+        ' 
+        expenseListLabelPanel.BackColor = SystemColors.Window
+        expenseListLabelPanel.Controls.Add(expenseListLabel)
+        expenseListLabelPanel.Location = New Point(526, 40)
+        expenseListLabelPanel.Name = "expenseListLabelPanel"
+        expenseListLabelPanel.Size = New Size(233, 57)
+        expenseListLabelPanel.TabIndex = 10
         ' 
         ' ExpenseListForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(141), CByte(188), CByte(199))
         ClientSize = New Size(800, 450)
+        Controls.Add(expenseListLabelPanel)
         Controls.Add(closeButton)
-        Controls.Add(expenseListLabel)
-        Controls.Add(searchBox)
         Controls.Add(expenseDataViewPanel)
+        Controls.Add(searchBoxPanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "ExpenseListForm"
         Text = "ExpenseListForm"
         CType(expenseDataView, ComponentModel.ISupportInitialize).EndInit()
         expenseDataViewPanel.ResumeLayout(False)
+        searchBoxPanel.ResumeLayout(False)
+        searchBoxPanel.PerformLayout()
+        expenseListLabelPanel.ResumeLayout(False)
+        expenseListLabelPanel.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents closeButton As Button
@@ -142,4 +176,6 @@ Partial Class ExpenseListForm
     Friend WithEvents expenseListLabel As Label
     Friend WithEvents searchBox As TextBox
     Friend WithEvents expenseDataViewPanel As Panel
+    Friend WithEvents searchBoxPanel As Panel
+    Friend WithEvents expenseListLabelPanel As Panel
 End Class

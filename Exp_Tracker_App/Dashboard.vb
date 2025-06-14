@@ -57,7 +57,10 @@ Public Class Dashboard
         RoundPanelCorners(expenseListContainer, 20)
         RoundPanelCorners(savingsListContainer, 20)
         RoundPanelCorners(profileTab, 10)
-        roundControlCorners(periodMenu, 12)
+        roundControlCorners(periodMenu, 20)
+        roundControlCorners(transactionButton, 20)
+        roundControlCorners(exportButton, 20)
+        roundControlCorners(logoutButton, 20)
         makeATChild()
         makeDFChild()
         makeWFChild()
@@ -125,19 +128,19 @@ Public Class Dashboard
             userSavingsQuery = "SELECT SUM(amount) AS total_savings FROM savings 
                                 WHERE user_id = " & userID & " AND category_date = '" & day & "';"
 
-            userIncomeListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userIncomeListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN income ON category.category_id = income.category_id 
                                 WHERE user_id = " & userID & " AND income.category_date = '" & day & "';"
 
-            userExpenseListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userExpenseListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN expense ON category.category_id = expense.category_id 
                                 WHERE user_id = " & userID & " AND expense.category_date = '" & day & "';"
 
-            userSavingsListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userSavingsListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN savings ON category.category_id = savings.category_id 
                                 WHERE user_id = " & userID & " AND savings.category_date = '" & day & "';"
 
-            chartQuery = "SELECT category.category_name, 
+            chartQuery = "SELECT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name, 
                                 SUM(net_balance.amount) AS total_amount, 
                                 MAX(net_balance.category_date) AS latest_date 
                                 FROM category 
@@ -181,22 +184,22 @@ Public Class Dashboard
                                 WHERE user_id = " & userID & " AND 
                                 category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "';"
 
-            userIncomeListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userIncomeListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN income ON category.category_id = income.category_id 
                                 WHERE user_id = " & userID & " AND 
                                 income.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "';"
 
-            userExpenseListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userExpenseListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN expense ON category.category_id = expense.category_id 
                                 WHERE user_id = " & userID & " AND 
                                 expense.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "';"
 
-            userSavingsListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userSavingsListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN savings ON category.category_id = savings.category_id 
                                 WHERE user_id = " & userID & " AND 
                                 savings.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "';"
 
-            chartQuery = "SELECT category.category_name, 
+            chartQuery = "SELECT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name, 
                                 SUM(net_balance.amount) AS total_amount, 
                                 MAX(net_balance.category_date) AS latest_date 
                                 FROM category 
@@ -231,25 +234,25 @@ Public Class Dashboard
                                 MONTH(category_date) = " & month & " 
                                 AND YEAR(category_date) = " & year & ";"
 
-            userIncomeListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userIncomeListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN income ON category.category_id = income.category_id 
                                 WHERE user_id = " & userID & " AND 
                                 MONTH(income.category_date) = " & month & " AND 
                                 YEAR(income.category_date) = " & year & ";"
 
-            userExpenseListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userExpenseListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN expense ON category.category_id = expense.category_id 
                                 WHERE user_id = " & userID & " AND 
                                 MONTH(expense.category_date) = " & month & " AND 
                                 YEAR(expense.category_date) = " & year & ";"
 
-            userSavingsListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userSavingsListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN savings ON category.category_id = savings.category_id 
                                 WHERE user_id = " & userID & " AND 
                                 MONTH(savings.category_date) = " & month & " AND 
                                 YEAR(savings.category_date) = " & year & ";"
 
-            chartQuery = "SELECT category.category_name, 
+            chartQuery = "SELECT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name, 
                                 SUM(net_balance.amount) AS total_amount, 
                                 MAX(net_balance.category_date) AS latest_date 
                                 FROM category 
@@ -277,19 +280,19 @@ Public Class Dashboard
             userSavingsQuery = "SELECT SUM(amount) AS total_savings FROM savings 
                                 WHERE user_id = " & userID & " AND YEAR(category_date) = " & year & ";"
 
-            userIncomeListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userIncomeListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN income ON category.category_id = income.category_id 
                                 WHERE user_id = " & userID & " AND YEAR(income.category_date) = " & year & ";"
 
-            userExpenseListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userExpenseListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN expense ON category.category_id = expense.category_id 
                                 WHERE user_id = " & userID & " AND YEAR(expense.category_date) = " & year & ";"
 
-            userSavingsListQuery = "SELECT DISTINCT category.category_name FROM category 
+            userSavingsListQuery = "SELECT DISTINCT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name FROM category 
                                 LEFT JOIN savings ON category.category_id = savings.category_id 
                                 WHERE user_id = " & userID & " AND YEAR(savings.category_date) = " & year & ";"
 
-            chartQuery = "SELECT category.category_name, 
+            chartQuery = "SELECT CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category_name, 
                                 SUM(net_balance.amount) AS total_amount, 
                                 MAX(net_balance.category_date) AS latest_date 
                                 FROM category 
@@ -346,16 +349,25 @@ Public Class Dashboard
         chartContainer.Controls.Add(plotView)
 
         ' Create a PlotModel
-        Dim plotModel As New PlotModel With {.Title = "Finance Pie Chart"}
+        Dim plotModel As New PlotModel With {
+            .Title = "Financial Breakdown",
+            .TitleFont = "Roboto Condensed",
+            .TitleFontSize = 26,
+            .TitleColor = OxyColors.SteelBlue
+        }
 
         ' Create PieSeries and add slices
         Dim pieSeries As New PieSeries() With {
-            .StrokeThickness = 2.0,
+            .Diameter = 0.88,
+            .StrokeThickness = 2.5,
+            .Stroke = OxyColors.White,
             .InsideLabelPosition = 0.8,
             .AngleSpan = 360,
             .StartAngle = 0,
             .OutsideLabelFormat = Nothing,
-            .InsideLabelFormat = "{1}\n{2:0.#}%".Replace("\n", Environment.NewLine)
+            .InsideLabelFormat = "{1}\n{2:0.#}%".Replace("\n", Environment.NewLine),
+            .FontSize = 10,
+            .Font = "Roboto Condensed"
         }
 
         Try
@@ -383,9 +395,9 @@ Public Class Dashboard
             connector.command.CommandText = connector.query
             connector.reader = connector.command.ExecuteReader
 
-            Dim incomeCategory() = {"salary", "allowance", "business income", "investment income", "other income"}
-            Dim expenseCategory() = {"rent", "utilities", "groceries", "transportation", "education", "health", "dining out", "pet", "shopping"}
-            Dim savingsCategory() = {"emergency fund", "retirement savings", "travel savings", "education savings", "other savings"}
+            Dim incomeCategory() = {"Salary", "Allowance", "Business income", "Investment income", "Other income"}
+            Dim expenseCategory() = {"Rent", "Utilities", "Groceries", "Transportation", "Education", "Health", "Dining out", "Pet", "Shopping"}
+            Dim savingsCategory() = {"Emergency fund", "Retirement savings", "Travel savings", "Education savings", "Other savings"}
             While connector.reader.Read
                 Dim category As String = connector.reader("category_name").ToString()
                 Dim amount As Double = Double.Parse(connector.reader("total_amount").ToString())
@@ -799,7 +811,7 @@ Public Class Dashboard
 
         If (selectedItem = "Day") Then
             Dim day As String = dayForm.dayPicker.Text
-            savingsQuery = "SELECT savings.savings_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+            savingsQuery = "SELECT savings.savings_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added'
                         FROM savings LEFT JOIN category ON category.category_id = savings.category_id 
                         WHERE savings.user_id = " & userID & " AND savings.category_date = '" & day & "' 
                         ORDER BY savings.category_date;"
@@ -818,7 +830,7 @@ Public Class Dashboard
             Dim weekStart As String = startDate.ToString("yyyy-MM-dd")
             Dim weekEnd As String = endDate.ToString("yyyy-MM-dd")
 
-            savingsQuery = "SELECT savings.savings_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+            savingsQuery = "SELECT savings.savings_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added'
                         FROM savings LEFT JOIN category ON category.category_id = savings.category_id 
                         WHERE savings.user_id = " & userID & " AND savings.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "' 
                         ORDER BY savings.category_date;"
@@ -827,7 +839,7 @@ Public Class Dashboard
             Dim month As String = monthForm.monthPicker.Value.ToString("MM")
             Dim year As String = monthForm.monthPicker.Value.ToString("yyyy")
 
-            savingsQuery = "SELECT savings.savings_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+            savingsQuery = "SELECT savings.savings_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added' 
                         FROM savings LEFT JOIN category ON category.category_id = savings.category_id 
                         WHERE savings.user_id = " & userID & " AND MONTH(savings.category_date) = " & month & " 
                         AND YEAR(savings.category_date) = " & year & " 
@@ -835,7 +847,7 @@ Public Class Dashboard
 
         ElseIf (selectedItem = "Year") Then
             Dim year As String = yearForm.yearPicker.Text
-            savingsQuery = "SELECT savings.savings_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+            savingsQuery = "SELECT savings.savings_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added' 
                         FROM savings LEFT JOIN category ON category.category_id = savings.category_id 
                         WHERE savings.user_id = " & userID & " AND YEAR(savings.category_date) = " & year & " 
                         ORDER BY savings.category_date;"
@@ -891,7 +903,7 @@ Public Class Dashboard
 
         If (selectedItem = "Day") Then
             Dim day As String = dayForm.dayPicker.Text
-            expenseQuery = "SELECT expense.expense_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+            expenseQuery = "SELECT expense.expense_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added'
                         FROM expense LEFT JOIN category ON category.category_id = expense.category_id 
                         WHERE expense.user_id = " & userID & " AND expense.category_date = '" & day & "' 
                         ORDER BY expense.category_date;"
@@ -910,7 +922,7 @@ Public Class Dashboard
             Dim weekStart As String = startDate.ToString("yyyy-MM-dd")
             Dim weekEnd As String = endDate.ToString("yyyy-MM-dd")
 
-            expenseQuery = "SELECT expense.expense_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+            expenseQuery = "SELECT expense.expense_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added'
                         FROM expense LEFT JOIN category ON category.category_id = expense.category_id 
                         WHERE expense.user_id = " & userID & " AND expense.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "' 
                         ORDER BY expense.category_date;"
@@ -919,7 +931,7 @@ Public Class Dashboard
             Dim month As String = monthForm.monthPicker.Value.ToString("MM")
             Dim year As String = monthForm.monthPicker.Value.ToString("yyyy")
 
-            expenseQuery = "SELECT expense.expense_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+            expenseQuery = "SELECT expense.expense_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added' 
                         FROM expense LEFT JOIN category ON category.category_id = expense.category_id 
                         WHERE expense.user_id = " & userID & " AND MONTH(expense.category_date) = " & month & " 
                         AND YEAR(expense.category_date) = " & year & " 
@@ -927,7 +939,7 @@ Public Class Dashboard
 
         ElseIf (selectedItem = "Year") Then
             Dim year As String = yearForm.yearPicker.Text
-            expenseQuery = "SELECT expense.expense_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+            expenseQuery = "SELECT expense.expense_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added' 
                         FROM expense LEFT JOIN category ON category.category_id = expense.category_id 
                         WHERE expense.user_id = " & userID & " AND YEAR(expense.category_date) = " & year & " 
                         ORDER BY expense.category_date;"
@@ -983,7 +995,7 @@ Public Class Dashboard
 
         If (selectedItem = "Day") Then
             Dim day As String = dayForm.dayPicker.Text
-            incomeQuery = "SELECT income.income_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+            incomeQuery = "SELECT income.income_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added'
                         FROM income LEFT JOIN category ON category.category_id = income.category_id 
                         WHERE income.user_id = " & userID & " AND income.category_date = '" & day & "' 
                         ORDER BY income.category_date;"
@@ -1002,7 +1014,7 @@ Public Class Dashboard
             Dim weekStart As String = startDate.ToString("yyyy-MM-dd")
             Dim weekEnd As String = endDate.ToString("yyyy-MM-dd")
 
-            incomeQuery = "SELECT income.income_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+            incomeQuery = "SELECT income.income_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added'
                         FROM income LEFT JOIN category ON category.category_id = income.category_id 
                         WHERE income.user_id = " & userID & " AND income.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "' 
                         ORDER BY income.category_date;"
@@ -1011,7 +1023,7 @@ Public Class Dashboard
             Dim month As String = monthForm.monthPicker.Value.ToString("MM")
             Dim year As String = monthForm.monthPicker.Value.ToString("yyyy")
 
-            incomeQuery = "SELECT income.income_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+            incomeQuery = "SELECT income.income_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added' 
                         FROM income LEFT JOIN category ON category.category_id = income.category_id 
                         WHERE income.user_id = " & userID & " AND MONTH(income.category_date) = " & month & " 
                         AND YEAR(income.category_date) = " & year & " 
@@ -1019,7 +1031,7 @@ Public Class Dashboard
 
         ElseIf (selectedItem = "Year") Then
             Dim year As String = yearForm.yearPicker.Text
-            incomeQuery = "SELECT income.income_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+            incomeQuery = "SELECT income.income_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS Category, amount AS Amount, category_date AS 'Date Added' 
                         FROM income LEFT JOIN category ON category.category_id = income.category_id 
                         WHERE income.user_id = " & userID & " AND YEAR(income.category_date) = " & year & " 
                         ORDER BY income.category_date;"

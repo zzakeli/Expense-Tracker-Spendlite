@@ -31,24 +31,31 @@ Partial Class IncomeListForm
         incomeDataView = New DataGridView()
         closeButton = New Button()
         incomeDataViewPanel = New Panel()
+        searchBoxPanel = New Panel()
+        incomeListLabelPanel = New Panel()
         CType(incomeDataView, ComponentModel.ISupportInitialize).BeginInit()
         incomeDataViewPanel.SuspendLayout()
+        searchBoxPanel.SuspendLayout()
+        incomeListLabelPanel.SuspendLayout()
         SuspendLayout()
         ' 
         ' searchBox
         ' 
-        searchBox.Location = New Point(39, 39)
+        searchBox.BorderStyle = BorderStyle.None
+        searchBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        searchBox.Location = New Point(11, 10)
         searchBox.Name = "searchBox"
         searchBox.PlaceholderText = "Search category"
-        searchBox.Size = New Size(295, 27)
+        searchBox.Size = New Size(295, 25)
         searchBox.TabIndex = 0
         ' 
         ' incomeListLabel
         ' 
         incomeListLabel.AutoSize = True
-        incomeListLabel.Location = New Point(660, 42)
+        incomeListLabel.Font = New Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        incomeListLabel.Location = New Point(27, 10)
         incomeListLabel.Name = "incomeListLabel"
-        incomeListLabel.Size = New Size(96, 20)
+        incomeListLabel.Size = New Size(178, 37)
         incomeListLabel.TabIndex = 1
         incomeListLabel.Text = "INCOME LIST"
         ' 
@@ -64,7 +71,7 @@ Partial Class IncomeListForm
         incomeDataView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(128), CByte(255), CByte(128))
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle1.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle1.Padding = New Padding(10)
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
@@ -74,7 +81,7 @@ Partial Class IncomeListForm
         incomeDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
@@ -104,37 +111,64 @@ Partial Class IncomeListForm
         ' 
         ' closeButton
         ' 
-        closeButton.Location = New Point(643, 384)
+        closeButton.BackColor = SystemColors.Window
+        closeButton.FlatAppearance.BorderColor = SystemColors.Window
+        closeButton.FlatAppearance.BorderSize = 0
+        closeButton.FlatStyle = FlatStyle.Flat
+        closeButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        closeButton.Location = New Point(612, 372)
         closeButton.Name = "closeButton"
-        closeButton.Size = New Size(113, 37)
+        closeButton.Size = New Size(144, 44)
         closeButton.TabIndex = 3
         closeButton.Text = "Close"
-        closeButton.UseVisualStyleBackColor = True
+        closeButton.UseVisualStyleBackColor = False
         ' 
         ' incomeDataViewPanel
         ' 
         incomeDataViewPanel.Controls.Add(incomeDataView)
-        incomeDataViewPanel.Location = New Point(39, 97)
+        incomeDataViewPanel.Location = New Point(39, 105)
         incomeDataViewPanel.Name = "incomeDataViewPanel"
         incomeDataViewPanel.Size = New Size(717, 260)
         incomeDataViewPanel.TabIndex = 4
+        ' 
+        ' searchBoxPanel
+        ' 
+        searchBoxPanel.BackColor = SystemColors.Window
+        searchBoxPanel.Controls.Add(searchBox)
+        searchBoxPanel.Location = New Point(42, 48)
+        searchBoxPanel.Name = "searchBoxPanel"
+        searchBoxPanel.Size = New Size(317, 45)
+        searchBoxPanel.TabIndex = 5
+        ' 
+        ' incomeListLabelPanel
+        ' 
+        incomeListLabelPanel.BackColor = SystemColors.Window
+        incomeListLabelPanel.Controls.Add(incomeListLabel)
+        incomeListLabelPanel.Location = New Point(526, 40)
+        incomeListLabelPanel.Name = "incomeListLabelPanel"
+        incomeListLabelPanel.Size = New Size(233, 57)
+        incomeListLabelPanel.TabIndex = 6
         ' 
         ' IncomeListForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(141), CByte(188), CByte(199))
         ClientSize = New Size(800, 450)
+        Controls.Add(incomeListLabelPanel)
+        Controls.Add(searchBoxPanel)
         Controls.Add(closeButton)
-        Controls.Add(incomeListLabel)
-        Controls.Add(searchBox)
         Controls.Add(incomeDataViewPanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "IncomeListForm"
         Text = "IncomeListForm"
         CType(incomeDataView, ComponentModel.ISupportInitialize).EndInit()
         incomeDataViewPanel.ResumeLayout(False)
+        searchBoxPanel.ResumeLayout(False)
+        searchBoxPanel.PerformLayout()
+        incomeListLabelPanel.ResumeLayout(False)
+        incomeListLabelPanel.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents searchBox As TextBox
@@ -142,4 +176,6 @@ Partial Class IncomeListForm
     Friend WithEvents incomeDataView As DataGridView
     Friend WithEvents closeButton As Button
     Friend WithEvents incomeDataViewPanel As Panel
+    Friend WithEvents searchBoxPanel As Panel
+    Friend WithEvents incomeListLabelPanel As Panel
 End Class

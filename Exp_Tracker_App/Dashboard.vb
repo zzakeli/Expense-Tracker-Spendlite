@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing.Drawing2D
 Imports MySql.Data.MySqlClient
+Imports Mysqlx.Crud
 Imports OxyPlot
 Imports OxyPlot.Series
 Imports OxyPlot.WindowsForms
@@ -878,11 +879,11 @@ Public Class Dashboard
             End If
 
             ' Add Delete button column if not already added
-            If Not savingsListForm.savingsDataView.Columns.Contains("Delete") Then
+            If Not savingsListForm.savingsDataView.Columns.Contains("Remove") Then
                 Dim deleteButton As New DataGridViewButtonColumn()
-                deleteButton.Name = "Delete"
-                deleteButton.HeaderText = "Delete"
-                deleteButton.Text = "Delete"
+                deleteButton.Name = "Remove"
+                deleteButton.HeaderText = "Remove"
+                deleteButton.Text = "Remove"
                 deleteButton.UseColumnTextForButtonValue = True
                 savingsListForm.savingsDataView.Columns.Add(deleteButton)
             End If
@@ -970,11 +971,11 @@ Public Class Dashboard
             End If
 
             ' Add Delete button column if not already added
-            If Not expenseListForm.expenseDataView.Columns.Contains("Delete") Then
+            If Not expenseListForm.expenseDataView.Columns.Contains("Remove") Then
                 Dim deleteButton As New DataGridViewButtonColumn()
-                deleteButton.Name = "Delete"
-                deleteButton.HeaderText = "Delete"
-                deleteButton.Text = "Delete"
+                deleteButton.Name = "Remove"
+                deleteButton.HeaderText = "Remove"
+                deleteButton.Text = "Remove"
                 deleteButton.UseColumnTextForButtonValue = True
                 expenseListForm.expenseDataView.Columns.Add(deleteButton)
             End If
@@ -1062,11 +1063,11 @@ Public Class Dashboard
             End If
 
             ' Add Delete button column if not already added
-            If Not incomeListForm.incomeDataView.Columns.Contains("Delete") Then
+            If Not incomeListForm.incomeDataView.Columns.Contains("Remove") Then
                 Dim deleteButton As New DataGridViewButtonColumn()
-                deleteButton.Name = "Delete"
-                deleteButton.HeaderText = "Delete"
-                deleteButton.Text = "Delete"
+                deleteButton.Name = "Remove"
+                deleteButton.HeaderText = "Remove"
+                deleteButton.Text = "Remove"
                 deleteButton.UseColumnTextForButtonValue = True
                 incomeListForm.incomeDataView.Columns.Add(deleteButton)
             End If

@@ -41,7 +41,7 @@ Partial Class ExpenseListForm
         ' 
         ' closeButton
         ' 
-        closeButton.BackColor = SystemColors.Control
+        closeButton.BackColor = SystemColors.Window
         closeButton.FlatAppearance.BorderColor = SystemColors.Window
         closeButton.FlatAppearance.BorderSize = 0
         closeButton.FlatStyle = FlatStyle.Flat
@@ -64,9 +64,9 @@ Partial Class ExpenseListForm
         expenseDataView.CellBorderStyle = DataGridViewCellBorderStyle.None
         expenseDataView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(255), CByte(128), CByte(128))
+        DataGridViewCellStyle1.BackColor = Color.DarkRed
         DataGridViewCellStyle1.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle1.ForeColor = Color.White
         DataGridViewCellStyle1.Padding = New Padding(10)
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
@@ -74,10 +74,10 @@ Partial Class ExpenseListForm
         expenseDataView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         expenseDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = SystemColors.Window
+        DataGridViewCellStyle2.BackColor = Color.Firebrick
         DataGridViewCellStyle2.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle2.ForeColor = Color.White
+        DataGridViewCellStyle2.SelectionBackColor = Color.IndianRed
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
         expenseDataView.DefaultCellStyle = DataGridViewCellStyle2

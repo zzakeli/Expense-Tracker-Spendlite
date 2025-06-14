@@ -81,8 +81,8 @@ Public Class IncomeListForm
             editTransactionForm.Visible = True
         End If
 
-        If e.ColumnIndex = incomeDataView.Columns("Delete").Index AndAlso e.RowIndex >= 0 Then
-            Dim confirmDelete = MessageBox.Show("Are you sure you want to delete this income record?", "Confirm Delete", MessageBoxButtons.YesNo)
+        If e.ColumnIndex = incomeDataView.Columns("Remove").Index AndAlso e.RowIndex >= 0 Then
+            Dim confirmDelete = MessageBox.Show("Are you sure you want to remove this income record?", "Confirm Removal", MessageBoxButtons.YesNo)
 
             If confirmDelete = DialogResult.Yes Then
                 Dim incomeID As Integer = Convert.ToInt32(incomeDataView.Rows(e.RowIndex).Cells("income_id").Value)
@@ -95,13 +95,13 @@ Public Class IncomeListForm
                     cmd.ExecuteNonQuery()
                     connector.connect.Close()
 
-                    MessageBox.Show("Income record deleted.")
+                    MessageBox.Show("Income record removed.")
                     ' Refresh list
                     dashboard.loadIncomeListForm()
                     dashboard.prepareQueryThenRefresh()
                 Catch ex As Exception
                     connector.connect.Close()
-                    MessageBox.Show("Failed to delete record: " & ex.Message)
+                    MessageBox.Show("Failed to remove record: " & ex.Message)
                 End Try
             End If
         End If
@@ -213,7 +213,7 @@ Public Class IncomeListForm
 
             If (selectedItem = "Day") Then
                 Dim day As String = dayForm.dayPicker.Text
-                incomeQuery = "SELECT income.income_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+                incomeQuery = "SELECT income.income_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added'
                         FROM income LEFT JOIN category ON category.category_id = income.category_id 
                         WHERE income.user_id = " & userID & " AND income.category_date = '" & day & "' 
                         AND income.category_id = " & categoryID & " ORDER BY income.category_date;"
@@ -232,7 +232,7 @@ Public Class IncomeListForm
                 Dim weekStart As String = startDate.ToString("yyyy-MM-dd")
                 Dim weekEnd As String = endDate.ToString("yyyy-MM-dd")
 
-                incomeQuery = "SELECT income.income_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+                incomeQuery = "SELECT income.income_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added'
                         FROM income LEFT JOIN category ON category.category_id = income.category_id 
                         WHERE income.user_id = " & userID & " AND income.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "' 
                         AND income.category_id = " & categoryID & " ORDER BY income.category_date;"
@@ -241,7 +241,7 @@ Public Class IncomeListForm
                 Dim month As String = monthForm.monthPicker.Value.ToString("MM")
                 Dim year As String = monthForm.monthPicker.Value.ToString("yyyy")
 
-                incomeQuery = "SELECT income.income_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+                incomeQuery = "SELECT income.income_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added' 
                         FROM income LEFT JOIN category ON category.category_id = income.category_id 
                         WHERE income.user_id = " & userID & " AND MONTH(income.category_date) = " & month & " 
                         AND YEAR(income.category_date) = " & year & " 
@@ -249,7 +249,7 @@ Public Class IncomeListForm
 
             ElseIf (selectedItem = "Year") Then
                 Dim year As String = yearForm.yearPicker.Text
-                incomeQuery = "SELECT income.income_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+                incomeQuery = "SELECT income.income_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added' 
                         FROM income LEFT JOIN category ON category.category_id = income.category_id 
                         WHERE income.user_id = " & userID & " AND YEAR(income.category_date) = " & year & " 
                         AND income.category_id = " & categoryID & " ORDER BY income.category_date;"
@@ -279,11 +279,11 @@ Public Class IncomeListForm
             End If
 
             ' Add Delete button column if not already added
-            If Not incomeDataView.Columns.Contains("Delete") Then
+            If Not incomeDataView.Columns.Contains("Remove") Then
                 Dim deleteButton As New DataGridViewButtonColumn()
-                deleteButton.Name = "Delete"
-                deleteButton.HeaderText = "Delete"
-                deleteButton.Text = "Delete"
+                deleteButton.Name = "Remove"
+                deleteButton.HeaderText = "Remove"
+                deleteButton.Text = "Remove"
                 deleteButton.UseColumnTextForButtonValue = True
                 incomeDataView.Columns.Add(deleteButton)
             End If

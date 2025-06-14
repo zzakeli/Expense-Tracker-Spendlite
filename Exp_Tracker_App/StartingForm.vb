@@ -254,7 +254,7 @@ Public Class StartingForm
             .Title = "Financial Breakdown",
             .TitleFont = "Roboto Condensed",
             .TitleFontSize = 26,
-            .TitleColor = OxyColors.SteelBlue,
+            .TitleColor = OxyColors.SteelBlue
         }
 
         'Dim legend As New Legend() With {

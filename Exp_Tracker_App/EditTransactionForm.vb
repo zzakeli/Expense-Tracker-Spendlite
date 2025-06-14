@@ -193,4 +193,5 @@ Public Class EditTransactionForm
     Private Sub cancelButton_Click(sender As Object, e As EventArgs) Handles cancelButton.Click
         Me.Visible = False
     End Sub
+
 End Class

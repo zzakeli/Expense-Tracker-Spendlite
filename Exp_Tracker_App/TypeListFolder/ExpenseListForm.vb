@@ -90,8 +90,8 @@ Public Class ExpenseListForm
             editTransactionForm.Visible = True
         End If
 
-        If e.ColumnIndex = expenseDataView.Columns("Delete").Index AndAlso e.RowIndex >= 0 Then
-            Dim confirmDelete = MessageBox.Show("Are you sure you want to delete this expense record?", "Confirm Delete", MessageBoxButtons.YesNo)
+        If e.ColumnIndex = expenseDataView.Columns("Remove").Index AndAlso e.RowIndex >= 0 Then
+            Dim confirmDelete = MessageBox.Show("Are you sure you want to remove this expense record?", "Confirm Removal", MessageBoxButtons.YesNo)
 
             If confirmDelete = DialogResult.Yes Then
                 Dim expenseID As Integer = Convert.ToInt32(expenseDataView.Rows(e.RowIndex).Cells("expense_id").Value)
@@ -104,13 +104,13 @@ Public Class ExpenseListForm
                     cmd.ExecuteNonQuery()
                     connector.connect.Close()
 
-                    MessageBox.Show("Expense record deleted.")
+                    MessageBox.Show("Expense record removed.")
                     ' Refresh list
                     dashboard.loadExpenseListForm()
                     dashboard.prepareQueryThenRefresh()
                 Catch ex As Exception
                     connector.connect.Close()
-                    MessageBox.Show("Failed to delete record: " & ex.Message)
+                    MessageBox.Show("Failed to remove record: " & ex.Message)
                 End Try
             End If
         End If
@@ -238,7 +238,7 @@ Public Class ExpenseListForm
 
             If (selectedItem = "Day") Then
                 Dim day As String = dayForm.dayPicker.Text
-                expenseQuery = "SELECT expense.expense_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+                expenseQuery = "SELECT expense.expense_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added'
                         FROM expense LEFT JOIN category ON category.category_id = expense.category_id 
                         WHERE expense.user_id = " & userID & " AND expense.category_date = '" & day & "' 
                         AND expense.category_id = " & categoryID & " ORDER BY expense.category_date;"
@@ -257,7 +257,7 @@ Public Class ExpenseListForm
                 Dim weekStart As String = startDate.ToString("yyyy-MM-dd")
                 Dim weekEnd As String = endDate.ToString("yyyy-MM-dd")
 
-                expenseQuery = "SELECT expense.expense_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+                expenseQuery = "SELECT expense.expense_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added'
                         FROM expense LEFT JOIN category ON category.category_id = expense.category_id 
                         WHERE expense.user_id = " & userID & " AND expense.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "' 
                         AND expense.category_id = " & categoryID & " ORDER BY expense.category_date;"
@@ -266,7 +266,7 @@ Public Class ExpenseListForm
                 Dim month As String = monthForm.monthPicker.Value.ToString("MM")
                 Dim year As String = monthForm.monthPicker.Value.ToString("yyyy")
 
-                expenseQuery = "SELECT expense.expense_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+                expenseQuery = "SELECT expense.expense_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added' 
                         FROM expense LEFT JOIN category ON category.category_id = expense.category_id 
                         WHERE expense.user_id = " & userID & " AND MONTH(expense.category_date) = " & month & " 
                         AND YEAR(expense.category_date) = " & year & " 
@@ -274,7 +274,7 @@ Public Class ExpenseListForm
 
             ElseIf (selectedItem = "Year") Then
                 Dim year As String = yearForm.yearPicker.Text
-                expenseQuery = "SELECT expense.expense_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+                expenseQuery = "SELECT expense.expense_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added' 
                         FROM expense LEFT JOIN category ON category.category_id = expense.category_id 
                         WHERE expense.user_id = " & userID & " AND YEAR(expense.category_date) = " & year & " 
                         AND expense.category_id = " & categoryID & " ORDER BY expense.category_date;"
@@ -304,11 +304,11 @@ Public Class ExpenseListForm
             End If
 
             ' Add Delete button column if not already added
-            If Not expenseDataView.Columns.Contains("Delete") Then
+            If Not expenseDataView.Columns.Contains("Remove") Then
                 Dim deleteButton As New DataGridViewButtonColumn()
-                deleteButton.Name = "Delete"
-                deleteButton.HeaderText = "Delete"
-                deleteButton.Text = "Delete"
+                deleteButton.Name = "Remove"
+                deleteButton.HeaderText = "Remove"
+                deleteButton.Text = "Remove"
                 deleteButton.UseColumnTextForButtonValue = True
                 expenseDataView.Columns.Add(deleteButton)
             End If

@@ -34,60 +34,70 @@ Partial Class EditTransactionForm
         ' editTransactionLabel
         ' 
         editTransactionLabel.AutoSize = True
-        editTransactionLabel.Location = New Point(102, 29)
+        editTransactionLabel.Font = New Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        editTransactionLabel.Location = New Point(74, 29)
         editTransactionLabel.Name = "editTransactionLabel"
-        editTransactionLabel.Size = New Size(114, 20)
+        editTransactionLabel.Size = New Size(209, 37)
         editTransactionLabel.TabIndex = 1
         editTransactionLabel.Text = "Edit Transaction"
         ' 
         ' typeLabel
         ' 
         typeLabel.AutoSize = True
-        typeLabel.Location = New Point(49, 67)
+        typeLabel.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        typeLabel.Location = New Point(142, 75)
         typeLabel.Name = "typeLabel"
-        typeLabel.Size = New Size(0, 20)
+        typeLabel.Size = New Size(55, 28)
         typeLabel.TabIndex = 2
+        typeLabel.Text = "Type"
         ' 
         ' categoryBox
         ' 
         categoryBox.DropDownStyle = ComboBoxStyle.DropDownList
+        categoryBox.FlatStyle = FlatStyle.Flat
+        categoryBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         categoryBox.FormattingEnabled = True
-        categoryBox.Location = New Point(84, 127)
+        categoryBox.Location = New Point(87, 158)
         categoryBox.Name = "categoryBox"
-        categoryBox.Size = New Size(151, 28)
+        categoryBox.Size = New Size(180, 32)
         categoryBox.TabIndex = 3
         ' 
         ' amountBox
         ' 
-        amountBox.Location = New Point(84, 94)
+        amountBox.BorderStyle = BorderStyle.None
+        amountBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        amountBox.Location = New Point(87, 120)
         amountBox.Name = "amountBox"
         amountBox.PlaceholderText = "Amount"
-        amountBox.Size = New Size(151, 27)
+        amountBox.Size = New Size(180, 25)
         amountBox.TabIndex = 4
         ' 
         ' datePicker
         ' 
         datePicker.CustomFormat = "yyyy-MM-dd"
+        datePicker.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         datePicker.Format = DateTimePickerFormat.Custom
-        datePicker.Location = New Point(84, 161)
+        datePicker.Location = New Point(87, 202)
         datePicker.Name = "datePicker"
-        datePicker.Size = New Size(151, 27)
+        datePicker.Size = New Size(180, 32)
         datePicker.TabIndex = 5
         ' 
         ' saveButton
         ' 
-        saveButton.Location = New Point(49, 206)
+        saveButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        saveButton.Location = New Point(50, 261)
         saveButton.Name = "saveButton"
-        saveButton.Size = New Size(94, 29)
+        saveButton.Size = New Size(121, 39)
         saveButton.TabIndex = 6
         saveButton.Text = "Save"
         saveButton.UseVisualStyleBackColor = True
         ' 
         ' cancelButton
         ' 
-        cancelButton.Location = New Point(164, 206)
+        cancelButton.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cancelButton.Location = New Point(181, 261)
         cancelButton.Name = "cancelButton"
-        cancelButton.Size = New Size(94, 29)
+        cancelButton.Size = New Size(121, 39)
         cancelButton.TabIndex = 7
         cancelButton.Text = "Cancel"
         cancelButton.UseVisualStyleBackColor = True
@@ -96,7 +106,8 @@ Partial Class EditTransactionForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(326, 268)
+        BackColor = Color.FromArgb(CByte(141), CByte(188), CByte(199))
+        ClientSize = New Size(359, 363)
         Controls.Add(cancelButton)
         Controls.Add(saveButton)
         Controls.Add(datePicker)

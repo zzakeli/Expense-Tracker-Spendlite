@@ -81,8 +81,8 @@ Public Class SavingsListForm
             editTransactionForm.Visible = True
         End If
 
-        If e.ColumnIndex = savingsDataView.Columns("Delete").Index AndAlso e.RowIndex >= 0 Then
-            Dim confirmDelete = MessageBox.Show("Are you sure you want to delete this savings record?", "Confirm Delete", MessageBoxButtons.YesNo)
+        If e.ColumnIndex = savingsDataView.Columns("Remove").Index AndAlso e.RowIndex >= 0 Then
+            Dim confirmDelete = MessageBox.Show("Are you sure you want to remove this savings record?", "Confirm Removal", MessageBoxButtons.YesNo)
 
             If confirmDelete = DialogResult.Yes Then
                 Dim savingsID As Integer = Convert.ToInt32(savingsDataView.Rows(e.RowIndex).Cells("savings_id").Value)
@@ -95,13 +95,13 @@ Public Class SavingsListForm
                     cmd.ExecuteNonQuery()
                     connector.connect.Close()
 
-                    MessageBox.Show("Savings record deleted.")
+                    MessageBox.Show("Savings record removed.")
                     ' Refresh list
                     dashboard.loadSavingsListForm()
                     dashboard.prepareQueryThenRefresh()
                 Catch ex As Exception
                     connector.connect.Close()
-                    MessageBox.Show("Failed to delete record: " & ex.Message)
+                    MessageBox.Show("Failed to remove record: " & ex.Message)
                 End Try
             End If
         End If
@@ -213,7 +213,7 @@ Public Class SavingsListForm
 
             If (selectedItem = "Day") Then
                 Dim day As String = dayForm.dayPicker.Text
-                savingsQuery = "SELECT savings.savings_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+                savingsQuery = "SELECT savings.savings_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added'
                         FROM savings LEFT JOIN category ON category.category_id = savings.category_id 
                         WHERE savings.user_id = " & userID & " AND savings.category_date = '" & day & "' 
                         AND savings.category_id = " & categoryID & " ORDER BY savings.category_date;"
@@ -232,7 +232,7 @@ Public Class SavingsListForm
                 Dim weekStart As String = startDate.ToString("yyyy-MM-dd")
                 Dim weekEnd As String = endDate.ToString("yyyy-MM-dd")
 
-                savingsQuery = "SELECT savings.savings_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added'
+                savingsQuery = "SELECT savings.savings_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added'
                         FROM savings LEFT JOIN category ON category.category_id = savings.category_id 
                         WHERE savings.user_id = " & userID & " AND savings.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "' 
                         AND savings.category_id = " & categoryID & " ORDER BY savings.category_date;"
@@ -241,7 +241,7 @@ Public Class SavingsListForm
                 Dim month As String = monthForm.monthPicker.Value.ToString("MM")
                 Dim year As String = monthForm.monthPicker.Value.ToString("yyyy")
 
-                savingsQuery = "SELECT savings.savings_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+                savingsQuery = "SELECT savings.savings_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added' 
                         FROM savings LEFT JOIN category ON category.category_id = savings.category_id 
                         WHERE savings.user_id = " & userID & " AND MONTH(savings.category_date) = " & month & " 
                         AND YEAR(savings.category_date) = " & year & " 
@@ -249,7 +249,7 @@ Public Class SavingsListForm
 
             ElseIf (selectedItem = "Year") Then
                 Dim year As String = yearForm.yearPicker.Text
-                savingsQuery = "SELECT savings.savings_id, category.category_name AS category, amount AS Amount, category_date AS 'Date Added' 
+                savingsQuery = "SELECT savings.savings_id, CONCAT(UCASE(LEFT(category.category_name, 1)), LCASE(SUBSTRING(category.category_name, 2))) AS category, amount AS Amount, category_date AS 'Date Added' 
                         FROM savings LEFT JOIN category ON category.category_id = savings.category_id 
                         WHERE savings.user_id = " & userID & " AND YEAR(savings.category_date) = " & year & " 
                         AND savings.category_id = " & categoryID & " ORDER BY savings.category_date;"
@@ -279,11 +279,11 @@ Public Class SavingsListForm
             End If
 
             ' Add Delete button column if not already added
-            If Not savingsDataView.Columns.Contains("Delete") Then
+            If Not savingsDataView.Columns.Contains("Remove") Then
                 Dim deleteButton As New DataGridViewButtonColumn()
-                deleteButton.Name = "Delete"
-                deleteButton.HeaderText = "Delete"
-                deleteButton.Text = "Delete"
+                deleteButton.Name = "Remove"
+                deleteButton.HeaderText = "Remove"
+                deleteButton.Text = "Remove"
                 deleteButton.UseColumnTextForButtonValue = True
                 savingsDataView.Columns.Add(deleteButton)
             End If

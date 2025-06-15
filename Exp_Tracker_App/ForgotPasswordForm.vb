@@ -1,7 +1,21 @@
 ﻿Imports System.Drawing.Drawing2D
 Imports System.Text.RegularExpressions
+Imports MySql.Data.MySqlClient
 
 Public Class ForgotPasswordForm
+    Private connector As New DatabaseConnector
+
+    Private forgotPasswordOTPForm As ForgotPasswordOTPForm
+    Private mailer As Mail
+    Public Sub New(forgotPasswordOTPForm As ForgotPasswordOTPForm, mailer As Mail)
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Me.forgotPasswordOTPForm = forgotPasswordOTPForm
+        Me.mailer = mailer
+    End Sub
     Private Sub emailBox_TextChanged(sender As Object, e As EventArgs) Handles emailBox.TextChanged
         If (emailBox.Text = "" Or Not IsValidEmail(emailBox.Text)) Then
             emailBox.BackColor = Color.LightPink
@@ -34,12 +48,71 @@ Public Class ForgotPasswordForm
     End Sub
 
     Private Sub verifyButton_Click(sender As Object, e As EventArgs) Handles verifyButton.Click
-        emailBoxPanel.Visible = False
-        verifyButton.Visible = False
+        'emailBoxPanel.Visible = False
+        'verifyButton.Visible = False
+        Dim email As String = emailBox.Text.ToString().Trim()
+
+        If (email = "") Then
+            MessageBox.Show("Please enter your email address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            emailBox.BackColor = Color.LightPink
+            emailBoxPanel.BackColor = Color.LightPink
+            Return
+        Else
+            emailBox.BackColor = Color.White
+            emailBoxPanel.BackColor = Color.White
+        End If
+        If Not IsValidEmail(email) Then
+            MessageBox.Show("Please enter a valid email address.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            emailBox.BackColor = Color.LightPink
+            emailBoxPanel.BackColor = Color.LightPink
+            Return
+        Else
+            emailBox.BackColor = Color.White
+            emailBoxPanel.BackColor = Color.White
+        End If
+
+        Try
+            connector.connect.Open()
+            connector.query = "SELECT COUNT(*) AS existing_email FROM user WHERE email = '" & email & "';"
+            connector.command.CommandText = connector.query
+            connector.command.Connection = connector.connect
+            connector.reader = connector.command.ExecuteReader()
+
+            If connector.reader.Read() Then
+                Dim existingEmailCount As Integer = Convert.ToInt32(connector.reader("existing_email"))
+                If existingEmailCount = 0 Then
+                    MessageBox.Show("This email address is not registered.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    emailBox.BackColor = Color.LightPink
+                    emailBoxPanel.BackColor = Color.LightPink
+                    connector.connect.Close()
+                    Return
+                Else
+                    emailBox.BackColor = Color.White
+                    emailBoxPanel.BackColor = Color.White
+                End If
+            End If
+
+            connector.connect.Close()
+        Catch ex As MySqlException
+            connector.connect.Close()
+        End Try
+
+        mailer.resetMe(email)
+        forgotPasswordOTPForm.setEmail(email)
+
+        emailBox.Text = ""
+        emailBoxPanel.BackColor = Color.White
+        emailBox.BackColor = Color.White
+
+        MessageBox.Show("Password reset verification code was sent to your email.")
+        Me.Visible = False
+        forgotPasswordOTPForm.Visible = True
     End Sub
 
     Private Sub cancelButton_Click(sender As Object, e As EventArgs) Handles cancelButton.Click
         emailBox.Text = ""
+        emailBoxPanel.BackColor = Color.White
+        emailBox.BackColor = Color.White
         Me.Visible = False
     End Sub
 End Class

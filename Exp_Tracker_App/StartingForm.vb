@@ -14,6 +14,8 @@ Public Class StartingForm
     Private verifyOTPForm As VerifyOTPForm
     Private targetX As Integer = 0
     Private forgotPasswordForm As ForgotPasswordForm
+    Private forgotPasswordOTPForm As ForgotPasswordOTPForm
+    Private passwordResetForm As PasswordResetForm
     Private dashboard As Dashboard
     Private monthForm As MonthForm
 
@@ -565,9 +567,13 @@ Public Class StartingForm
                                                confirmPasswordTextNotifier, signUpButton, mailer,
                                                usernameSignUpBoxPanel, emailSignUpBoxPanel,
                                                passwordSignUpBoxPanel, confirmPasswordSignUpBoxPanel, switchToLoginButton)
-        forgotPasswordForm = New ForgotPasswordForm()
+        passwordResetForm = New PasswordResetForm
+        forgotPasswordOTPForm = New ForgotPasswordOTPForm(mailer, passwordResetForm)
+        forgotPasswordForm = New ForgotPasswordForm(forgotPasswordOTPForm, mailer)
         makeVOTPFChild()
         makeFPFChild()
+        makeFPOTPFChild()
+        makePRFChild()
     End Sub
 
     Private Sub roundControlCorners(ctrl As Control, radius As Integer)
@@ -619,6 +625,19 @@ Public Class StartingForm
         verifyOTPForm.Location = New Point(x, y)
     End Sub
 
+    Private Sub makeFPOTPFChild()
+        forgotPasswordOTPForm.TopLevel = False
+        forgotPasswordOTPForm.Parent = Me
+        CenterFPOTPF()
+        forgotPasswordOTPForm.BringToFront()
+    End Sub
+
+    Private Sub CenterFPOTPF()
+        Dim x As Integer = ((Me.ClientSize.Width) - forgotPasswordOTPForm.Width)
+        Dim y As Integer = (Me.ClientSize.Height - forgotPasswordOTPForm.Height) \ 2
+        forgotPasswordOTPForm.Location = New Point(x - 60, y)
+    End Sub
+
     Private Sub makeFPFChild()
         forgotPasswordForm.TopLevel = False
         forgotPasswordForm.Parent = Me
@@ -630,6 +649,19 @@ Public Class StartingForm
         Dim x As Integer = ((Me.ClientSize.Width) - forgotPasswordForm.Width)
         Dim y As Integer = (Me.ClientSize.Height - forgotPasswordForm.Height) \ 2
         forgotPasswordForm.Location = New Point(x - 60, y)
+    End Sub
+
+    Private Sub makePRFChild()
+        passwordResetForm.TopLevel = False
+        passwordResetForm.Parent = Me
+        CenterPRF()
+        passwordResetForm.BringToFront()
+    End Sub
+
+    Private Sub CenterPRF()
+        Dim x As Integer = ((Me.ClientSize.Width) - passwordResetForm.Width)
+        Dim y As Integer = (Me.ClientSize.Height - passwordResetForm.Height) \ 2
+        passwordResetForm.Location = New Point(x - 60, y)
     End Sub
 
     'Remove this before finalization

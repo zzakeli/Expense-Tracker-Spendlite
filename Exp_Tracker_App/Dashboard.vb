@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Drawing2D
 Imports MySql.Data.MySqlClient
-Imports Mysqlx.Crud
+Imports System.IO
 Imports OxyPlot
 Imports OxyPlot.Series
 Imports OxyPlot.WindowsForms
@@ -83,7 +83,7 @@ Public Class Dashboard
     End Sub
 
     Private Sub curveCorners()
-        Dim radius As Integer = 50 ' change this value to increase/decrease the curve
+        Dim radius As Integer = 50
         Dim bounds As New Rectangle(0, 0, Me.Width, Me.Height)
         Dim path As New GraphicsPath()
 
@@ -163,8 +163,8 @@ Public Class Dashboard
 
             ' Extract the dates using Split
             Dim parts() As String = weekString.Split("-"c)
-            Dim startDateString As String = parts(1).Trim() & "/" & currentYear
-            Dim endDateString As String = parts(2).Trim() & "/" & currentYear
+            Dim startDateString As String = parts(0).Trim() & "/" & currentYear
+            Dim endDateString As String = parts(1).Trim() & "/" & currentYear
 
             ' Convert to actual Date objects
             Dim startDate As Date = Date.ParseExact(startDateString, "MM/dd/yyyy", Nothing)
@@ -405,11 +405,11 @@ Public Class Dashboard
                 'Dim categoryDate As DateTime = DateTime.Parse(connector.reader("category_date").ToString())
 
                 If (incomeCategory.Contains(category)) Then
-                    pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.LimeGreen})
+                    pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.LightGreen})
                 ElseIf (expenseCategory.Contains(category)) Then
                     pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.Pink})
                 ElseIf (savingsCategory.Contains(category)) Then
-                    pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.Yellow})
+                    pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.LightYellow})
                 End If
             End While
 
@@ -822,8 +822,8 @@ Public Class Dashboard
             Dim currentYear As String = Date.Now.Year.ToString()
 
             Dim parts() As String = weekString.Split("-"c)
-            Dim startDateString As String = parts(1).Trim() & "/" & currentYear
-            Dim endDateString As String = parts(2).Trim() & "/" & currentYear
+            Dim startDateString As String = parts(0).Trim() & "/" & currentYear
+            Dim endDateString As String = parts(1).Trim() & "/" & currentYear
 
             Dim startDate As Date = Date.ParseExact(startDateString, "MM/dd/yyyy", Nothing)
             Dim endDate As Date = Date.ParseExact(endDateString, "MM/dd/yyyy", Nothing)
@@ -914,8 +914,8 @@ Public Class Dashboard
             Dim currentYear As String = Date.Now.Year.ToString()
 
             Dim parts() As String = weekString.Split("-"c)
-            Dim startDateString As String = parts(1).Trim() & "/" & currentYear
-            Dim endDateString As String = parts(2).Trim() & "/" & currentYear
+            Dim startDateString As String = parts(0).Trim() & "/" & currentYear
+            Dim endDateString As String = parts(1).Trim() & "/" & currentYear
 
             Dim startDate As Date = Date.ParseExact(startDateString, "MM/dd/yyyy", Nothing)
             Dim endDate As Date = Date.ParseExact(endDateString, "MM/dd/yyyy", Nothing)
@@ -1006,8 +1006,8 @@ Public Class Dashboard
             Dim currentYear As String = Date.Now.Year.ToString()
 
             Dim parts() As String = weekString.Split("-"c)
-            Dim startDateString As String = parts(1).Trim() & "/" & currentYear
-            Dim endDateString As String = parts(2).Trim() & "/" & currentYear
+            Dim startDateString As String = parts(0).Trim() & "/" & currentYear
+            Dim endDateString As String = parts(1).Trim() & "/" & currentYear
 
             Dim startDate As Date = Date.ParseExact(startDateString, "MM/dd/yyyy", Nothing)
             Dim endDate As Date = Date.ParseExact(endDateString, "MM/dd/yyyy", Nothing)
@@ -1199,4 +1199,181 @@ Public Class Dashboard
 
         p.Region = New Region(path)
     End Sub
+
+    Private Sub exportButton_Click(sender As Object, e As EventArgs) Handles exportButton.Click
+
+        'SELECT type.type_name, category.category_name, income.amount, income.category_date
+        'FROM income
+        'LEFT JOIN category ON income.category_id = category.category_id
+        'LEFT JOIN type ON category.type_id = type.type_id
+        'UNION ALL
+        'SELECT type.type_name, category.category_name, expense.amount, expense.category_date
+        'FROM expense
+        'LEFT JOIN category ON expense.category_id = category.category_id
+        'LEFT JOIN type ON category.type_id = type.type_id
+        'UNION ALL
+        'SELECT type.type_name, category.category_name, savings.amount, savings.category_date
+        'FROM savings
+        'LEFT JOIN category ON savings.category_id = category.category_id
+        'LEFT JOIN type ON category.type_id = type.type_id;
+
+        Dim dataGridView As New DataGridView
+
+        Dim saveFileDialog As New SaveFileDialog()
+        saveFileDialog.Filter = "CSV files (*.csv)|*.csv"
+        saveFileDialog.Title = "Save as CSV"
+
+        'userID = getUserID(username)
+        Dim query As String = ""
+
+        If (periodMenu.Text = "Day") Then
+            Dim day As String = dayForm.dayPicker.Text.ToString()
+            query = "SELECT type.type_name, category.category_name, income.amount, income.category_date 
+                     FROM income 
+                     LEFT JOIN category ON income.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE income.user_id = " & userID & " AND income.category_date = '" & day & "' 
+                     UNION ALL 
+                     SELECT type.type_name, category.category_name, expense.amount, expense.category_date 
+                     FROM expense 
+                     LEFT JOIN category ON expense.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE expense.user_id = " & userID & " AND expense.category_date = '" & day & "' 
+                     UNION ALL 
+                     SELECT type.type_name, category.category_name, savings.amount, savings.category_date 
+                     FROM savings 
+                     LEFT JOIN category ON savings.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE savings.user_id = " & userID & " AND savings.category_date = '" & day & "';"
+
+        ElseIf (periodMenu.Text = "Week") Then
+            Dim weekString As String = weekForm.weekComboBox.SelectedItem.ToString()
+            Dim currentYear As String = Date.Now.Year.ToString()
+
+            Dim parts() As String = weekString.Split("-"c)
+            Dim startDateString As String = parts(0).Trim() & "/" & currentYear
+            Dim endDateString As String = parts(1).Trim() & "/" & currentYear
+
+            Dim startDate As Date = Date.ParseExact(startDateString, "MM/dd/yyyy", Nothing)
+            Dim endDate As Date = Date.ParseExact(endDateString, "MM/dd/yyyy", Nothing)
+
+            Dim weekStart As String = startDate.ToString("yyyy-MM-dd")
+            Dim weekEnd As String = endDate.ToString("yyyy-MM-dd")
+
+            query = "SELECT type.type_name, category.category_name, income.amount, income.category_date 
+                     FROM income 
+                     LEFT JOIN category ON income.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE income.user_id = " & userID & " AND income.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "' 
+                     UNION ALL 
+                     SELECT type.type_name, category.category_name, expense.amount, expense.category_date 
+                     FROM expense 
+                     LEFT JOIN category ON expense.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE expense.user_id = " & userID & " AND expense.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "' 
+                     UNION ALL 
+                     SELECT type.type_name, category.category_name, savings.amount, savings.category_date 
+                     FROM savings 
+                     LEFT JOIN category ON savings.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE savings.user_id = " & userID & " AND savings.category_date BETWEEN '" & weekStart & "' AND '" & weekEnd & "';"
+
+        ElseIf (periodMenu.Text = "Month") Then
+            Dim month As String = monthForm.monthPicker.Value.ToString("MM")
+            Dim year As String = monthForm.monthPicker.Value.ToString("yyyy")
+
+            query = "SELECT type.type_name, category.category_name, income.amount, income.category_date 
+                     FROM income 
+                     LEFT JOIN category ON income.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE income.user_id = " & userID & " AND MONTH(income.category_date) = " & month & " AND YEAR(income.category_date) = " & year & " 
+                     UNION ALL 
+                     SELECT type.type_name, category.category_name, expense.amount, expense.category_date 
+                     FROM expense 
+                     LEFT JOIN category ON expense.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE expense.user_id = " & userID & " AND MONTH(expense.category_date) = " & month & " AND YEAR(expense.category_date) = " & year & " 
+                     UNION ALL 
+                     SELECT type.type_name, category.category_name, savings.amount, savings.category_date 
+                     FROM savings 
+                     LEFT JOIN category ON savings.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE savings.user_id = " & userID & " AND MONTH(savings.category_date) = " & month & " AND YEAR(savings.category_date) = " & year & ";"
+
+        ElseIf (periodMenu.Text = "Year") Then
+            Dim year As String = yearForm.yearPicker.Text
+
+            query = "SELECT type.type_name, category.category_name, income.amount, income.category_date 
+                     FROM income 
+                     LEFT JOIN category ON income.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE income.user_id = " & userID & " AND YEAR(income.category_date) = " & year & " 
+                     UNION ALL 
+                     SELECT type.type_name, category.category_name, expense.amount, expense.category_date 
+                     FROM expense 
+                     LEFT JOIN category ON expense.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE expense.user_id = " & userID & " AND YEAR(expense.category_date) = " & year & " 
+                     UNION ALL 
+                     SELECT type.type_name, category.category_name, savings.amount, savings.category_date 
+                     FROM savings 
+                     LEFT JOIN category ON savings.category_id = category.category_id 
+                     LEFT JOIN type ON category.type_id = type.type_id 
+                     WHERE savings.user_id = " & userID & " AND YEAR(savings.category_date) = " & year & ";"
+
+        End If
+
+        Dim dataTable As New DataTable
+        Try
+            connector.connect.Open()
+            connector.command.Connection = connector.connect
+            connector.command.CommandText = query
+            connector.dataAdapter.SelectCommand = connector.command
+            connector.dataAdapter.Fill(dataTable)
+            connector.connect.Close()
+        Catch ex As MySqlException
+            connector.connect.Close()
+        End Try
+
+        If saveFileDialog.ShowDialog() = DialogResult.OK Then
+            exportToCSV(dataTable, saveFileDialog.FileName)
+        End If
+
+    End Sub
+
+    Private Sub exportToCSV(dt As DataTable, filePath As String)
+        Try
+            Using writer As New StreamWriter(filePath)
+
+                For i As Integer = 0 To dt.Columns.Count - 1
+                    writer.Write(dt.Columns(i).ColumnName)
+                    If i < dt.Columns.Count - 1 Then writer.Write(",")
+                Next
+                writer.WriteLine()
+
+                For Each row As DataRow In dt.Rows
+                    For i As Integer = 0 To dt.Columns.Count - 1
+                        Dim value As String
+
+                        If TypeOf row(i) Is DateTime Then
+                            value = CType(row(i), DateTime).ToString("MM/dd/yyyy")
+                        Else
+                            value = row(i).ToString()
+                        End If
+
+                        writer.Write("""" & value.Replace("""", """""") & """")
+                        If i < dt.Columns.Count - 1 Then writer.Write(",")
+                    Next
+                    writer.WriteLine()
+                Next
+            End Using
+
+            MessageBox.Show("CSV exported successfully.")
+
+        Catch ex As Exception
+            MessageBox.Show("Export failed: " & ex.Message)
+        End Try
+    End Sub
+
+
 End Class

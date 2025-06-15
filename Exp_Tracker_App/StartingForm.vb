@@ -13,7 +13,7 @@ Public Class StartingForm
     Private mailer As New Mail
     Private verifyOTPForm As VerifyOTPForm
     Private targetX As Integer = 0
-
+    Private forgotPasswordForm As ForgotPasswordForm
     Private dashboard As Dashboard
     Private monthForm As MonthForm
 
@@ -247,6 +247,7 @@ Public Class StartingForm
 
         ' Make plot fill the panel
         plotView.Dock = DockStyle.Fill
+        dashboard.chartContainer.Controls.Clear()
         dashboard.chartContainer.Controls.Add(plotView)
 
         ' Create a PlotModel
@@ -564,7 +565,9 @@ Public Class StartingForm
                                                confirmPasswordTextNotifier, signUpButton, mailer,
                                                usernameSignUpBoxPanel, emailSignUpBoxPanel,
                                                passwordSignUpBoxPanel, confirmPasswordSignUpBoxPanel, switchToLoginButton)
+        forgotPasswordForm = New ForgotPasswordForm()
         makeVOTPFChild()
+        makeFPFChild()
     End Sub
 
     Private Sub roundControlCorners(ctrl As Control, radius As Integer)
@@ -614,6 +617,19 @@ Public Class StartingForm
         Dim x As Integer = ((Me.ClientSize.Width \ 2) - verifyOTPForm.Width) \ 2
         Dim y As Integer = (Me.ClientSize.Height - verifyOTPForm.Height) \ 2
         verifyOTPForm.Location = New Point(x, y)
+    End Sub
+
+    Private Sub makeFPFChild()
+        forgotPasswordForm.TopLevel = False
+        forgotPasswordForm.Parent = Me
+        CenterFPF()
+        forgotPasswordForm.BringToFront()
+    End Sub
+
+    Private Sub CenterFPF()
+        Dim x As Integer = ((Me.ClientSize.Width) - forgotPasswordForm.Width)
+        Dim y As Integer = (Me.ClientSize.Height - forgotPasswordForm.Height) \ 2
+        forgotPasswordForm.Location = New Point(x - 60, y)
     End Sub
 
     'Remove this before finalization
@@ -917,7 +933,7 @@ Public Class StartingForm
         End If
     End Sub
 
-    Private Sub forgotPassword_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
-
+    Private Sub forgotPassword_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles forgotPassword.LinkClicked
+        forgotPasswordForm.Visible = True
     End Sub
 End Class

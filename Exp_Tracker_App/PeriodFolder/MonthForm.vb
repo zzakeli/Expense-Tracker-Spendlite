@@ -11,9 +11,9 @@ Public Class MonthForm
         ' Add any initialization after the InitializeComponent() call.
         Me.dashboard = dashboard
     End Sub
-    Private Sub cancelButton_Click(sender As Object, e As EventArgs) Handles cancelButton.Click
-        Me.Visible = False
-    End Sub
+    'Private Sub cancelButton_Click(sender As Object, e As EventArgs) Handles cancelButton.Click
+    '    Me.Visible = False
+    'End Sub
 
     Private Sub okayButton_Click(sender As Object, e As EventArgs) Handles okayButton.Click
         dashboard.prepareQueryThenRefresh()
@@ -22,6 +22,19 @@ Public Class MonthForm
 
     Private Sub MonthForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         curveCorners()
+        roundControlCorners(selectMonthLabelPanel, 15)
+        roundControlCorners(monthPicker, 15)
+        roundControlCorners(okayButton, 40)
+    End Sub
+
+    Private Sub roundControlCorners(ctrl As Control, radius As Integer)
+        Dim path As New GraphicsPath()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(ctrl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(ctrl.Width - radius, ctrl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, ctrl.Height - radius, radius, radius, 90, 90)
+        path.CloseAllFigures()
+        ctrl.Region = New Region(path)
     End Sub
 
     Private Sub curveCorners()

@@ -40,10 +40,27 @@ Public Class EditTransactionForm
     End Sub
     Private Sub EditTransactionForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         curveCorners()
+        roundControlCorners(typeLabel, 15)
+        roundControlCorners(editTransactionLabelPanel, 15)
+        roundControlCorners(amountBoxPanel, 15)
+        roundControlCorners(categoryBox, 15)
+        roundControlCorners(datePicker, 15)
+        roundControlCorners(cancelButton, 40)
+        roundControlCorners(saveButton, 40)
+    End Sub
+
+    Private Sub roundControlCorners(ctrl As Control, radius As Integer)
+        Dim path As New GraphicsPath()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(ctrl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(ctrl.Width - radius, ctrl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, ctrl.Height - radius, radius, radius, 90, 90)
+        path.CloseAllFigures()
+        ctrl.Region = New Region(path)
     End Sub
 
     Private Sub curveCorners()
-        Dim radius As Integer = 50
+        Dim radius As Integer = 30
         Dim bounds As New Rectangle(0, 0, Me.Width, Me.Height)
         Dim path As New GraphicsPath()
 
@@ -194,4 +211,7 @@ Public Class EditTransactionForm
         Me.Visible = False
     End Sub
 
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles editTransactionLabelPanel.Paint
+
+    End Sub
 End Class

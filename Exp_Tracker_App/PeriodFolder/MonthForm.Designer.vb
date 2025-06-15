@@ -22,69 +22,76 @@ Partial Class MonthForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        cancelButton = New Button()
         okayButton = New Button()
         monthPicker = New DateTimePicker()
         selectMonthLabel = New Label()
+        selectMonthLabelPanel = New Panel()
+        selectMonthLabelPanel.SuspendLayout()
         SuspendLayout()
-        ' 
-        ' cancelButton
-        ' 
-        cancelButton.Location = New Point(251, 201)
-        cancelButton.Name = "cancelButton"
-        cancelButton.Size = New Size(94, 29)
-        cancelButton.TabIndex = 7
-        cancelButton.Text = "Cancel"
-        cancelButton.UseVisualStyleBackColor = True
         ' 
         ' okayButton
         ' 
-        okayButton.Location = New Point(104, 201)
+        okayButton.BackColor = SystemColors.Window
+        okayButton.FlatAppearance.BorderColor = SystemColors.Window
+        okayButton.FlatAppearance.BorderSize = 0
+        okayButton.FlatStyle = FlatStyle.Flat
+        okayButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        okayButton.Location = New Point(65, 174)
         okayButton.Name = "okayButton"
-        okayButton.Size = New Size(94, 29)
+        okayButton.Size = New Size(117, 39)
         okayButton.TabIndex = 6
         okayButton.Text = "Okay"
-        okayButton.UseVisualStyleBackColor = True
+        okayButton.UseVisualStyleBackColor = False
         ' 
         ' monthPicker
         ' 
         monthPicker.AllowDrop = True
         monthPicker.CustomFormat = "MMMM yyyy"
+        monthPicker.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         monthPicker.Format = DateTimePickerFormat.Custom
-        monthPicker.Location = New Point(104, 118)
+        monthPicker.Location = New Point(36, 122)
         monthPicker.Name = "monthPicker"
         monthPicker.ShowUpDown = True
-        monthPicker.Size = New Size(241, 27)
+        monthPicker.Size = New Size(170, 32)
         monthPicker.TabIndex = 5
         ' 
         ' selectMonthLabel
         ' 
         selectMonthLabel.AutoSize = True
-        selectMonthLabel.Location = New Point(176, 56)
+        selectMonthLabel.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        selectMonthLabel.Location = New Point(14, 7)
         selectMonthLabel.Name = "selectMonthLabel"
-        selectMonthLabel.Size = New Size(115, 20)
+        selectMonthLabel.Size = New Size(158, 28)
         selectMonthLabel.TabIndex = 4
         selectMonthLabel.Text = "SELECT MONTH"
+        ' 
+        ' selectMonthLabelPanel
+        ' 
+        selectMonthLabelPanel.BackColor = SystemColors.Window
+        selectMonthLabelPanel.Controls.Add(selectMonthLabel)
+        selectMonthLabelPanel.Location = New Point(30, 33)
+        selectMonthLabelPanel.Name = "selectMonthLabelPanel"
+        selectMonthLabelPanel.Size = New Size(184, 42)
+        selectMonthLabelPanel.TabIndex = 7
         ' 
         ' MonthForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = SystemColors.ButtonFace
-        ClientSize = New Size(448, 286)
-        Controls.Add(cancelButton)
+        BackColor = Color.FromArgb(CByte(98), CByte(129), CByte(181))
+        ClientSize = New Size(245, 253)
         Controls.Add(okayButton)
         Controls.Add(monthPicker)
-        Controls.Add(selectMonthLabel)
+        Controls.Add(selectMonthLabelPanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "MonthForm"
         Text = "MonthForm"
+        selectMonthLabelPanel.ResumeLayout(False)
+        selectMonthLabelPanel.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
-
-    Friend WithEvents cancelButton As Button
     Friend WithEvents okayButton As Button
     Friend WithEvents monthPicker As DateTimePicker
     Friend WithEvents selectMonthLabel As Label
+    Friend WithEvents selectMonthLabelPanel As Panel
 End Class

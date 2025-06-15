@@ -22,69 +22,76 @@ Partial Class YearForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        cancelButton = New Button()
         okayButton = New Button()
         yearPicker = New DateTimePicker()
         selectYearLabel = New Label()
+        selectYearLabelPanel = New Panel()
+        selectYearLabelPanel.SuspendLayout()
         SuspendLayout()
-        ' 
-        ' cancelButton
-        ' 
-        cancelButton.Location = New Point(242, 195)
-        cancelButton.Name = "cancelButton"
-        cancelButton.Size = New Size(94, 29)
-        cancelButton.TabIndex = 11
-        cancelButton.Text = "Cancel"
-        cancelButton.UseVisualStyleBackColor = True
         ' 
         ' okayButton
         ' 
-        okayButton.Location = New Point(95, 195)
+        okayButton.BackColor = SystemColors.Window
+        okayButton.FlatAppearance.BorderColor = SystemColors.Window
+        okayButton.FlatAppearance.BorderSize = 0
+        okayButton.FlatStyle = FlatStyle.Flat
+        okayButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        okayButton.Location = New Point(62, 175)
         okayButton.Name = "okayButton"
-        okayButton.Size = New Size(94, 29)
+        okayButton.Size = New Size(117, 39)
         okayButton.TabIndex = 10
         okayButton.Text = "Okay"
-        okayButton.UseVisualStyleBackColor = True
+        okayButton.UseVisualStyleBackColor = False
         ' 
         ' yearPicker
         ' 
         yearPicker.AllowDrop = True
         yearPicker.CustomFormat = "yyyy"
+        yearPicker.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         yearPicker.Format = DateTimePickerFormat.Custom
-        yearPicker.Location = New Point(95, 112)
+        yearPicker.Location = New Point(37, 123)
         yearPicker.Name = "yearPicker"
         yearPicker.ShowUpDown = True
-        yearPicker.Size = New Size(241, 27)
+        yearPicker.Size = New Size(170, 32)
         yearPicker.TabIndex = 9
         ' 
         ' selectYearLabel
         ' 
         selectYearLabel.AutoSize = True
-        selectYearLabel.Location = New Point(167, 50)
+        selectYearLabel.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        selectYearLabel.Location = New Point(13, 7)
         selectYearLabel.Name = "selectYearLabel"
-        selectYearLabel.Size = New Size(96, 20)
+        selectYearLabel.Size = New Size(135, 28)
         selectYearLabel.TabIndex = 8
         selectYearLabel.Text = "SELECT YEAR"
+        ' 
+        ' selectYearLabelPanel
+        ' 
+        selectYearLabelPanel.BackColor = SystemColors.Window
+        selectYearLabelPanel.Controls.Add(selectYearLabel)
+        selectYearLabelPanel.Location = New Point(40, 34)
+        selectYearLabelPanel.Name = "selectYearLabelPanel"
+        selectYearLabelPanel.Size = New Size(162, 42)
+        selectYearLabelPanel.TabIndex = 11
         ' 
         ' YearForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = SystemColors.ButtonFace
-        ClientSize = New Size(430, 275)
-        Controls.Add(cancelButton)
+        BackColor = Color.FromArgb(CByte(98), CByte(129), CByte(181))
+        ClientSize = New Size(245, 253)
         Controls.Add(okayButton)
         Controls.Add(yearPicker)
-        Controls.Add(selectYearLabel)
+        Controls.Add(selectYearLabelPanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "YearForm"
         Text = "YearForm"
+        selectYearLabelPanel.ResumeLayout(False)
+        selectYearLabelPanel.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
-
-    Friend WithEvents cancelButton As Button
     Friend WithEvents okayButton As Button
     Friend WithEvents yearPicker As DateTimePicker
     Friend WithEvents selectYearLabel As Label
+    Friend WithEvents selectYearLabelPanel As Panel
 End Class

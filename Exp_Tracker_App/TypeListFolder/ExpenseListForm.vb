@@ -29,6 +29,7 @@ Public Class ExpenseListForm
 
     Private Sub closeButton_Click(sender As Object, e As EventArgs) Handles closeButton.Click
         searchBox.Text = ""
+        editTransactionForm.Visible = False
         Me.Visible = False
     End Sub
 

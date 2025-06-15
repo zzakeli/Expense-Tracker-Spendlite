@@ -101,23 +101,31 @@ Partial Class VerifyOTPForm
         ' 
         ' verifyButton
         ' 
+        verifyButton.BackColor = SystemColors.Window
+        verifyButton.FlatAppearance.BorderColor = SystemColors.Window
+        verifyButton.FlatAppearance.BorderSize = 0
+        verifyButton.FlatStyle = FlatStyle.Flat
         verifyButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         verifyButton.Location = New Point(41, 185)
         verifyButton.Name = "verifyButton"
         verifyButton.Size = New Size(108, 36)
         verifyButton.TabIndex = 6
         verifyButton.Text = "Verify"
-        verifyButton.UseVisualStyleBackColor = True
+        verifyButton.UseVisualStyleBackColor = False
         ' 
         ' cancelButton
         ' 
+        cancelButton.BackColor = SystemColors.Window
+        cancelButton.FlatAppearance.BorderColor = SystemColors.Window
+        cancelButton.FlatAppearance.BorderSize = 0
+        cancelButton.FlatStyle = FlatStyle.Flat
         cancelButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cancelButton.Location = New Point(155, 185)
         cancelButton.Name = "cancelButton"
         cancelButton.Size = New Size(108, 36)
         cancelButton.TabIndex = 7
         cancelButton.Text = "Cancel"
-        cancelButton.UseVisualStyleBackColor = True
+        cancelButton.UseVisualStyleBackColor = False
         ' 
         ' verifyOTPLabel
         ' 

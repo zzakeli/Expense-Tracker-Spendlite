@@ -25,64 +25,71 @@ Partial Class DayForm
         selectDayLabel = New Label()
         dayPicker = New DateTimePicker()
         okayButton = New Button()
-        cancelButton = New Button()
+        selectDayLabelPanel = New Panel()
+        selectDayLabelPanel.SuspendLayout()
         SuspendLayout()
         ' 
         ' selectDayLabel
         ' 
         selectDayLabel.AutoSize = True
-        selectDayLabel.Location = New Point(146, 20)
+        selectDayLabel.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        selectDayLabel.Location = New Point(16, 7)
         selectDayLabel.Name = "selectDayLabel"
-        selectDayLabel.Size = New Size(89, 20)
+        selectDayLabel.Size = New Size(124, 28)
         selectDayLabel.TabIndex = 0
         selectDayLabel.Text = "SELECT DAY"
         ' 
         ' dayPicker
         ' 
         dayPicker.CustomFormat = "yyyy-MM-dd"
+        dayPicker.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         dayPicker.Format = DateTimePickerFormat.Custom
-        dayPicker.Location = New Point(74, 82)
+        dayPicker.Location = New Point(44, 124)
         dayPicker.Name = "dayPicker"
-        dayPicker.Size = New Size(241, 27)
+        dayPicker.Size = New Size(156, 32)
         dayPicker.TabIndex = 1
         ' 
         ' okayButton
         ' 
-        okayButton.Location = New Point(74, 165)
+        okayButton.BackColor = SystemColors.Window
+        okayButton.FlatAppearance.BorderColor = SystemColors.Window
+        okayButton.FlatStyle = FlatStyle.Flat
+        okayButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        okayButton.Location = New Point(66, 176)
         okayButton.Name = "okayButton"
-        okayButton.Size = New Size(94, 29)
+        okayButton.Size = New Size(117, 39)
         okayButton.TabIndex = 2
         okayButton.Text = "Okay"
-        okayButton.UseVisualStyleBackColor = True
+        okayButton.UseVisualStyleBackColor = False
         ' 
-        ' cancelButton
+        ' selectDayLabelPanel
         ' 
-        cancelButton.Location = New Point(221, 165)
-        cancelButton.Name = "cancelButton"
-        cancelButton.Size = New Size(94, 29)
-        cancelButton.TabIndex = 3
-        cancelButton.Text = "Cancel"
-        cancelButton.UseVisualStyleBackColor = True
+        selectDayLabelPanel.BackColor = SystemColors.Window
+        selectDayLabelPanel.Controls.Add(selectDayLabel)
+        selectDayLabelPanel.Location = New Point(44, 35)
+        selectDayLabelPanel.Name = "selectDayLabelPanel"
+        selectDayLabelPanel.Size = New Size(156, 42)
+        selectDayLabelPanel.TabIndex = 3
         ' 
         ' DayForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = SystemColors.ButtonFace
-        ClientSize = New Size(388, 253)
-        Controls.Add(cancelButton)
+        BackColor = Color.FromArgb(CByte(98), CByte(129), CByte(181))
+        ClientSize = New Size(245, 253)
         Controls.Add(okayButton)
         Controls.Add(dayPicker)
-        Controls.Add(selectDayLabel)
+        Controls.Add(selectDayLabelPanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "DayForm"
         Text = "DayForm"
+        selectDayLabelPanel.ResumeLayout(False)
+        selectDayLabelPanel.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents selectDayLabel As Label
     Friend WithEvents dayPicker As DateTimePicker
     Friend WithEvents okayButton As Button
-    Friend WithEvents cancelButton As Button
+    Friend WithEvents selectDayLabelPanel As Panel
 End Class

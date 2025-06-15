@@ -30,6 +30,7 @@ Public Class IncomeListForm
     Private Sub closeButton_Click(sender As Object, e As EventArgs) Handles closeButton.Click
         searchBox.Text = ""
         Me.Visible = False
+        editTransactionForm.Visible = False
     End Sub
 
     Private Sub loadRowData(incomeID As Integer)

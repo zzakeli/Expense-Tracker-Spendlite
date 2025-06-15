@@ -22,66 +22,75 @@ Partial Class WeekForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        cancelButton = New Button()
         okayButton = New Button()
         selectWeekLabel = New Label()
         weekComboBox = New ComboBox()
+        selectWeekLabelPanel = New Panel()
+        selectWeekLabelPanel.SuspendLayout()
         SuspendLayout()
-        ' 
-        ' cancelButton
-        ' 
-        cancelButton.Location = New Point(217, 178)
-        cancelButton.Name = "cancelButton"
-        cancelButton.Size = New Size(94, 29)
-        cancelButton.TabIndex = 7
-        cancelButton.Text = "Cancel"
-        cancelButton.UseVisualStyleBackColor = True
         ' 
         ' okayButton
         ' 
-        okayButton.Location = New Point(70, 178)
+        okayButton.BackColor = SystemColors.Window
+        okayButton.FlatAppearance.BorderColor = SystemColors.Window
+        okayButton.FlatAppearance.BorderSize = 0
+        okayButton.FlatStyle = FlatStyle.Flat
+        okayButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        okayButton.Location = New Point(61, 176)
         okayButton.Name = "okayButton"
-        okayButton.Size = New Size(94, 29)
+        okayButton.Size = New Size(117, 39)
         okayButton.TabIndex = 6
         okayButton.Text = "Okay"
-        okayButton.UseVisualStyleBackColor = True
+        okayButton.UseVisualStyleBackColor = False
         ' 
         ' selectWeekLabel
         ' 
         selectWeekLabel.AutoSize = True
-        selectWeekLabel.Location = New Point(136, 33)
+        selectWeekLabel.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        selectWeekLabel.Location = New Point(11, 7)
         selectWeekLabel.Name = "selectWeekLabel"
-        selectWeekLabel.Size = New Size(109, 20)
+        selectWeekLabel.Size = New Size(151, 28)
         selectWeekLabel.TabIndex = 4
         selectWeekLabel.Text = "SELECT RANGE"
         ' 
         ' weekComboBox
         ' 
+        weekComboBox.DropDownStyle = ComboBoxStyle.DropDownList
+        weekComboBox.FlatStyle = FlatStyle.Flat
+        weekComboBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         weekComboBox.FormattingEnabled = True
-        weekComboBox.Location = New Point(70, 95)
+        weekComboBox.Location = New Point(36, 124)
         weekComboBox.Name = "weekComboBox"
-        weekComboBox.Size = New Size(241, 28)
+        weekComboBox.Size = New Size(170, 32)
         weekComboBox.TabIndex = 8
+        ' 
+        ' selectWeekLabelPanel
+        ' 
+        selectWeekLabelPanel.BackColor = SystemColors.Window
+        selectWeekLabelPanel.Controls.Add(selectWeekLabel)
+        selectWeekLabelPanel.Location = New Point(35, 35)
+        selectWeekLabelPanel.Name = "selectWeekLabelPanel"
+        selectWeekLabelPanel.Size = New Size(173, 42)
+        selectWeekLabelPanel.TabIndex = 9
         ' 
         ' WeekForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = SystemColors.ButtonFace
-        ClientSize = New Size(391, 284)
+        BackColor = Color.FromArgb(CByte(98), CByte(129), CByte(181))
+        ClientSize = New Size(245, 253)
         Controls.Add(weekComboBox)
-        Controls.Add(cancelButton)
         Controls.Add(okayButton)
-        Controls.Add(selectWeekLabel)
+        Controls.Add(selectWeekLabelPanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "WeekForm"
         Text = "WeekForm"
+        selectWeekLabelPanel.ResumeLayout(False)
+        selectWeekLabelPanel.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
-
-    Friend WithEvents cancelButton As Button
     Friend WithEvents okayButton As Button
     Friend WithEvents selectWeekLabel As Label
     Friend WithEvents weekComboBox As ComboBox
+    Friend WithEvents selectWeekLabelPanel As Panel
 End Class

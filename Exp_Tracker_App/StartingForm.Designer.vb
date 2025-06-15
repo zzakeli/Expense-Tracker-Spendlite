@@ -162,7 +162,7 @@ Partial Class StartingForm
         signUpButton.FlatStyle = FlatStyle.Flat
         signUpButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         signUpButton.ForeColor = Color.White
-        signUpButton.Location = New Point(141, 445)
+        signUpButton.Location = New Point(141, 455)
         signUpButton.Name = "signUpButton"
         signUpButton.Size = New Size(137, 43)
         signUpButton.TabIndex = 5
@@ -209,9 +209,11 @@ Partial Class StartingForm
         ' 
         ' forgotPassword
         ' 
+        forgotPassword.ActiveLinkColor = Color.Red
         forgotPassword.AutoSize = True
         forgotPassword.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        forgotPassword.LinkColor = Color.Black
+        forgotPassword.ForeColor = SystemColors.Window
+        forgotPassword.LinkColor = SystemColors.Window
         forgotPassword.Location = New Point(537, 328)
         forgotPassword.Name = "forgotPassword"
         forgotPassword.Size = New Size(138, 22)
@@ -228,7 +230,7 @@ Partial Class StartingForm
         ' 
         usernameTextNotifier.AutoSize = True
         usernameTextNotifier.Font = New Font("Roboto Condensed", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        usernameTextNotifier.Location = New Point(85, 198)
+        usernameTextNotifier.Location = New Point(85, 208)
         usernameTextNotifier.Name = "usernameTextNotifier"
         usernameTextNotifier.Size = New Size(0, 20)
         usernameTextNotifier.TabIndex = 10
@@ -237,7 +239,7 @@ Partial Class StartingForm
         ' 
         emailTextNotifier.AutoSize = True
         emailTextNotifier.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        emailTextNotifier.Location = New Point(86, 270)
+        emailTextNotifier.Location = New Point(86, 280)
         emailTextNotifier.Name = "emailTextNotifier"
         emailTextNotifier.Size = New Size(0, 22)
         emailTextNotifier.TabIndex = 11
@@ -246,7 +248,7 @@ Partial Class StartingForm
         ' 
         passwordTextNotifier.AutoSize = True
         passwordTextNotifier.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        passwordTextNotifier.Location = New Point(86, 340)
+        passwordTextNotifier.Location = New Point(86, 350)
         passwordTextNotifier.Name = "passwordTextNotifier"
         passwordTextNotifier.Size = New Size(0, 22)
         passwordTextNotifier.TabIndex = 12
@@ -255,7 +257,7 @@ Partial Class StartingForm
         ' 
         confirmPasswordTextNotifier.AutoSize = True
         confirmPasswordTextNotifier.Font = New Font("Roboto Condensed", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        confirmPasswordTextNotifier.Location = New Point(86, 412)
+        confirmPasswordTextNotifier.Location = New Point(86, 422)
         confirmPasswordTextNotifier.Name = "confirmPasswordTextNotifier"
         confirmPasswordTextNotifier.Size = New Size(0, 22)
         confirmPasswordTextNotifier.TabIndex = 13
@@ -274,7 +276,7 @@ Partial Class StartingForm
         ' 
         usernameSignUpBoxPanel.BackColor = SystemColors.Window
         usernameSignUpBoxPanel.Controls.Add(usernameSignUpBox)
-        usernameSignUpBoxPanel.Location = New Point(82, 153)
+        usernameSignUpBoxPanel.Location = New Point(82, 163)
         usernameSignUpBoxPanel.Name = "usernameSignUpBoxPanel"
         usernameSignUpBoxPanel.Size = New Size(265, 42)
         usernameSignUpBoxPanel.TabIndex = 15
@@ -283,7 +285,7 @@ Partial Class StartingForm
         ' 
         emailSignUpBoxPanel.BackColor = SystemColors.Window
         emailSignUpBoxPanel.Controls.Add(emailSignUpBox)
-        emailSignUpBoxPanel.Location = New Point(82, 225)
+        emailSignUpBoxPanel.Location = New Point(82, 235)
         emailSignUpBoxPanel.Name = "emailSignUpBoxPanel"
         emailSignUpBoxPanel.Size = New Size(265, 42)
         emailSignUpBoxPanel.TabIndex = 16
@@ -293,7 +295,7 @@ Partial Class StartingForm
         passwordSignUpBoxPanel.BackColor = SystemColors.Window
         passwordSignUpBoxPanel.Controls.Add(disappearingPassSignUpLabel)
         passwordSignUpBoxPanel.Controls.Add(passwordSignUpBox)
-        passwordSignUpBoxPanel.Location = New Point(83, 297)
+        passwordSignUpBoxPanel.Location = New Point(83, 307)
         passwordSignUpBoxPanel.Name = "passwordSignUpBoxPanel"
         passwordSignUpBoxPanel.Size = New Size(265, 42)
         passwordSignUpBoxPanel.TabIndex = 17
@@ -316,7 +318,7 @@ Partial Class StartingForm
         confirmPasswordSignUpBoxPanel.BackColor = SystemColors.Window
         confirmPasswordSignUpBoxPanel.Controls.Add(disappearingConfirmPassSignUpLabel)
         confirmPasswordSignUpBoxPanel.Controls.Add(confirmPasswordSignUpBox)
-        confirmPasswordSignUpBoxPanel.Location = New Point(83, 367)
+        confirmPasswordSignUpBoxPanel.Location = New Point(83, 377)
         confirmPasswordSignUpBoxPanel.Name = "confirmPasswordSignUpBoxPanel"
         confirmPasswordSignUpBoxPanel.Size = New Size(265, 42)
         confirmPasswordSignUpBoxPanel.TabIndex = 18

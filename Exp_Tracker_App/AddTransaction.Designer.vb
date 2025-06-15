@@ -29,87 +29,129 @@ Partial Class AddTransaction
         datePicker = New DateTimePicker()
         addButton = New Button()
         cancelButton = New Button()
+        amountBoxPanel = New Panel()
+        addTransactionLabelPanel = New Panel()
+        addTransactionLabelPanel.SuspendLayout()
         SuspendLayout()
         ' 
         ' addTrasactionLabel
         ' 
         addTrasactionLabel.AutoSize = True
-        addTrasactionLabel.Location = New Point(127, 29)
+        addTrasactionLabel.Font = New Font("Roboto Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        addTrasactionLabel.Location = New Point(9, 10)
         addTrasactionLabel.Name = "addTrasactionLabel"
-        addTrasactionLabel.Size = New Size(144, 20)
+        addTrasactionLabel.Size = New Size(253, 37)
         addTrasactionLabel.TabIndex = 0
         addTrasactionLabel.Text = "ADD TRANSACTION"
         ' 
         ' typeComboBox
         ' 
         typeComboBox.DropDownStyle = ComboBoxStyle.DropDownList
+        typeComboBox.FlatStyle = FlatStyle.Flat
+        typeComboBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         typeComboBox.FormattingEnabled = True
         typeComboBox.Items.AddRange(New Object() {"Income", "Expense", "Savings"})
-        typeComboBox.Location = New Point(45, 85)
+        typeComboBox.Location = New Point(50, 118)
         typeComboBox.Name = "typeComboBox"
-        typeComboBox.Size = New Size(133, 28)
+        typeComboBox.Size = New Size(133, 32)
         typeComboBox.TabIndex = 1
         ' 
         ' amountBox
         ' 
-        amountBox.Location = New Point(85, 144)
+        amountBox.BorderStyle = BorderStyle.None
+        amountBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        amountBox.Location = New Point(78, 180)
         amountBox.Name = "amountBox"
         amountBox.PlaceholderText = "Amount"
-        amountBox.Size = New Size(213, 27)
+        amountBox.Size = New Size(213, 25)
         amountBox.TabIndex = 2
         ' 
         ' categoryComboBox
         ' 
         categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList
+        categoryComboBox.FlatStyle = FlatStyle.Flat
+        categoryComboBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         categoryComboBox.FormattingEnabled = True
-        categoryComboBox.Location = New Point(85, 199)
+        categoryComboBox.Location = New Point(65, 232)
         categoryComboBox.Name = "categoryComboBox"
-        categoryComboBox.Size = New Size(213, 28)
+        categoryComboBox.Size = New Size(241, 32)
         categoryComboBox.TabIndex = 3
         ' 
         ' datePicker
         ' 
+        datePicker.CalendarFont = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         datePicker.CustomFormat = "yyyy-MM-dd"
+        datePicker.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         datePicker.Format = DateTimePickerFormat.Custom
-        datePicker.Location = New Point(85, 263)
+        datePicker.Location = New Point(65, 281)
         datePicker.Name = "datePicker"
-        datePicker.Size = New Size(213, 27)
+        datePicker.Size = New Size(241, 32)
         datePicker.TabIndex = 4
         ' 
         ' addButton
         ' 
-        addButton.Location = New Point(85, 352)
+        addButton.BackColor = SystemColors.Window
+        addButton.FlatAppearance.BorderColor = SystemColors.Window
+        addButton.FlatAppearance.BorderSize = 0
+        addButton.FlatStyle = FlatStyle.Flat
+        addButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        addButton.Location = New Point(50, 361)
         addButton.Name = "addButton"
-        addButton.Size = New Size(94, 29)
+        addButton.Size = New Size(121, 39)
         addButton.TabIndex = 5
         addButton.Text = "Add"
-        addButton.UseVisualStyleBackColor = True
+        addButton.UseVisualStyleBackColor = False
         ' 
         ' cancelButton
         ' 
-        cancelButton.Location = New Point(204, 352)
+        cancelButton.BackColor = SystemColors.Window
+        cancelButton.FlatAppearance.BorderColor = SystemColors.Window
+        cancelButton.FlatAppearance.BorderSize = 0
+        cancelButton.FlatStyle = FlatStyle.Flat
+        cancelButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cancelButton.Location = New Point(202, 361)
         cancelButton.Name = "cancelButton"
-        cancelButton.Size = New Size(94, 29)
+        cancelButton.Size = New Size(121, 39)
         cancelButton.TabIndex = 6
         cancelButton.Text = "Cancel"
-        cancelButton.UseVisualStyleBackColor = True
+        cancelButton.UseVisualStyleBackColor = False
+        ' 
+        ' amountBoxPanel
+        ' 
+        amountBoxPanel.BackColor = SystemColors.Window
+        amountBoxPanel.Location = New Point(65, 170)
+        amountBoxPanel.Name = "amountBoxPanel"
+        amountBoxPanel.Size = New Size(241, 44)
+        amountBoxPanel.TabIndex = 7
+        ' 
+        ' addTransactionLabelPanel
+        ' 
+        addTransactionLabelPanel.BackColor = SystemColors.Window
+        addTransactionLabelPanel.Controls.Add(addTrasactionLabel)
+        addTransactionLabelPanel.Location = New Point(50, 32)
+        addTransactionLabelPanel.Name = "addTransactionLabelPanel"
+        addTransactionLabelPanel.Size = New Size(273, 57)
+        addTransactionLabelPanel.TabIndex = 8
         ' 
         ' AddTransaction
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = SystemColors.ButtonFace
-        ClientSize = New Size(408, 450)
+        BackColor = Color.FromArgb(CByte(98), CByte(129), CByte(181))
+        ClientSize = New Size(374, 441)
+        Controls.Add(addTransactionLabelPanel)
         Controls.Add(cancelButton)
         Controls.Add(addButton)
         Controls.Add(datePicker)
         Controls.Add(categoryComboBox)
         Controls.Add(amountBox)
         Controls.Add(typeComboBox)
-        Controls.Add(addTrasactionLabel)
+        Controls.Add(amountBoxPanel)
         FormBorderStyle = FormBorderStyle.None
         Name = "AddTransaction"
         Text = "AddTransaction"
+        addTransactionLabelPanel.ResumeLayout(False)
+        addTransactionLabelPanel.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -121,4 +163,6 @@ Partial Class AddTransaction
     Friend WithEvents datePicker As DateTimePicker
     Friend WithEvents addButton As Button
     Friend WithEvents cancelButton As Button
+    Friend WithEvents amountBoxPanel As Panel
+    Friend WithEvents addTransactionLabelPanel As Panel
 End Class

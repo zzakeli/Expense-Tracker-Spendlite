@@ -65,6 +65,7 @@ Partial Class Dashboard
         profileTab = New Panel()
         logoutButton = New Button()
         exportButton = New Button()
+        usernameLabel = New Label()
         mainPanel.SuspendLayout()
         expenseListContainer.SuspendLayout()
         CType(expenseListData, ComponentModel.ISupportInitialize).BeginInit()
@@ -557,6 +558,20 @@ Partial Class Dashboard
         exportButton.Text = "Export"
         exportButton.UseVisualStyleBackColor = False
         ' 
+        ' usernameLabel
+        ' 
+        usernameLabel.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        usernameLabel.AutoSize = True
+        usernameLabel.Font = New Font("Roboto Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        usernameLabel.ForeColor = Color.White
+        usernameLabel.Location = New Point(1172, 33)
+        usernameLabel.Name = "usernameLabel"
+        usernameLabel.RightToLeft = RightToLeft.Yes
+        usernameLabel.Size = New Size(23, 28)
+        usernameLabel.TabIndex = 3
+        usernameLabel.Text = "0"
+        usernameLabel.TextAlign = ContentAlignment.BottomRight
+        ' 
         ' Dashboard
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -564,6 +579,7 @@ Partial Class Dashboard
         BackColor = Color.FromArgb(CByte(107), CByte(163), CByte(202))
         ClientSize = New Size(1262, 753)
         Controls.Add(profileTab)
+        Controls.Add(usernameLabel)
         Controls.Add(profile)
         Controls.Add(mainPanel)
         FormBorderStyle = FormBorderStyle.None
@@ -600,6 +616,7 @@ Partial Class Dashboard
         CType(profile, ComponentModel.ISupportInitialize).EndInit()
         profileTab.ResumeLayout(False)
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents mainPanel As Panel
@@ -636,4 +653,5 @@ Partial Class Dashboard
     Friend WithEvents logoutButton As Button
     Friend WithEvents expenseListData As DataGridView
     Friend WithEvents savingsListData As DataGridView
+    Friend WithEvents usernameLabel As Label
 End Class

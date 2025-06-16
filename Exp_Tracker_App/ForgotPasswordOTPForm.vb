@@ -1,4 +1,6 @@
 ﻿
+Imports System.Drawing.Drawing2D
+
 Public Class ForgotPasswordOTPForm
 
     Private mailer As Mail
@@ -15,7 +17,24 @@ Public Class ForgotPasswordOTPForm
         Me.passwordResetForm = passwordResetForm
     End Sub
     Private Sub ForgotPasswordOTPForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        roundControlCorners(verifyButton, 40)
+        roundControlCorners(cancelButton, 40)
+        roundControlCorners(digitBox1, 15)
+        roundControlCorners(digitBox2, 15)
+        roundControlCorners(digitBox3, 15)
+        roundControlCorners(digitBox4, 15)
+        roundControlCorners(digitBox5, 15)
+        roundControlCorners(digitBox6, 15)
+    End Sub
 
+    Private Sub roundControlCorners(ctrl As Control, radius As Integer)
+        Dim path As New GraphicsPath()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(ctrl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(ctrl.Width - radius, ctrl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, ctrl.Height - radius, radius, radius, 90, 90)
+        path.CloseAllFigures()
+        ctrl.Region = New Region(path)
     End Sub
     Public Sub setEmail(email As String)
         Me.email = email

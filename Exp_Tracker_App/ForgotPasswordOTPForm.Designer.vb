@@ -37,7 +37,7 @@ Partial Class ForgotPasswordOTPForm
         ' 
         verifyOTPLabel.AutoSize = True
         verifyOTPLabel.Font = New Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        verifyOTPLabel.Location = New Point(92, 69)
+        verifyOTPLabel.Location = New Point(92, 66)
         verifyOTPLabel.Name = "verifyOTPLabel"
         verifyOTPLabel.Size = New Size(118, 30)
         verifyOTPLabel.TabIndex = 17
@@ -50,7 +50,7 @@ Partial Class ForgotPasswordOTPForm
         cancelButton.FlatAppearance.BorderSize = 0
         cancelButton.FlatStyle = FlatStyle.Flat
         cancelButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        cancelButton.Location = New Point(155, 203)
+        cancelButton.Location = New Point(155, 200)
         cancelButton.Name = "cancelButton"
         cancelButton.Size = New Size(108, 36)
         cancelButton.TabIndex = 16
@@ -64,7 +64,7 @@ Partial Class ForgotPasswordOTPForm
         verifyButton.FlatAppearance.BorderSize = 0
         verifyButton.FlatStyle = FlatStyle.Flat
         verifyButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        verifyButton.Location = New Point(41, 203)
+        verifyButton.Location = New Point(41, 200)
         verifyButton.Name = "verifyButton"
         verifyButton.Size = New Size(108, 36)
         verifyButton.TabIndex = 15
@@ -75,7 +75,7 @@ Partial Class ForgotPasswordOTPForm
         ' 
         digitBox6.BorderStyle = BorderStyle.None
         digitBox6.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox6.Location = New Point(236, 139)
+        digitBox6.Location = New Point(236, 136)
         digitBox6.MaxLength = 1
         digitBox6.Name = "digitBox6"
         digitBox6.Size = New Size(34, 33)
@@ -86,7 +86,7 @@ Partial Class ForgotPasswordOTPForm
         ' 
         digitBox5.BorderStyle = BorderStyle.None
         digitBox5.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox5.Location = New Point(196, 139)
+        digitBox5.Location = New Point(196, 136)
         digitBox5.MaxLength = 1
         digitBox5.Name = "digitBox5"
         digitBox5.Size = New Size(34, 33)
@@ -97,7 +97,7 @@ Partial Class ForgotPasswordOTPForm
         ' 
         digitBox4.BorderStyle = BorderStyle.None
         digitBox4.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox4.Location = New Point(156, 139)
+        digitBox4.Location = New Point(156, 136)
         digitBox4.MaxLength = 1
         digitBox4.Name = "digitBox4"
         digitBox4.Size = New Size(34, 33)
@@ -108,7 +108,7 @@ Partial Class ForgotPasswordOTPForm
         ' 
         digitBox3.BorderStyle = BorderStyle.None
         digitBox3.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox3.Location = New Point(116, 139)
+        digitBox3.Location = New Point(116, 136)
         digitBox3.MaxLength = 1
         digitBox3.Name = "digitBox3"
         digitBox3.Size = New Size(34, 33)
@@ -119,7 +119,7 @@ Partial Class ForgotPasswordOTPForm
         ' 
         digitBox2.BorderStyle = BorderStyle.None
         digitBox2.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox2.Location = New Point(76, 139)
+        digitBox2.Location = New Point(76, 136)
         digitBox2.MaxLength = 1
         digitBox2.Name = "digitBox2"
         digitBox2.Size = New Size(34, 33)
@@ -130,7 +130,7 @@ Partial Class ForgotPasswordOTPForm
         ' 
         digitBox1.BorderStyle = BorderStyle.None
         digitBox1.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox1.Location = New Point(36, 139)
+        digitBox1.Location = New Point(36, 136)
         digitBox1.MaxLength = 1
         digitBox1.Name = "digitBox1"
         digitBox1.Size = New Size(34, 33)

@@ -33,10 +33,10 @@ Partial Class ForgotPasswordForm
         ' 
         emailBox.BorderStyle = BorderStyle.None
         emailBox.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        emailBox.Location = New Point(11, 10)
+        emailBox.Location = New Point(9, 10)
         emailBox.Name = "emailBox"
         emailBox.PlaceholderText = "Enter Email"
-        emailBox.Size = New Size(179, 25)
+        emailBox.Size = New Size(221, 25)
         emailBox.TabIndex = 0
         ' 
         ' verifyButton
@@ -46,7 +46,7 @@ Partial Class ForgotPasswordForm
         verifyButton.FlatAppearance.BorderSize = 0
         verifyButton.FlatStyle = FlatStyle.Flat
         verifyButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        verifyButton.Location = New Point(49, 187)
+        verifyButton.Location = New Point(45, 169)
         verifyButton.Name = "verifyButton"
         verifyButton.Size = New Size(97, 41)
         verifyButton.TabIndex = 1
@@ -57,9 +57,9 @@ Partial Class ForgotPasswordForm
         ' 
         emailBoxPanel.BackColor = SystemColors.Window
         emailBoxPanel.Controls.Add(emailBox)
-        emailBoxPanel.Location = New Point(49, 85)
+        emailBoxPanel.Location = New Point(34, 88)
         emailBoxPanel.Name = "emailBoxPanel"
-        emailBoxPanel.Size = New Size(202, 46)
+        emailBoxPanel.Size = New Size(240, 46)
         emailBoxPanel.TabIndex = 2
         ' 
         ' cancelButton
@@ -69,7 +69,7 @@ Partial Class ForgotPasswordForm
         cancelButton.FlatAppearance.BorderSize = 0
         cancelButton.FlatStyle = FlatStyle.Flat
         cancelButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        cancelButton.Location = New Point(154, 187)
+        cancelButton.Location = New Point(158, 169)
         cancelButton.Name = "cancelButton"
         cancelButton.Size = New Size(97, 41)
         cancelButton.TabIndex = 3

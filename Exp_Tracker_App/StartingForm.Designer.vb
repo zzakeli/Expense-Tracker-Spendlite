@@ -24,7 +24,6 @@ Partial Class StartingForm
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         slideContainer = New Panel()
-        terminateButton = New Button()
         switchToSignUpButton = New Button()
         switchLabel = New Label()
         switchToLoginButton = New Button()
@@ -51,6 +50,7 @@ Partial Class StartingForm
         usernameLogInBoxPanel = New Panel()
         passwordLogInBoxPanel = New Panel()
         disappearingPassLogInLabel = New Label()
+        exitButton = New PictureBox()
         slideContainer.SuspendLayout()
         usernameSignUpBoxPanel.SuspendLayout()
         emailSignUpBoxPanel.SuspendLayout()
@@ -58,12 +58,12 @@ Partial Class StartingForm
         confirmPasswordSignUpBoxPanel.SuspendLayout()
         usernameLogInBoxPanel.SuspendLayout()
         passwordLogInBoxPanel.SuspendLayout()
+        CType(exitButton, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' slideContainer
         ' 
         slideContainer.BackColor = Color.FromArgb(CByte(54), CByte(116), CByte(181))
-        slideContainer.Controls.Add(terminateButton)
         slideContainer.Controls.Add(switchToSignUpButton)
         slideContainer.Controls.Add(switchLabel)
         slideContainer.Controls.Add(switchToLoginButton)
@@ -71,15 +71,6 @@ Partial Class StartingForm
         slideContainer.Name = "slideContainer"
         slideContainer.Size = New Size(454, 695)
         slideContainer.TabIndex = 0
-        ' 
-        ' terminateButton
-        ' 
-        terminateButton.Location = New Point(343, 644)
-        terminateButton.Name = "terminateButton"
-        terminateButton.Size = New Size(94, 29)
-        terminateButton.TabIndex = 9
-        terminateButton.Text = "Terminate"
-        terminateButton.UseVisualStyleBackColor = True
         ' 
         ' switchToSignUpButton
         ' 
@@ -89,7 +80,7 @@ Partial Class StartingForm
         switchToSignUpButton.FlatStyle = FlatStyle.Flat
         switchToSignUpButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         switchToSignUpButton.ForeColor = SystemColors.InfoText
-        switchToSignUpButton.Location = New Point(155, 334)
+        switchToSignUpButton.Location = New Point(155, 338)
         switchToSignUpButton.Name = "switchToSignUpButton"
         switchToSignUpButton.Size = New Size(137, 39)
         switchToSignUpButton.TabIndex = 8
@@ -115,7 +106,7 @@ Partial Class StartingForm
         switchToLoginButton.FlatAppearance.BorderSize = 0
         switchToLoginButton.FlatStyle = FlatStyle.Flat
         switchToLoginButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        switchToLoginButton.Location = New Point(155, 334)
+        switchToLoginButton.Location = New Point(155, 338)
         switchToLoginButton.Name = "switchToLoginButton"
         switchToLoginButton.Size = New Size(137, 39)
         switchToLoginButton.TabIndex = 6
@@ -178,7 +169,6 @@ Partial Class StartingForm
         usernameLoginBox.PlaceholderText = "Username"
         usernameLoginBox.Size = New Size(246, 25)
         usernameLoginBox.TabIndex = 6
-        usernameLoginBox.Text = "Jestaly14"
         ' 
         ' passwordLoginBox
         ' 
@@ -370,12 +360,24 @@ Partial Class StartingForm
         disappearingPassLogInLabel.TabIndex = 20
         disappearingPassLogInLabel.Text = "Password"
         ' 
+        ' exitButton
+        ' 
+        exitButton.BackColor = Color.FromArgb(CByte(54), CByte(116), CByte(181))
+        exitButton.Image = My.Resources.Resources.reject
+        exitButton.Location = New Point(825, 14)
+        exitButton.Name = "exitButton"
+        exitButton.Size = New Size(41, 40)
+        exitButton.SizeMode = PictureBoxSizeMode.Zoom
+        exitButton.TabIndex = 10
+        exitButton.TabStop = False
+        ' 
         ' StartingForm
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(107), CByte(163), CByte(202))
         ClientSize = New Size(882, 653)
+        Controls.Add(exitButton)
         Controls.Add(slideContainer)
         Controls.Add(passwordLogInBoxPanel)
         Controls.Add(usernameLogInBoxPanel)
@@ -408,6 +410,7 @@ Partial Class StartingForm
         usernameLogInBoxPanel.PerformLayout()
         passwordLogInBoxPanel.ResumeLayout(False)
         passwordLogInBoxPanel.PerformLayout()
+        CType(exitButton, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -426,7 +429,6 @@ Partial Class StartingForm
     Friend WithEvents forgotPassword As LinkLabel
     Friend WithEvents Timer1 As Timer
     Friend WithEvents switchToSignUpButton As Button
-    Friend WithEvents terminateButton As Button
     Friend WithEvents usernameTextNotifier As Label
     Friend WithEvents emailTextNotifier As Label
     Friend WithEvents passwordTextNotifier As Label
@@ -441,5 +443,6 @@ Partial Class StartingForm
     Friend WithEvents usernameLogInBoxPanel As Panel
     Friend WithEvents passwordLogInBoxPanel As Panel
     Friend WithEvents disappearingPassLogInLabel As Label
+    Friend WithEvents exitButton As PictureBox
 
 End Class

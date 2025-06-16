@@ -72,6 +72,17 @@ Public Class Dashboard
         makeSLFChild()
     End Sub
 
+    Public Sub UpdateLabelAlignLeft(lbl As Label, newText As String)
+        Dim oldWidth As Integer = lbl.Width
+        lbl.Text = newText
+        lbl.AutoSize = True
+        lbl.Update()
+        Dim newWidth As Integer = lbl.Width
+        Dim widthChange As Integer = newWidth - oldWidth
+
+        lbl.Left += widthChange
+    End Sub
+
     Private Sub roundControlCorners(ctrl As Control, radius As Integer)
         Dim path As New GraphicsPath()
         path.AddArc(0, 0, radius, radius, 180, 90)
@@ -334,10 +345,22 @@ Public Class Dashboard
     End Sub
 
     Private Sub setUpUserDashboard(userNetBalance As Double, userIncome As Double, userExpense As Double, userSavings As Double)
-        netBalanceValue.Text = "P " & userNetBalance.ToString()
-        incomeValue.Text = "P " & userIncome.ToString()
-        expenseValue.Text = "P " & userExpense.ToString()
-        savingsValue.Text = "P " & userSavings.ToString()
+        netBalanceValue.Text = "P " & userNetBalance.ToString("F2")
+        incomeValue.Text = "P " & userIncome.ToString("F2")
+        expenseValue.Text = "P " & userExpense.ToString("F2")
+        savingsValue.Text = "P " & userSavings.ToString("F2")
+
+        CenterLabelInPanel(netBalanceValue, netBalanceValueContainer)
+        CenterLabelInPanel(incomeValue, incomeValueContainer)
+        CenterLabelInPanel(expenseValue, expenseValueContainer)
+        CenterLabelInPanel(savingsValue, savingsValueContainer)
+    End Sub
+
+    Private Sub CenterLabelInPanel(lbl As Label, pnl As Panel)
+        lbl.Location = New Point(
+        (pnl.Width - lbl.Width) \ 2,
+        (pnl.Height - lbl.Height) \ 2
+    )
     End Sub
 
     Private Sub loadChart(chartQuery As String)
@@ -412,6 +435,14 @@ Public Class Dashboard
                     pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.LightYellow})
                 End If
             End While
+
+            If pieSeries.Slices.Count = 0 Then
+                pieSeries.Slices.Add(New PieSlice("No Data", 1) With {
+                                     .Fill = OxyColor.FromAColor(50, OxyColors.Gray),
+                                     .IsExploded = False
+                })
+            End If
+
 
             connector.connect.Close()
         Catch ex As MySqlException
@@ -1124,7 +1155,8 @@ Public Class Dashboard
     Private Sub logoutButton_Click(sender As Object, e As EventArgs) Handles logoutButton.Click
         Me.Visible = False
         startingForm.Visible = True
-
+        usernameLabel.Text = ""
+        usernameLabel.Location = New Point(1172, 33)
         'set everything default
         setDefault()
     End Sub

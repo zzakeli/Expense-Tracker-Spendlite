@@ -37,7 +37,7 @@ Partial Class VerifyOTPForm
         ' 
         digitBox1.BorderStyle = BorderStyle.None
         digitBox1.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox1.Location = New Point(36, 121)
+        digitBox1.Location = New Point(36, 135)
         digitBox1.MaxLength = 1
         digitBox1.Name = "digitBox1"
         digitBox1.Size = New Size(34, 33)
@@ -48,7 +48,7 @@ Partial Class VerifyOTPForm
         ' 
         digitBox2.BorderStyle = BorderStyle.None
         digitBox2.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox2.Location = New Point(76, 121)
+        digitBox2.Location = New Point(76, 135)
         digitBox2.MaxLength = 1
         digitBox2.Name = "digitBox2"
         digitBox2.Size = New Size(34, 33)
@@ -59,7 +59,7 @@ Partial Class VerifyOTPForm
         ' 
         digitBox3.BorderStyle = BorderStyle.None
         digitBox3.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox3.Location = New Point(116, 121)
+        digitBox3.Location = New Point(116, 135)
         digitBox3.MaxLength = 1
         digitBox3.Name = "digitBox3"
         digitBox3.Size = New Size(34, 33)
@@ -70,7 +70,7 @@ Partial Class VerifyOTPForm
         ' 
         digitBox6.BorderStyle = BorderStyle.None
         digitBox6.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox6.Location = New Point(236, 121)
+        digitBox6.Location = New Point(236, 135)
         digitBox6.MaxLength = 1
         digitBox6.Name = "digitBox6"
         digitBox6.Size = New Size(34, 33)
@@ -81,7 +81,7 @@ Partial Class VerifyOTPForm
         ' 
         digitBox5.BorderStyle = BorderStyle.None
         digitBox5.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox5.Location = New Point(196, 121)
+        digitBox5.Location = New Point(196, 135)
         digitBox5.MaxLength = 1
         digitBox5.Name = "digitBox5"
         digitBox5.Size = New Size(34, 33)
@@ -92,7 +92,7 @@ Partial Class VerifyOTPForm
         ' 
         digitBox4.BorderStyle = BorderStyle.None
         digitBox4.Font = New Font("Roboto Condensed", 16.2F)
-        digitBox4.Location = New Point(156, 121)
+        digitBox4.Location = New Point(156, 135)
         digitBox4.MaxLength = 1
         digitBox4.Name = "digitBox4"
         digitBox4.Size = New Size(34, 33)
@@ -106,7 +106,7 @@ Partial Class VerifyOTPForm
         verifyButton.FlatAppearance.BorderSize = 0
         verifyButton.FlatStyle = FlatStyle.Flat
         verifyButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        verifyButton.Location = New Point(41, 185)
+        verifyButton.Location = New Point(41, 199)
         verifyButton.Name = "verifyButton"
         verifyButton.Size = New Size(108, 36)
         verifyButton.TabIndex = 6
@@ -120,7 +120,7 @@ Partial Class VerifyOTPForm
         cancelButton.FlatAppearance.BorderSize = 0
         cancelButton.FlatStyle = FlatStyle.Flat
         cancelButton.Font = New Font("Roboto Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        cancelButton.Location = New Point(155, 185)
+        cancelButton.Location = New Point(155, 199)
         cancelButton.Name = "cancelButton"
         cancelButton.Size = New Size(108, 36)
         cancelButton.TabIndex = 7
@@ -131,7 +131,7 @@ Partial Class VerifyOTPForm
         ' 
         verifyOTPLabel.AutoSize = True
         verifyOTPLabel.Font = New Font("Roboto Condensed", 15F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        verifyOTPLabel.Location = New Point(92, 51)
+        verifyOTPLabel.Location = New Point(92, 65)
         verifyOTPLabel.Name = "verifyOTPLabel"
         verifyOTPLabel.Size = New Size(118, 30)
         verifyOTPLabel.TabIndex = 8

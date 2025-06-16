@@ -86,6 +86,8 @@ Public Class StartingForm
 
         forgotPassword.Visible = True
         loginButton.Visible = True
+
+        exitButton.BackColor = Color.Transparent
     End Sub
     Private Sub switchToSignUpButton_Click(sender As Object, e As EventArgs) Handles switchToSignUpButton.Click
         targetX = 435
@@ -149,6 +151,7 @@ Public Class StartingForm
             slideContainer.Left += 30
             If slideContainer.Left >= targetX Then
                 slideContainer.Left = targetX
+                exitButton.BackColor = Color.FromArgb(54, 116, 181)
                 Timer1.Stop()
             End If
         End If
@@ -234,6 +237,9 @@ Public Class StartingForm
         Dim userNetBalance As Double = loadUserNetBalance(userIncome, userExpense, userSavings)
 
         dashboard.setUserID(userID)
+        dashboard.usernameLabel.Text = ""
+        dashboard.usernameLabel.Location = New Point(1172, 33)
+        dashboard.UpdateLabelAlignLeft(dashboard.usernameLabel, username)
         loadUserIncomeList()
         loadUserExpenseList()
         loadUserSavingsList()
@@ -332,6 +338,13 @@ Public Class StartingForm
                     pieSeries.Slices.Add(New PieSlice(category, amount) With {.Fill = OxyColors.LightYellow})
                 End If
             End While
+
+            If pieSeries.Slices.Count = 0 Then
+                pieSeries.Slices.Add(New PieSlice("No Data", 1) With {
+                                     .Fill = OxyColor.FromAColor(50, OxyColors.Gray),
+                                     .IsExploded = False
+                })
+            End If
 
             connector.connect.Close()
         Catch ex As MySqlException
@@ -434,10 +447,20 @@ Public Class StartingForm
     End Sub
 
     Private Sub setUpUserDashboard(userNetBalance As Double, userIncome As Double, userExpense As Double, userSavings As Double)
-        dashboard.netBalanceValue.Text = "P " & userNetBalance.ToString()
-        dashboard.incomeValue.Text = "P " & userIncome.ToString()
-        dashboard.expenseValue.Text = "P " & userExpense.ToString()
-        dashboard.savingsValue.Text = "P " & userSavings.ToString()
+        dashboard.netBalanceValue.Text = "P " & userNetBalance.ToString("F2")
+        dashboard.incomeValue.Text = "P " & userIncome.ToString("F2")
+        dashboard.expenseValue.Text = "P " & userExpense.ToString("F2")
+        dashboard.savingsValue.Text = "P " & userSavings.ToString("F2")
+
+        CenterLabelInPanel(dashboard.netBalanceValue, dashboard.netBalanceValueContainer)
+        CenterLabelInPanel(dashboard.incomeValue, dashboard.incomeValueContainer)
+        CenterLabelInPanel(dashboard.expenseValue, dashboard.expenseValueContainer)
+        CenterLabelInPanel(dashboard.savingsValue, dashboard.savingsValueContainer)
+    End Sub
+
+    Private Sub CenterLabelInPanel(label As Label, panel As Panel)
+        label.Left = (panel.Width - label.Width) / 2
+        label.Top = (panel.Height - label.Height) / 2
     End Sub
 
     Private Function loadUserNetBalance(userIncome As Double, userExpense As Double, userSavings As Double)
@@ -664,11 +687,6 @@ Public Class StartingForm
         passwordResetForm.Location = New Point(x - 60, y)
     End Sub
 
-    'Remove this before finalization
-    Private Sub terminateButton_Click(sender As Object, e As EventArgs) Handles terminateButton.Click
-        End
-    End Sub
-
     Private Sub signUpButton_Click(sender As Object, e As EventArgs) Handles signUpButton.Click
         validateUsername()
         validateEmail()
@@ -835,7 +853,7 @@ Public Class StartingForm
     End Sub
 
     Private Sub validatePassword()
-        Dim password As String = passwordSignUpBox.Text.Trim()
+        Dim password As String = passwordSignUpBox.Text
 
         If String.IsNullOrEmpty(password) Then
             showValidationError("Password cannot be empty.", passwordSignUpBox, passwordTextNotifier, passwordSignUpBoxPanel)
@@ -856,7 +874,7 @@ Public Class StartingForm
     End Sub
 
     Private Sub validateConfirmPassword()
-        Dim confirmPassword = confirmPasswordSignUpBox.Text.Trim()
+        Dim confirmPassword = confirmPasswordSignUpBox.Text
 
         If String.IsNullOrEmpty(confirmPassword) Then
             showValidationError("Password cannot be empty.", confirmPasswordSignUpBox, confirmPasswordTextNotifier, confirmPasswordSignUpBoxPanel)
@@ -967,5 +985,9 @@ Public Class StartingForm
 
     Private Sub forgotPassword_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles forgotPassword.LinkClicked
         forgotPasswordForm.Visible = True
+    End Sub
+
+    Private Sub exitButton_Click(sender As Object, e As EventArgs) Handles exitButton.Click
+        End
     End Sub
 End Class
